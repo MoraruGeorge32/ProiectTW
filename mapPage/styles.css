@@ -1,0 +1,38 @@
+/*css pentru mapPage*/
+header{
+    position: sticky;
+    top: 0;
+}
+.navbar {
+    background-color: black;
+    width: 100%;
+    height: auto;
+    color:white;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar img {
+
+        width: 100px;
+        height: 100px;
+}
+body{
+	margin: 0px;
+}
+footer{
+	background-color: #27282c;
+	top: 100%;  
+	position: sticky;
+}
+footer p{
+	color: white;
+}
+div{
+	display: flex;
+	justify-content: center;
+}
+div img{
+	width: 1680px;
+	height: 920px;
+}

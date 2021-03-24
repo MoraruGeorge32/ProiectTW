@@ -1,24 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title> 
-</head>
-<body>
-	<header class="navbar" >
-           <a href="./home.html"> <img src="../img/tobias-roder-x60YFtdOsGU-unsplash.jpg" alt="redirect..."> </a>
-    </header>
-    <!--FOLOSIRE MODAL CEVA 
-    https://www.w3schools.com/howto/howto_css_modals.asp-->
-    <!--https://www.youtube.com/watch?v=6C-GYwxdZd4-->
-    
-    <footer>
-            <p>Contact: 07n-amcartela</p>
-            <p>Echipa</p>
-            <p>Resurse de dezvoltare</p>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title> 
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+    	 <header class="navbar" >
+               <a href=".././homePage/home.html" target="_blanc"> <img src="../img/tobias-roder-x60YFtdOsGU-unsplash.jpg" alt="redirect..."> </a>
+        </header>
+        <hr>
+        <div class="divMapa">
+        	<img src="https://geology.com/world/world-map.gif" alt="harta a lumii">
+        </div>
+        <hr>
+        <form action="backend_script">
+        <label for="listaStatistici">Selectati o statistica pentru a o vizualiza</label>
+        <select name="listaStatistici">
+            <option value="numarDecese">Numar decese</option>
+            <option value="numarAtacuri">Numar atacuri</option>
+            <option value="numarRaniti">Numar raniti</option>
+        </select>
+        <br>
+        <label for="perioadaCalculStatistica">Selectati o perioada</label>
+        <select name="perioadaCalculStatistica">
+            <option value="5">5 ani</option>
+            <option value="10">10 ani</option>
+            <option value="15">15 ani</option>
+        </select>
+        <br>
+        <input type="submit" name="Submit">
+        </form>
 
-    </footer>
-</body>
-</html>
+
+        <footer>
+                <p>Contact: 07n-amcartela</p>
+                <p>Echipa</p>
+                <p>Resurse de dezvoltare</p>
+        </footer>
+    </body>
+    </html>
