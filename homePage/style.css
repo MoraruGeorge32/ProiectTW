@@ -1,10 +1,21 @@
-body{
-    margin: 0px 0px 0px 0px;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+
+html{
+    width:100%;
+    min-height:100%;
 }
 
-@font-face{
-    font-family: FontCool;
-    src:;
+body{
+    width:100%;
+    height:100%;
+    margin: 0px 0px 0px 0px;
+    font-family: 'Poppins';
+    background-color: black;
+}
+
+hr {
+    border-top: 2.5px dashed turquoise;
+    border-bottom: none;
 }
 
 header{
@@ -37,14 +48,48 @@ footer p{
 }
 
 .welcome{
-    background-image: url(./img/clem-onojeghuo-HaBItKkn3XM-unsplash.jpg);
+    background-image: url(../img/clem-onojeghuo-HaBItKkn3XM-unsplash.jpg);
     background-size: cover 600px;
     background-repeat: no-repeat;
     width: 100%;
+    color: white;
     height: 400px;
+    position: relative;
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: space-between;
+    
+}
+.textCenter{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%); /* centrez textul din div-ul "Welcome" */
+    text-align:center;
 }
 
+.titled{
+    font-size: 50px;
+    margin: 0px 0px 0px 0px;
+}
+
+.motto{
+    font-size: 20px;
+    margin: 0px 0px 0px 0px;
+}
+
+.redirectMap{
+    display:flex;
+    justify-content: center;
+}
+.redirectMap button {
+    background-color: white;
+    color: black;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px 10px;
+}
+
+.footer{
+    bottom:0;
+}
