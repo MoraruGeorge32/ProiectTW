@@ -1,0 +1,27 @@
+openswiftmap - pentru harta
+request cu ajax trimis locatie
+microservicii - ofera functionalitati 
+		arhitectura mai avansata
+		aplicatia sa fie distribuita pe mai multe chestii
+		cream microservicii noi ca si cum cream aplicatiile
+		o mica aplicatie independenta; decuplare functionalitate
+		contractul microserviciului
+trebuie login pentru user de fapt un user administrator
+nu neaparat cu alti clienti
+asociere intre criterii pentru vizualizare
+filtre avansata cu limitarile contextului/tarii cred
+NU ALEG EU STATISTICI
+permit unui user ce statistici vrea
+cookie
+parametri: nume valoare path catre unde trimti acel cookie
+		path trimite la ceva exact i guess
+	 sunt si alti parametrii legati si de securitate
+
+
+sesiuni
+	identificare mod unic user
+	alocare spatiu de stocare pentru sesiune - temp
+am in xampp un folder chestii in myPHPadmin ce am facut la lab6
+isset - daca este setata variabila daca primeste de pe browser
+securitate cu cookie: https, sameSet sau mai era ceva
+in mod normal nu e ok sa faci ceva cu securitate si cookie
