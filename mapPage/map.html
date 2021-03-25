@@ -12,11 +12,11 @@
                <a href=".././homePage/home.html" target="_blanc"> <img src="../img/tobias-roder-x60YFtdOsGU-unsplash.jpg" alt="redirect..."> </a>
         </header>
         <hr>
-        <div class="divMapa">
-        	<img src="https://geology.com/world/world-map.gif" alt="harta a lumii">
+        <div class="divMapa" onclick="">
+        	<img src="../img/world.svg" alt="harta a lumii">
         </div>
         <hr>
-        <form action="backend_script">
+        <form action="backend_script.php">
         <label for="listaStatistici">Selectati o statistica pentru a o vizualiza</label>
         <select name="listaStatistici">
             <option value="numarDecese">Numar decese</option>
@@ -31,10 +31,48 @@
             <option value="15">15 ani</option>
         </select>
         <br>
-        <input type="submit" name="Submit">
+        <label for="tipRedare">Selectati un tip de redare</label>
+        <select name="tipRedare">
+            <option value="grafic2D">Grafica</option>
+            <option value="tabel">Tabelar</option>
+            <option value="barChart">Cu coloane</option>
+        </select>
+        <br>
+        <input type="submit" name="requestStatistici">
         </form>
 
-
+        <p>Pentru a putea cauta un incident, va rugam sa selectati dintre atributele de mai jos care considerati ca au legatura cu atacul</p>
+        <form action="researchIncident.php">
+            <label for="locatieTara">
+                Selectati tara unde credeti ca a avut loc incidentul
+            </label>
+                <select name="locatieTara">
+                    <option value="tara">de pus tari aici</option>
+                </select> 
+                <br>
+            <label for="aniiIncident">
+                Introduceti mai jos anul sau anii pe durata carora credeti ca s-a desfasurat evenimentul, cu virgula daca sunt mai multi
+            </label>
+            <input type="text" name="aniiIncidenti">
+            <br><br>
+            <label for="atributeCautare">Alegeti de mai jos atributele care considerati ca sunt specifice incidentului</label><br>
+            <input type="checkbox" name="atribut1" value="organizat">
+            <label for="atribut1">Atentat organizat</label>
+            <br>
+            <input type="checkbox" name="atribut2" value="religieScop">
+            <label for="atribut2">Cu scop religios</label>
+            <br>
+            <input type="checkbox" name="atribut3" value="extremismPolitic">
+            <label for="atribut3">Cu influente din politica tarii selectate</label>
+            <br>
+            <input type="checkbox" name="atribut1" value="militarArmament">
+            <label for="atribut1">Folosirea unor dispozitive de tip armament militar</label>
+            <br>
+            <label>Selectati ce detalii doriti legate de incidetul respectiv</label>
+            <!--TODO: adaugat posibile detalii de ales cum ar fi arme folosite, modul in care s-a organizar (retele de socializare, intalniri etc.) etc.-->
+            <br>
+            <input type="submit" name="Submit">
+        </form>
         <footer>
                 <p>Contact: 07n-amcartela</p>
                 <p>Echipa</p>
