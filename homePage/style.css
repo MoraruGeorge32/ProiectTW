@@ -11,6 +11,7 @@ body{
     margin: 0px 0px 0px 0px;
     font-family: 'Poppins';
     background-color: black;
+    position: absolute;
 }
 
 hr {
@@ -21,12 +22,6 @@ hr {
 header{
     position: sticky;
     top: 0;
-}
-
-footer{
-    background-color: #27282c;
-    top: 100%;  
-    position: sticky;
 }
 
 footer p{
@@ -53,6 +48,7 @@ footer p{
     background-repeat: no-repeat;
     width: 100%;
     color: white;
+    text-shadow: 4px 4px 3px black;
     height: 400px;
     position: relative;
     display: flex;
@@ -83,13 +79,63 @@ footer p{
     justify-content: center;
 }
 .redirectMap button {
-    background-color: white;
-    color: black;
+    background-color: blueviolet;
+    font-family: Poppins;
+    color: white;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 10px ;
+    padding: 10px 10px;
+}
+.redirectMap button:hover {
+    background-color: black;
+    font-family: Poppins;
+    color: blue;
+    text-shadow: 10px 10px 10px 10px;
+    text-align: center;
+    border-radius: 10px ;
     padding: 10px 10px;
 }
 
 .footer{
+    text-align: center;
+    background-color: #27282c;
+    color: white;
+    left: 0;
     bottom:0;
+    width: 100%;
+}
+.footer hr{
+    color: white;
+    border: ridge;
+}
+
+.footer-title{
+    text-align: center;
+}
+.footer-title p {
+    padding-top: 15px;
+}
+.footer-team{
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
+}
+.Vlad,.George,.Robert{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align:center;
+}
+.icons i{
+    padding: 0px 10px 0px 10px;
+}
+.fa-facebook-f:hover{
+    color:#4267B2;
+}
+.fa.fa-instagram:hover{
+    color: transparent;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    background-clip: text;
+    -webkit-background-clip: text;
 }
