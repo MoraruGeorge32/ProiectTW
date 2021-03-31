@@ -139,3 +139,31 @@ footer p{
     background-clip: text;
     -webkit-background-clip: text;
 }
+
+.about{
+    font-family: Poppins;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 75%;
+    height: auto;
+    margin-left: 12.5%;
+}
+.aboutElement{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.introImage img,.MilitaryImage img,.techImage img{
+    width: 20em;
+    height: 20em;
+}
+.textAbout{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
+    align-content: center;
+}
+.Motivation{
+    margin-left: 10px;
+}
