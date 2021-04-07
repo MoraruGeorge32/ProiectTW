@@ -25,14 +25,36 @@ body{
     height: auto;
     color:white;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar button{
+    background-color: blueviolet;
+    font-family: Poppins;
+    color: white;
+    text-align: center;
+    border-radius: 10px ;
+    padding: 10px 10px;
+    margin-right: 1vh;
+}
+
+.navbar button:hover{
+    background-color: white;
+    font-family: Poppins;
+    color:blueviolet;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 10px ;
+    padding: 10px 10px;
+    margin-right: 1vh;
 }
 
 .navbar img {
-
-        width: 100px;
-        height: 100px;
+    width: 6em;
+    height: 6em;
 }
+
 body{
 	margin: 0px;
 }
