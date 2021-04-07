@@ -20,7 +20,7 @@ hr {
 }
 
 header{
-    position: sticky;
+    position: fixed;
     top: 0;
 }
 
@@ -33,13 +33,35 @@ footer p{
     height: auto;
     color:white;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar button{
+    background-color: blueviolet;
+    font-family: Poppins;
+    color: white;
+    text-align: center;
+    border-radius: 10px ;
+    padding: 10px 10px;
+    margin-right: 1vh;
+}
+
+.navbar button:hover{
+    background-color: white;
+    font-family: Poppins;
+    color:blueviolet;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 10px ;
+    padding: 10px 10px;
+    margin-right: 1vh;
 }
 
 .navbar img {
 
-        width: 100px;
-        height: 100px;
+        width: 7vw;
+        height: 10%;
 }
 
 .welcome{
@@ -52,9 +74,9 @@ footer p{
     height: 400px;
     position: relative;
     display: flex;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
-    
 }
 .textCenter{
     position: absolute;
@@ -87,11 +109,11 @@ footer p{
     padding: 10px 10px;
 }
 .redirectMap button:hover {
-    background-color: black;
+    background-color: white;
     font-family: Poppins;
-    color: blue;
-    text-shadow: 10px 10px 10px 10px;
+    color:blueviolet;
     text-align: center;
+    font-weight: bold;
     border-radius: 10px ;
     padding: 10px 10px;
 }

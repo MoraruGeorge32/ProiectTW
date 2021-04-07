@@ -1,113 +1,111 @@
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Harta Vizualizator</title> 
-            <link rel="stylesheet" href="styles.css"> 
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-                    
-        </head>
-        <body>
-        	 <header class="navbar" >
-                   <a href=".././homePage/home.html" target="_blanc"> <img src="../img/logo.png" alt="redirect..."> </a>
-            </header>
-            <hr>
-            <div class="divMapa" onclick="">
-            	<img src="../img/world.svg" alt="harta a lumii">
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Harta Vizualizator</title>
+      <link rel="stylesheet" href="./styles.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   </head>
+   <body>
+      <header class="navbar" >
+         <a href=".././homePage/home.html" target="blanc"> <img src="../img/logo.png" alt="redirect..."> </a>
+      </header>
+      <hr>
+      <div class="divMapa" onclick="">
+         <img src="../img/world.svg" alt="harta a lumii">
+      </div>
+      <hr>
+      <p>Aratati detalii legate de tara selectata (populatie,religii,relatii politice etc.)</p>
+      <a href="../template/templateInfoTari.html" target="blanc"> <button value="Details" onclick="">Cereti detalii</button></a><!--ar trebui sa trimita la o pagina cu detalii legate de tara (pagina de template)-->
+      <form action="backend_script.php">
+         <label for="listaStatistici">Selectati o statistica pentru a o vizualiza</label>
+         <select name="listaStatistici">
+            <option value="numarDecese">Numar decese</option>
+            <option value="numarAtacuri">Numar atacuri</option>
+            <option value="numarRaniti">Numar raniti</option>
+         </select>
+         <br>
+         <label for="perioadaCalculStatistica">Selectati o perioada</label>
+         <select name="perioadaCalculStatistica">
+            <option value="5">5 ani</option>
+            <option value="10">10 ani</option>
+            <option value="15">15 ani</option>
+         </select>
+         <br>
+         <label for="tipRedare">Selectati un tip de redare</label>
+         <select id="tipRedare">
+            <option value="grafic2D">Grafica</option>
+            <option value="tabel">Tabelar</option>
+            <option value="barChart">Cu coloane</option>
+         </select>
+         <br>
+         <input type="submit" name="requestStatistici">
+      </form>
+      <p>Pentru a putea cauta un incident, va rugam sa selectati dintre atributele de mai jos care considerati ca au legatura cu atacul</p>
+      <form action="researchIncident.php">
+         <label for="locatieTara">
+         Selectati tara unde credeti ca a avut loc incidentul
+         </label>
+         <select id="locatieTara">
+            <option value="tara">de pus tari aici</option>
+         </select>
+         <br>
+         <label for="aniiIncident">
+         Introduceti mai jos anul sau anii pe durata carora credeti ca s-a desfasurat evenimentul, cu virgula daca sunt mai multi
+         </label>
+         <input type="text" name="aniiIncidenti">
+         <br><br>
+         <label for="atributeCautare">Alegeti de mai jos atributele care considerati ca sunt specifice incidentului</label><br>
+         <input type="checkbox" name="atribut1" value="organizat">
+         <label for="atribut1">Atentat organizat</label>
+         <br>
+         <input type="checkbox" name="atribut2" value="religieScop">
+         <label for="atribut2">Cu scop religios</label>
+         <br>
+         <input type="checkbox" name="atribut3" value="extremismPolitic">
+         <label for="atribut3">Cu influente din politica tarii selectate</label>
+         <br>
+         <input type="checkbox" name="atribut4" value="militarArmament">
+         <label for="atribut1">Folosirea unor dispozitive de tip armament militar</label>
+         <br>
+         <label>Selectati ce detalii doriti legate de incidetul respectiv</label>
+         <!--TODO: adaugat posibile detalii de ales cum ar fi arme folosite, modul in care s-a organizar (retele de socializare, intalniri etc.) etc.-->
+         <br>
+         <input type="submit" name="Submit">
+      </form>
+      <div class="footer">
+         <div class="footer-title">
+            <p>Contact</p>
+         </div>
+         <hr>
+         <div class="footer-team">
+            <div class="Vlad">
+               <p>Anghelus Ionut-Vlad</p>
+               <p> " Best day ever! " </p>
+               <div class="icons">
+                  <i class="fa fa-facebook-f"></i>
+                  <i class="fa fa-instagram"></i>
+               </div>
             </div>
-            <hr>
-            <p>Aratati detalii legate de tara selectata (populatie,religii,relatii politice etc.)</p>
-            <a href="../template/templateInfoTari.html" target="_blanc"> <button value="Details" onclick="">Cereti detalii</button></a><!--ar trebui sa trimita la o pagina cu detalii legate de tara (pagina de template)-->
-            <form action="backend_script.php">
-            <label for="listaStatistici">Selectati o statistica pentru a o vizualiza</label>
-            <select name="listaStatistici">
-                <option value="numarDecese">Numar decese</option>
-                <option value="numarAtacuri">Numar atacuri</option>
-                <option value="numarRaniti">Numar raniti</option>
-            </select>
-            <br>
-            <label for="perioadaCalculStatistica">Selectati o perioada</label>
-            <select name="perioadaCalculStatistica">
-                <option value="5">5 ani</option>
-                <option value="10">10 ani</option>
-                <option value="15">15 ani</option>
-            </select>
-            <br>
-            <label for="tipRedare">Selectati un tip de redare</label>
-            <select name="tipRedare">
-                <option value="grafic2D">Grafica</option>
-                <option value="tabel">Tabelar</option>
-                <option value="barChart">Cu coloane</option>
-            </select>
-            <br>
-            <input type="submit" name="requestStatistici">
-            </form>
-
-            <p>Pentru a putea cauta un incident, va rugam sa selectati dintre atributele de mai jos care considerati ca au legatura cu atacul</p>
-            <form action="researchIncident.php">
-                <label for="locatieTara">
-                    Selectati tara unde credeti ca a avut loc incidentul
-                </label>
-                    <select name="locatieTara">
-                        <option value="tara">de pus tari aici</option>
-                    </select> 
-                    <br>
-                <label for="aniiIncident">
-                    Introduceti mai jos anul sau anii pe durata carora credeti ca s-a desfasurat evenimentul, cu virgula daca sunt mai multi
-                </label>
-                <input type="text" name="aniiIncidenti">
-                <br><br>
-                <label for="atributeCautare">Alegeti de mai jos atributele care considerati ca sunt specifice incidentului</label><br>
-                <input type="checkbox" name="atribut1" value="organizat">
-                <label for="atribut1">Atentat organizat</label>
-                <br>
-                <input type="checkbox" name="atribut2" value="religieScop">
-                <label for="atribut2">Cu scop religios</label>
-                <br>
-                <input type="checkbox" name="atribut3" value="extremismPolitic">
-                <label for="atribut3">Cu influente din politica tarii selectate</label>
-                <br>
-                <input type="checkbox" name="atribut1" value="militarArmament">
-                <label for="atribut1">Folosirea unor dispozitive de tip armament militar</label>
-                <br>
-                <label>Selectati ce detalii doriti legate de incidetul respectiv</label>
-                <!--TODO: adaugat posibile detalii de ales cum ar fi arme folosite, modul in care s-a organizar (retele de socializare, intalniri etc.) etc.-->
-                <br>
-                <input type="submit" name="Submit">
-            </form> 
-            <div class="footer">
-                  <div class="footer-title">
-                       <p>Contact</p>
-                        </div>
-                            <hr>
-                            <div class="footer-team">
-                                 <div class="Vlad">
-                                    <p>Anghelus Vlad-Ionut</p>
-                                    <p> " Best day ever! " </p>
-                                    <div class="icons">
-                                        <i class="fa fa-facebook-f"></i>
-                                        <i class="fa fa-instagram"></i>
-                                    </div>
-                                 </div>
-                                 <div class="Robert">
-                                    <p>Musteata Robert-Andrei</p>
-                                    <p> " Live high and expect higher! " </p>
-                                    <div class="icons">
-                                        <i class="fa fa-facebook-f"></i>
-                                        <i class="fa fa-instagram"></i>
-                                    </div>
-                                 </div>
-                                 <div class="George">
-                                    <p>Moraru Octavian-George</p>
-                                    <p> " Live the moment! " </p>
-                                    <div class="icons">
-                                        <i class="fa fa-facebook-f"></i>
-                                        <i class="fa fa-instagram"></i>
-                                 </div>
-                             </div>   
-                        </div>
+            <div class="Robert">
+               <p>Musteata Robert-Andrei</p>
+               <p> " Live high and expect higher! " </p>
+               <div class="icons">
+                  <i class="fa fa-facebook-f"></i>
+                  <i class="fa fa-instagram"></i>
+               </div>
             </div>
-        </body>
-        </html>
+            <div class="George">
+               <p>Moraru Octavian-George</p>
+               <p> " Live the moment! " </p>
+               <div class="icons">
+                  <i class="fa fa-facebook-f"></i>
+                  <i class="fa fa-instagram"></i>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>
