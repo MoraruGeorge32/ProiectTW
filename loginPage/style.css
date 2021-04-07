@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 html{
     height:100%;
     background-position: center;
@@ -17,20 +18,24 @@ body{
 }
 
 .loginForm{
-    color: black /*??*/;
-    width: 50%;
+    color: black;
+    width: 70%;
     height: 70%;
     background: whitesmoke;
     border-radius: 30px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
 }
 
 .loginBox{
     text-align: center;
     font-size: 30px;
-    font-family:'Roboto';
+    width: 100%;
+    font-family:'Oswald';
 }
 
-input{
+.loginBox input{
     width: 40%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -39,14 +44,16 @@ input{
     font-size: large;
 }
 
-button{
+.loginButton button{
+    margin-top: 20px;
     padding: 14px 20px;
-    background-color: #4CAF50;
+    background-color: blueviolet;
     color: white;
+    border-radius: 10px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 10%;
+    width:30%;
     font-size: large;
 }
 
