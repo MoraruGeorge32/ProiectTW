@@ -9,101 +9,111 @@
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+      />
   </head>
   <body>
     <nav class="navbar">
-      <a href="./home.html">
-        <img src="../img/logo.png" alt="redirect..." />
+      <a href="../homePage/home.html">
+        <img src="../img/logo.png" alt="logo aplicație" />
       </a>
       <a href="../loginPage/login.html"><button>Log In Admin</button></a>
     </nav>
     <hr />
-    <div class="divMapa" onclick="">
+    <div class="divMapa">
       <img src="../img/world.svg" alt="harta a lumii" />
     </div>
     <hr />
-    <div class="mapForm">
+    <div class="mapFormBackground">
       <div class="mapForm1">
         <div class="formInfo">
-          <p>
-            Aratati detalii legate de tara selectata (populatie,religii,relatii
-            politice etc.)
-          </p>
-          <a href="../template/templateInfoTari.html" target="blanc">
-            <button value="Details" onclick="">Cereti detalii</button> </a
-          ><!--ar trebui sa trimita la o pagina cu detalii legate de tara (pagina de template)-->
+          <!--Buton cerere detalii tari-->
+          <form action="../template/templateInfoTari.html" target="_blank"
+            id="detaliiTara">
+            <label> Arătați detalii legate de țara selectată
+              (populație,religii etc.)</label>
+            <input type="submit" value="Cereti detalii">
+          </form>
+
         </div>
         <div class="formStatistici">
           <form action="backend_script.php">
             <label for="listaStatistici">
-              Selectati o statistica pentru a o vizualiza
+              Selectați o statistică pentru a o vizualiza
             </label>
-            <select name="listaStatistici">
-              <option value="numarDecese">Numar decese</option>
-              <option value="numarAtacuri">Numar atacuri</option>
-              <option value="numarRaniti">Numar raniti</option>
+            <select id="listaStatistici">
+              <option value="numarDecese">Număr decese</option>
+              <option value="numarAtacuri">Număr atacuri</option>
+              <option value="numarRaniti">Număr răniți</option>
             </select>
-            <br />
-            <label for="perioadaCalculStatistica">Selectati o perioada</label>
-            <select name="perioadaCalculStatistica">
+            <br>
+            <label for="perioadaCalculStatistica">Selectați o perioadă</label>
+            <select id="perioadaCalculStatistica">
               <option value="5">5 ani</option>
               <option value="10">10 ani</option>
               <option value="15">15 ani</option>
             </select>
-            <br />
-            <label for="tipRedare">Selectati un tip de redare</label>
+            <br>
+            <label for="tipRedare">Selectați un tip de redare</label>
             <select id="tipRedare">
-              <option value="grafic2D">Grafica</option>
+              <option value="grafic2D">Grafică</option>
               <option value="tabel">Tabelar</option>
               <option value="barChart">Cu coloane</option>
             </select>
-            <br />
-            <input type="submit" name="requestStatistici" />
+            <br>
+            <input type="submit" id="requestStatistici" />
           </form>
         </div>
         <div class="formIncidentCautare">
-          <p>Pentru a putea cauta un incident, va rugam sa selectati dintre
-          atributele de mai jos care considerati ca au legatura cu atacul</p>
+          <p>Pentru a putea căuta un incident, vă rugăm să selectați dintre
+            atributele de mai jos care considerați că au legatură cu atacul</p>
           <form action="researchIncident.php">
             <label for="locatieTara">
-              Selectati tara unde credeti ca a avut loc incidentul
+              Introduceți inițialele țării unde credeți că a avut loc
+              evenimentul terorist 
             </label>
-            <select id="locatieTara">
-              <option value="tara">de pus tari aici</option>
-            </select>
-            <br />
+            <input type="text" id="locatieTara">
+            <br>
             <label for="aniiIncident">
-              Introduceti mai jos anul sau anii pe durata carora credeti ca s-a
-              desfasurat evenimentul, cu virgula daca sunt mai multi
+              Introduceți mai jos anul sau anii pe durata cărora credeți că s-a
+              desfășurat evenimentul, cu virgulă daca sunt mai mulți
             </label>
-            <input type="text" name="aniiIncidenti" />
-            <br /><br />
-            <label for="atributeCautare"
-              >Alegeti de mai jos atributele care considerati ca sunt specifice
-              incidentului</label
-            ><br />
-            <input type="checkbox" name="atribut1" value="organizat" />
-            <label for="atribut1">Atentat organizat</label>
-            <br />
-            <input type="checkbox" name="atribut2" value="religieScop" />
-            <label for="atribut2">Cu scop religios</label>
-            <br />
-            <input type="checkbox" name="atribut3" value="extremismPolitic" />
-            <label for="atribut3"
-              >Cu influente din politica tarii selectate</label
-            >
-            <br />
-            <input type="checkbox" name="atribut4" value="militarArmament" />
-            <label for="atribut1"
-              >Folosirea unor dispozitive de tip armament militar</label
-            >
-            <br />
-            <label
-              >Selectati ce detalii doriti legate de incidetul respectiv</label
-            >
+            <input type="text" id="aniiIncident" />
+            <br>
+            <label>Alegeți de mai jos atributele care
+              considerați că sunt specifice
+              incidentului</label>
+            <br>
+            <input type="checkbox" id="atribut1" value="organizat" />
+            <label for="atribut1">Assasinare</label>
+            <br>
+            <input type="checkbox" id="atribut2" value="religieScop" />
+            <label for="atribut2">Răpire/Luare de ostatici</label>
+            <br>
+            <input type="checkbox" id="atribut3" value="extremismPolitic" />
+            <label for="atribut3">Bombardament/Explozii</label>
+            <br>
+            <input type="checkbox" id="atribut4" value="militarArmament" />
+            <label for="atribut4">Atac armat</label>
+            <br>
+            <input type="checkbox" id="atribut5" value="infrastuctura" />
+            <label for="atribut5">Atac al unei clădiri/Infrastructuri </label>
+            <br>
+            <label>Selectati ce detalii doriti legate de incidetul respectiv</label>
+            <br>
+            <input type="checkbox" id="weapons">
+            <label for="weapons">Arme folosite</label>
+            <br>
+            <input type="checkbox" id="targetType">
+            <label for="weapons">Ținta/Victimele atacului</label>
+            <br>
+            <input type="checkbox" id="groupName">
+            <label for="groupName">Nume organizație teroristă</label>
+            <br>
+            <input type="checkbox" id="fatalities">
+            <label for="fatalities">Număr de cazuri de persoane vătămate</label>
+            <br>
             <!--TODO: adaugat posibile detalii de ales cum ar fi arme folosite, modul in care s-a organizar (retele de socializare, intalniri etc.) etc.-->
-            <br />
+              
             <input type="submit" name="Submit" />
           </form>
         </div>

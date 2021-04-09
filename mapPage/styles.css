@@ -21,24 +21,31 @@ body{
     background-color: white;
     position: absolute;
 }
-.mapForm{
+.mapFormBackground{
     background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 95%;
+    height: auto;
 }
 .mapForm1{
     background-color: ghostwhite;
     width: 80%;
-    height: 88%;
+    margin-top: 1%;
+    margin-bottom: 1%;
     border-radius: 20px;
     font-size: 1.0em;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
 }
+
+/*toti primii copii din mapForm1*/
+.mapForm1>*{
+    margin: 20px;
+}
+
 .formIncidentCautare{
     display: flex;
     flex-direction: column;
@@ -148,4 +155,5 @@ div{
     background-clip: text;
     -webkit-background-clip: text;
 }
+
 
