@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 html{
     height:100%;
     background-position: center;
@@ -21,7 +20,7 @@ body{
     color: black;
     width: 70%;
     height: 70%;
-    background: whitesmoke;
+    background: whitesmoke;+
     border-radius: 30px;
     display:flex;
     justify-content: center;
@@ -35,18 +34,21 @@ body{
     font-family:'Oswald';
 }
 
+
 .loginBox input{
     width: 40%;
+    /* warning: beware of broken box size*/
     padding: 12px 20px;
     margin: 8px 0;
-    box-sizing: border-box;
     border-radius: 4px;
     font-size: large;
 }
 
 .loginButton button{
     margin-top: 20px;
-    padding: 14px 20px;
+    text-align: center;
+    /* warning: beware of broken box size*/
+    padding: 3vw 1vw;
     background-color: blueviolet;
     color: white;
     border-radius: 10px;
@@ -59,4 +61,42 @@ body{
 
 button:hover{
     opacity: 0.8;
+}
+
+@media (orientation: landscape) {
+
+    .loginBox{
+        text-align: center;
+        font-size: 15px;
+        width: 100%;
+        font-family:'Oswald';
+    }
+    
+    .loginBox p {
+        margin: 1vw 0 1vw 0;
+    }
+    .loginBox input{
+        width: 30vw;
+        height: 1vw;
+        margin-top: 0;
+        margin-bottom: 0;
+        border-radius: 4px;
+        font-size: large;
+    }
+    
+    .loginButton button{
+        margin-top: 20px;
+        text-align: center;
+        /* warning: beware of broken box size*/
+        padding: 2vw 1vw;
+        background-color: blueviolet;
+        color: white;
+        border-radius: 10px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width:30%;
+        font-size: large;
+    }
+
 }

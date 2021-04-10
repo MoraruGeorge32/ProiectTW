@@ -1,9 +1,6 @@
 /*css pentru mapPage*/
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
-
 header{
-    position: sticky;
+    position: fixed;
     top: 0;
 }
 
@@ -15,7 +12,7 @@ html{
 body{
     width:100%;
     height:100%;
-    margin: 0px 0px 0px 0px;
+    margin: 0 0 0 0;
     font-family: 'Oswald';
     color: blueviolet;
     background-color: white;
@@ -42,7 +39,7 @@ body{
 }
 
 /*toti primii copii din mapForm1*/
-.mapForm1>*{
+.mapForm1>div{
     margin: 20px;
 }
 
@@ -89,7 +86,7 @@ body{
 }
 
 body{
-	margin: 0px;
+	margin: 0;
 }
 div{
 	display: flex;
@@ -143,17 +140,18 @@ div{
     text-align:center;
 }
 .icons i{
-    padding: 0px 10px 0px 10px;
+    padding: 0 10px 0 10px;
 }
 .fa-facebook-f:hover{
     color:#4267B2;
 }
-.fa.fa-instagram:hover{
-    color: transparent;
+.fa-instagram:hover{
+    color:blueviolet;
+    /* color: transparent;
     background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
     background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
     background-clip: text;
-    -webkit-background-clip: text;
+    -webkit-background-clip: text; */
 }
 
 
