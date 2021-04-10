@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head lang="ro">
+        <head>
+            <meta charset="UTF-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0" />
+            <title>Administrare aplicație</title>
+            <link rel="stylesheet" href="./style.css" />
+        </head>
+    </head>
+    <body>
+        <h1>
+            TerroViz: Pagina de Administrare
+        </h1>
+        <nav>
+            <p>
+                Salutare, {getAdminUsername}
+            </p>
+            <form action="../homePage/home.html">
+                <input type="submit" value="delogare">
+            </form>
+        </nav>
+        <div class="actiuni">
+            <p>
+                Actiuni pe care le puteti face:
+            </p>
+            <div class="dropdown-content" id="adaugare_event">
+                <form action="./adaugareEveniment/index_adaugare.html">
+                    <input type="submit" value="Introduceti eveniment mou">
+                </form>
+            </div>
+            <div class="dropdown-content" id="stergere_event">
+                <form action="./stergereEveniment/index_stergere.html">
+                    <input type="submit" value="Stergeti un eveniment">
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

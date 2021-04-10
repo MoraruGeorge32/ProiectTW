@@ -1,0 +1,14 @@
+nav{
+    display: grid;
+    grid-column-gap: 75%;
+    grid-template-columns: auto auto;
+    align-items: flex-end;
+    margin-bottom: 25px;
+    width: 100%
+
+}
+
+nav p{
+    margin: 0%;
+    width: auto;
+}
