@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html>
-    <head lang="ro">
-        <head>
+<html lang="ro">
+    <head>
             <meta charset="UTF-8" />
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
             <meta name="viewport" content="width=device-width,
@@ -14,7 +13,6 @@
                 rel="stylesheet">
             <script src="./script.js"></script>
         </head>
-    </head>
     <body>
         <div id="main">
             <div id="leftside">
@@ -32,11 +30,13 @@
                             Stergere event
                         </div>
                     </div>
-                    <div id="delogare">
-                        <form action="../homePage/home.html">
-                            <input type="submit" value="Delogare">
-                        </form>
-                    </div>
+                    <a id="btn" href="../homePage/home.html">
+                        <div id="delog">
+                            <div id="delogare">
+                                <span>Delogare</span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
             <div id="rightside">
@@ -49,23 +49,29 @@
                 </div>
 
                 <div id="bodyrightside">
+                    <div id="eventZone">
                     <div id="formAddEvent">
                         <form id="formAdaugare">
                             <div id="dateEvent">
-                                <label>Data evenimentului</label><br>
+                                <label>Data evenimentului</label>
+                                <br>
+                                <br>
                                 <label for="year">
                                     An:
                                 </label>
+                                <br>
                                 <input type="text" id="year">
                                 <br>
                                 <label for="year">
                                     Luna (numeric):
                                 </label>
+                                <br>
                                 <input type="text" id="month">
                                 <br>
                                 <label for="month">
                                     Zi (numeric):
                                 </label>
+                                <br>
                                 <input type="text" id="day">
                                 <br>
                             </div>
@@ -73,97 +79,76 @@
                             <div id="locationEvent">
                                 <label>Locul evenimentului</label>
                                 <br>
+                                <br>
                                 <label for="country">
                                     Țară:
                                 </label>
+                                <br>
                                 <input type="text" id="country">
                                 <br>
                                 <label for="region">
                                     Regiune:
                                 </label>
+                                <br>
                                 <input type="text" id="region">
                                 <br>
                                 <label for="city">
                                     Oraș:
                                 </label>
+                                <br>
                                 <input type="text" id="city">
                                 <br>
                                 <label for="latitude">
                                     latitudine:
                                 </label>
+                                <br>
                                 <input type="text" id="latitude">
                                 <br>
                                 <label for="longitude">
                                     Longitudine:
                                 </label>
+                                <br>
                                 <input type="text" id="longitude">
                                 <br>
                                 <label for="vecinity">
                                     Vecinătate:
                                 </label>
+                                <br>
                                 <input type="text" id="vecinity">
                                 <br>
                             </div>
                             <div id="clasificareEvent">
                                 <label>Tipul de atac</label>
                                 <br>
+                                <br>
                                 <label for="suicide">Suicid</label>
+                                <br>
                                 <select id="suicide">
                                     <option value="da">Da</option>
                                     <option value="nu">Nu</option>
                                 </select>
                                 <br>
                                 <label for="type">Tipul eveniment</label>
+                                <br>
                                 <input type="text" id="type">
                                 <br>
                                 <label for="target">Țintă eveniment</label>
+                                <br>
                                 <input type="text" id="target">
                                 <br>
                             </div>
-                            <input type="submit" value="Adaugați evenimet">
+                            <div></div><!--Div pentru plasarea butonului de submit in a doua coloana din grid-->
+                            <div id="submitBtn">
+                                <button onclick="" class="glow-on-hover"> Adauga eveniment </button>
+                            </div>
                         </form>
                     </div>
                     <div id="removeEvent">
-                        Astai ii div-ul de stergere
+                        Acesta este div-ul dedicat stergerii 
                     </div>
                 </div>
             </div>
         </div>
-
-
-
-
-        <!-- <h1>
-            TerroViz: Pagina de Administrare
-        </h1>
-        <nav>
-            <p>
-                Salutare, {getAdminUsername}
-            </p>
-            <form action="../homePage/home.html">
-                <input type="submit" value="delogare">
-            </form>
-        </nav>
-        <div id="panouControl">
-            <div class="actiuni">
-                <p>
-                    Meniu acțiuni:
-                </p>
-                <div class="optiune" id="adaugare_event">
-                    <form action="./adaugareEveniment/index_adaugare.html">
-                        <input type="submit" value="Introduceti eveniment nou">
-                    </form>
-                </div>
-                <div class="optiune" id="stergere_event">
-                    <form action="./stergereEveniment/index_stergere.html">
-                        <input type="submit" value="Stergeti un eveniment">
-                    </form>
-                </div>
-            </div>
-            <div id="panouInteractiv">
-                la apasarea unui buton sa apara de ex formularul de completat pentru a adauga un eveniment sau
-                 o metoda de a sterge un eveniment
-            </div>
-        </div> -->
+    </div>
     </body>
 </html>
