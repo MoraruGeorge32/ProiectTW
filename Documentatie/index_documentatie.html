@@ -3,6 +3,7 @@
 	<head>
 		<title>Documentatie</title>
 		<meta charset="utf-8">
+		<link rel="stylesheet" href="./style.css">
 	</head>
 	<body>
 
@@ -23,8 +24,6 @@
 								<meta property="schema:familyName" content="Angheluș">
 								<span property="schema:name">Angheluș Vlad</span>
 							</span>
-							<a href="#sf" property="sa:roleAffiliation">Developer</a>,
-							<a href="#umich" property="sa:roleAffiliation">Front</a>
 							<ul>
 								<li property="schema:roleContactPoint" typeof="schema:ContactPoint">
 									<a href="mailto:anghelus.vlad30@gmail.com"
@@ -40,12 +39,10 @@
 								<meta property="schema:familyName" content="Moraru">
 								<span property="schema:name">Moraru George</span>
 							</span>
-							<a href="#sf" property="sa:roleAffiliation">Developer</a>,
-							<a href="#umich" property="sa:roleAffiliation">Front</a>
 							<ul>
 								<li property="schema:roleContactPoint" typeof="schema:ContactPoint">
-									<a href="mailto:jholland@umich.edu"
-										property="schema:email">adresaemail---</a>
+									<a href="mailto:georgemoraru2001@gmail.com"
+										property="schema:email">georgemoraru2001@gmail.com</a>
 								</li>
 							</ul>
 						</li>
@@ -57,8 +54,6 @@
 								<meta property="schema:familyName" content="Musteață">
 								<span property="schema:name">Musteață Robert</span>
 							</span>
-							<a href="#sf" property="sa:roleAffiliation">Developer</a>,
-							<a href="#umich" property="sa:roleAffiliation">Front</a>
 							<ul>
 								<li property="schema:roleContactPoint" typeof="schema:ContactPoint">
 									<a href="mailto:robertmusteata@yahoo.com"
@@ -95,7 +90,7 @@
 				</section>
 			</section>
 
-			<section id="Prezentare generala">
+			<section id="Prezentare_generala">
 				<h2>
 					Descriere aplicație
 				</h2>
@@ -104,10 +99,9 @@
 					<p>
 						TerroViz este în esență un instrument de vizualizare flexibilă a datelor
 						privitoare la terorismul global. Cu ajutorul acestuia, utilizatorii vor
-						putea colecta informații privitoare la o anumită țară selectată de
+						putea colecta informații privitoare la terorismul dintr-o țară selectată de
 						aceștia. Produsul este deschis publicului larg și poate constitui un
-						ajutor
-						în obținerea de date simple, cât și prelucrări ale acestora și de obținere
+						ajutor în obținerea de date simple și prelucrări ale acestora în forma
 						de informații.
 					</p>
 				</section>
@@ -134,10 +128,10 @@
 					</section>
 					<section>
 						<h4>Funcționalități pentru un utilizator administrator</h4>
-						<p>Spre deosebire de un utilizator normal, un administrator poate schimba anumite aspecte ale aplicației. Astfel un administrator va putea:</p>
+						<p>Spre deosebire de un utilizator normal, un administrator poate schimba
+							anumite aspecte ale aplicației. Astfel un administrator va putea:</p>
 						<ul>
 							<li>Adăuga/Șterge un incident din baza de date</li>
-							<li><h1>MAI TREUBIE ADAUGATE LUCruri</h1></li>
 						</ul>
 					</section>
 
@@ -152,44 +146,197 @@
 				<h2>
 					Interactiunea cu utilizatorul
 				</h2>
-				<p> Interfața cu care interacționează utilizatorul (paginile Web) sunt construite cu elemente de HTML5 și CSS3 conform consorțiului Web.</p>
+				<p> Interfața cu care interacționează utilizatorul (paginile Web) sunt
+					construite cu elemente de HTML5 și CSS3 conform consorțiului Web.</p>
 				<section>
-					<h3> 
+					<h3>
 						Pagini
 					</h3>
 					<ul>
 						<li> Pagina principală <br>
-							<p> Pagina Home are rolul de a prezenta pe scurt detaliile aplicației, echipei și obiectivului pentru care a fost creată această aplicație.</p>
-							<p> Ca funcționalități, această pagină oferă posibilitatea de a naviga către pagina ce conține harta cu informații despre evenimente teroriste sau către un formular de autentificare
+							<p> Pagina Home are rolul de a prezenta pe scurt detaliile aplicației,
+								echipei și obiectivului pentru care a fost creată această aplicație.</p>
+							<p> Ca funcționalități, această pagină oferă posibilitatea de a naviga
+								către pagina ce conține harta cu informații despre evenimente teroriste
+								sau către un formular de autentificare
 								pentru administratori. </p>
 						</li>
 						<li> Vizualizatorul de date despre terorism <br>
-							 <p> Pe această pagină utilizatorul poate obține detalii despre o anumită țară selectată, anumite statistici pentru o tară legate de evenimente teroriste, căutarea unui incident după
-								 anumite elemente cheie și exportarea acestor cereri.
-							 </p>
-							 <p> 
-								 În partea superioară se află o hartă pe care utilizatorul o poate folosi pentru selectarea unei țări. Pe baza acestei selecții, se pot realiza mai multe prelucrări de date:
-								 <ol>
-									 <li> Selectarea detaliilor despre o anumită țară; </li>
-									 <li> Generarea unei statistici dorite;</li>
-									 <li> Căutarea unui posibil incident raportat.</li> 
-								</ol>
-							 </p>
+							<p> Pe această pagină utilizatorul poate obține detalii despre o anumită
+								țară selectată, anumite statistici pentru o tară legate de evenimente
+								teroriste, căutarea unui incident după
+								anumite elemente cheie și exportarea acestor cereri.
+							</p>
+							<p>
+								În partea superioară se află o hartă pe care utilizatorul o poate folosi
+								pentru selectarea unei țări. Pe baza acestei selecții, se pot realiza
+								mai multe prelucrări de date:
+							</p>
+							<ol>
+								<li> Selectarea detaliilor despre o anumită țară; </li>
+								<li> Generarea unei statistici dorite;</li>
+								<li> Căutarea unui posibil incident raportat.</li>
+							</ol>
 						</li>
-						<li> 
+						<li>
 							Pagina de autentificare pentru administrator <br>
-							<p> În această pagină se realizează autentificarea utilizatorilor cu rol de administrator. Dacă logarea se va realiza cu succes, acesta va fi redirecționat către o interfață pentru
+							<p> În această pagină se realizează autentificarea utilizatorilor cu rol
+								de administrator. Dacă logarea se va realiza cu succes, acesta va fi
+								redirecționat către o interfață pentru
 								administrarea aplicației. </p>
 						</li>
 					</ul>
 				</section>
 			</section>
-			<section id="Back-End">
+			<section id="contributii">
 				<h2>
-					Logica din spatele aplicației
+					Contribuțiile membrilor
 				</h2>
-				<p> Partea de Back-End a aplicației este realizată în PHP 7. Baza de date folosită pentru stocarea datelor referitoare la evenimentele teroriste este una relațională, 
-					folosindu-se MySQL.  </p>
+				<section id="proiectare">
+					<h3>Proiectare si Design</h3>
+					<p>
+						La capitolul de proiectare a design-lui site-lui, toți membrii echipei au
+						contribuit cu idei pentru paginile existente pe site.
+					</p>
+					<p>
+						Pagina de home a fost schițată de <em>Moraru George</em>. Mai jos este o
+						schiță
+						la cum arata la început conceptul de pagină de home.
+					</p>
+					<figure id="schitaHome">
+						<img src="../img/raport/schita_home.jpg" alt="Imagine home page in stadiu
+							de proiectare">
+						<figcaption>Schiță pentru pagina de home</figcaption>
+					</figure>
+					<p>
+						Pagina pentru vizualizarea datelor și a hărții a fost gândită de <em>Musteață
+							Robert</em>.
+					</p>
+					<figure id="schitaVizualizator">
+						<img src="../img/raport/schita_vizualizator.jpg" alt="Imagine vizualizator
+							in stadiu
+							de proiectare">
+						<figcaption>Schiță pentru vizualizator</figcaption>
+					</figure>
+					<p>
+						Pagina de login pentru un administrator și template-ul de popularizare cu
+						informații despre o țară selectată au fost schițate de <em>Angheluș Vlad</em>.
+					</p>
+					<figure id="schitaLogin">
+						<img src="../img/raport/schita_login.png" alt="Imagine login page in
+							stadiu de proiectare">
+						<figcaption>Schiță pentru pagina de logare</figcaption>
+					</figure>
+					<figure id="schitaTemplate">
+						<img src="../img/raport/schita_detaliiTara.jpg" alt="Imagine de pagina
+							template pentru detalii legate de o țară in
+							stadiu de proiectare">
+						<figcaption>Schiță pentru template-ul de populat cu informații despre o
+							țară.</figcaption>
+					</figure>
+				</section>
+				<section id="crearePagini">
+					<h3>
+						Implementarea paginilor
+					</h3>
+					<section id="homePageContributors">
+						<h4>
+							Pagina Home
+						</h4>
+						<p>
+							Contribuțiile la pagina de primire a utilizatorilor sunt următoarele:
+						</p>
+						<ul>
+							<li>
+								Navbar-ul, Footer-ul, butoanele de login și de accesare a
+								vizualizatorului și titlul au fost create de <em>Moraru George</em>.
+								Acestea sunt prealuate și la pagina de vizualizator.
+							</li>
+							<li>
+								Partea de conținut (secțiunea de About) a fost realizată de <em>Musteață
+									Robert</em>. De asemenea și logo-ul aplicației a fost realizat de
+								acesta.
+							</li>
+							<li>
+								Partea de responsiveness a fost realizată de <em>Moraru George</em>.
+							</li>
+						</ul>
+					</section>
+
+					<section id="Vizualizator">
+						<h4>
+							Pagina dedicată pentru vizualizator
+						</h4>
+						<p>
+							Această pagină poate are cel mai important rol în întreaga aplicație.
+							Aceasta este într-un continuu stagiu de îmbunărățire atât pe parte
+							estetică,
+							cât și pe parte funcțională. Membrii echipei au realizat următoarele la
+							aceasta pagină a aplicației:
+						</p>
+						<ul>
+							<li>
+								Navbar-ul și Footer-ul sunt preluate de la <em>Moraru George</em>.
+							</li>
+							<li>
+								Căutarea imaginii SVG și eventuale modificări ale ei au fost realizate
+								de
+								<em>Angheluș Vlad</em>.
+							</li>
+							<li>
+								Crearea opțiunilor de căutare, filtrare și obținere de informații a unui
+								incident au fost create de <em>Musteață Robert</em>.
+							</li>
+							<li>
+								Stilizarea opțiunilor create a fost realizată de <em>Moraru George</em>.
+							</li>
+							<li>
+								Responsiveness-ul a fost realizat în colaborare cu <em>Moraru George</em>
+								(Navbar și Footer) și <em>Musteață Robert</em> (lista de opțiuni).
+							</li>
+						</ul>
+					</section>
+
+					<section id="adminPages">
+						<h4>
+							Login și paginile de administrarea
+						</h4>
+						<p>
+							Acestea au rolul de a oferi o interfață pentru un utilizator de tip
+							administrator care să ii permită să modifice anumite caracteristici
+							ale aplicației, cum ar fi conținutul bazei de date.
+						</p>
+						<ul>
+							<li>
+								Crearea paginii de login a fost realizată de <em>Vlad Angheluș</em>
+								Elemente de stilizare ca de exemplu imaginea de fade din background au
+								fost
+								create cu ajutorul lui <em>Moraru George</em>.
+							</li>
+							<li>
+								Pagina de selectare a unei acțiuni pentru un administrator a fost
+								realizată de <em>Vlad Angheluș</em> în colaborare cu <em>Moraru George</em>
+								(pe partea de stilizare)
+							</li>
+							<li>
+								Paginile dedicate pentru acțiunile selectate de un administrator au fost
+								structurate și stilizate de <em>Moraru George</em>, <em>Musteață Robert</em>
+								și <em>Vlad Angheluș</em>.
+							</li>
+						</ul>
+					</section>
+				</section>
+			</section>
+
+			<section id="development">
+				<h2>
+					Stagiu de dezvoltare
+				</h2>
+				<p>
+					În momentul redactării acestui raport, aplicația se rezumă doar la partea de site/interfață pentru utilizator. Pe parcursul dezvoltării părții logice/funcționale propiu
+					 zise, este extrem de probabil ca interfața să se schimbe, în funcție de opțiunile adăugate/eliminate aplicației. Pentru partea aceasta, de <u>Front-End</u>, încă se pot 
+					adăuga anumite îmbunătățiri majore la nivel de design (interacțiune în timp real cu un utilizator) și performanță (viteza de încărcare a resurselor).
+				</p>
 			</section>
 
 		</ARTICLE>
