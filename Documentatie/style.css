@@ -1,4 +1,11 @@
-figure{
-    height: 20%;
-    width: auto;
+figure img{
+    height: 30em;
+}
+
+@media screen and (max-width:600px) {
+    figure img{
+        width: 100%;
+        height: auto;
+    }
+    
 }

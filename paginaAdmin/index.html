@@ -8,10 +8,132 @@
                 initial-scale=1.0" />
             <title>Administrare aplicație</title>
             <link rel="stylesheet" href="./style.css" />
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link
+                href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap"
+                rel="stylesheet">
+            <script src="./script.js"></script>
         </head>
     </head>
     <body>
-        <h1>
+        <div id="main">
+            <div id="leftside">
+                <div id="topleftside">
+                    <label> Hello, {getAdminUsername} </label>
+                </div>
+                <div id="bodyleftside">
+                    <div>
+                        <div id="adaugareBtn" class="action"
+                            onclick="arataAdaugaEveniment()">
+                            Adaugare event
+                        </div>
+                        <div id="stergereBtn" class="action"
+                            onclick="arataStergeEveniment()">
+                            Stergere event
+                        </div>
+                    </div>
+                    <div id="delogare">
+                        <form action="../homePage/home.html">
+                            <input type="submit" value="Delogare">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div id="rightside">
+                <div id="toprightside">
+                    <div id="title-page">
+                        <h1>
+                            TerroViz : administrare
+                        </h1>
+                    </div>
+                </div>
+
+                <div id="bodyrightside">
+                    <div id="formAddEvent">
+                        <form id="formAdaugare">
+                            <div id="dateEvent">
+                                <label>Data evenimentului</label><br>
+                                <label for="year">
+                                    An:
+                                </label>
+                                <input type="text" id="year">
+                                <br>
+                                <label for="year">
+                                    Luna (numeric):
+                                </label>
+                                <input type="text" id="month">
+                                <br>
+                                <label for="month">
+                                    Zi (numeric):
+                                </label>
+                                <input type="text" id="day">
+                                <br>
+                            </div>
+
+                            <div id="locationEvent">
+                                <label>Locul evenimentului</label>
+                                <br>
+                                <label for="country">
+                                    Țară:
+                                </label>
+                                <input type="text" id="country">
+                                <br>
+                                <label for="region">
+                                    Regiune:
+                                </label>
+                                <input type="text" id="region">
+                                <br>
+                                <label for="city">
+                                    Oraș:
+                                </label>
+                                <input type="text" id="city">
+                                <br>
+                                <label for="latitude">
+                                    latitudine:
+                                </label>
+                                <input type="text" id="latitude">
+                                <br>
+                                <label for="longitude">
+                                    Longitudine:
+                                </label>
+                                <input type="text" id="longitude">
+                                <br>
+                                <label for="vecinity">
+                                    Vecinătate:
+                                </label>
+                                <input type="text" id="vecinity">
+                                <br>
+                            </div>
+                            <div id="clasificareEvent">
+                                <label>Tipul de atac</label>
+                                <br>
+                                <label for="suicide">Suicid</label>
+                                <select id="suicide">
+                                    <option value="da">Da</option>
+                                    <option value="nu">Nu</option>
+                                </select>
+                                <br>
+                                <label for="type">Tipul eveniment</label>
+                                <input type="text" id="type">
+                                <br>
+                                <label for="target">Țintă eveniment</label>
+                                <input type="text" id="target">
+                                <br>
+                            </div>
+                            <input type="submit" value="Adaugați evenimet">
+                        </form>
+                    </div>
+                    <div id="removeEvent">
+                        Astai ii div-ul de stergere
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- <h1>
             TerroViz: Pagina de Administrare
         </h1>
         <nav>
@@ -22,20 +144,26 @@
                 <input type="submit" value="delogare">
             </form>
         </nav>
-        <div class="actiuni">
-            <p>
-                Actiuni pe care le puteti face:
-            </p>
-            <div class="dropdown-content" id="adaugare_event">
-                <form action="./adaugareEveniment/index_adaugare.html">
-                    <input type="submit" value="Introduceti eveniment mou">
-                </form>
+        <div id="panouControl">
+            <div class="actiuni">
+                <p>
+                    Meniu acțiuni:
+                </p>
+                <div class="optiune" id="adaugare_event">
+                    <form action="./adaugareEveniment/index_adaugare.html">
+                        <input type="submit" value="Introduceti eveniment nou">
+                    </form>
+                </div>
+                <div class="optiune" id="stergere_event">
+                    <form action="./stergereEveniment/index_stergere.html">
+                        <input type="submit" value="Stergeti un eveniment">
+                    </form>
+                </div>
             </div>
-            <div class="dropdown-content" id="stergere_event">
-                <form action="./stergereEveniment/index_stergere.html">
-                    <input type="submit" value="Stergeti un eveniment">
-                </form>
+            <div id="panouInteractiv">
+                la apasarea unui buton sa apara de ex formularul de completat pentru a adauga un eveniment sau
+                 o metoda de a sterge un eveniment
             </div>
-        </div>
+        </div> -->
     </body>
 </html>
