@@ -1,0 +1,1 @@
+java -jar ImportCSV_Terro_to_MySql.jar
