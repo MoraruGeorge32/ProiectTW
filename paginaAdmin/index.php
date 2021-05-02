@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+session_start();
+?><!DOCTYPE html>
 <html lang="ro">
     <head>
         <meta charset="UTF-8" />
@@ -18,7 +20,7 @@
             <div id="leftside">
                 <div id="topleftside">
                     <!--Div pentru afisarea numelui unui utilizator-->
-                    <label> Hello, {getAdminUsername} </label>
+                    <label> Hello, <?php echo $_SESSION['user'];?> </label>
                 </div>
                 <div id="bodyleftside">
                     <!--Div ca un panou de control. Administratorul-->
@@ -32,7 +34,7 @@
                             Stergere event
                         </div>
                     </div>
-                    <a id="btn" href="../homePage/home.html">
+                    <a id="btn" href="delogare.php">
                         <div id="delog">
                             <div id="delogare">
                                 <span>Delogare</span>

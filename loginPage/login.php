@@ -1,3 +1,7 @@
+<?php
+include 'admin_control.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,14 +13,14 @@
     <title>Login</title>
 </head>
 <body>
-    <form class="loginForm" action=".././paginaAdmin/index.html">
+    <form class="loginForm" method="POST" >
         <div class="loginBox">
             <p> Username </p>
-            <input type="text" value="Username">
+            <input type="text" value="Username" name="Username">
             <p> Password </p>
-            <input type="password" value="Password">
+            <input type="password" value="Password" name="Password">
             <div class="loginButton">
-                <button type="submit"> Login </button>
+                <button type="submit" name="submitbutton" value="submitted"> Login </button>
             </div>
         </div>
     </form>
