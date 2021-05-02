@@ -9,8 +9,7 @@ if (isset($_POST['Username']) && isset($_POST['Password'])) {
     if ($connection->connect_errno==0) {
         $_SESSION['user'] = $admin_user;
         $_SESSION['password'] = $admin_password;
-        header("Location: ../paginaAdmin/index.php", TRUE, 303); {
-        }
+        header("Location: ../paginaAdmin/index.php", TRUE, 303); 
     } else {
         header("Location: ./reject_connection.php",TRUE,303);
     }
