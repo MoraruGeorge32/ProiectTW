@@ -1,0 +1,102 @@
+html{
+    height:100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+}
+
+body{
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginForm{
+    color: black;
+    width: 70%;
+    height: 70%;
+    background: whitesmoke;+
+    border-radius: 30px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.loginBox{
+    text-align: center;
+    font-size: 30px;
+    width: 100%;
+    font-family:'Oswald';
+}
+
+
+.loginBox input{
+    width: 40%;
+    /* warning: beware of broken box size*/
+    padding: 12px 20px;
+    margin: 8px 0;
+    border-radius: 4px;
+    font-size: large;
+}
+
+.loginButton button{
+    margin-top: 20px;
+    text-align: center;
+    /* warning: beware of broken box size*/
+    padding: 3vw 1vw;
+    background-color: blueviolet;
+    color: white;
+    border-radius: 10px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width:30%;
+    font-size: large;
+}
+
+button:hover{
+    opacity: 0.8;
+}
+
+@media (orientation: landscape) {
+
+    .loginBox{
+        text-align: center;
+        font-size: 15px;
+        width: 100%;
+        font-family:'Oswald';
+    }
+    
+    .loginBox p {
+        margin: 1vw 0 1vw 0;
+    }
+    .loginBox input{
+        width: 30vw;
+        height: 1vw;
+        margin-top: 0;
+        margin-bottom: 0;
+        border-radius: 4px;
+        font-size: large;
+    }
+    
+    .loginButton button{
+        margin-top: 20px;
+        text-align: center;
+        /* warning: beware of broken box size*/
+        padding: 2vw 1vw;
+        background-color: blueviolet;
+        color: white;
+        border-radius: 10px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width:30%;
+        font-size: large;
+    }
+
+}
