@@ -8,7 +8,9 @@ html{
     width:100%;
     height:100%;
 }
-
+#numarTari{
+    display: none;
+}
 body{
     width:100%;
     height:100%;
@@ -21,6 +23,7 @@ body{
 .mapFormBackground{
     background-color: black;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -28,20 +31,17 @@ body{
 }
 .mapForm1{
     background-color: ghostwhite;
-    width: 80%;
-    margin-top: 1%;
-    margin-bottom: 1%;
-    border-radius: 20px;
+    width: 20%;
     font-size: 1.0em;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
 }
+.mapGenerate{
+    width: 80%;
+}
 
 /*toti primii copii din mapForm1*/
-.mapForm1>div{
-    margin: 20px;
-}
 
 .formIncidentCautare{
     display: flex;

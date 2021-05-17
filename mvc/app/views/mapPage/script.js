@@ -1,5 +1,6 @@
 let contor=1;
 function adaugaInput(){
+    document.getElementById("numarTari").setAttribute("value",contor);
     var DIV = document.getElementById("listaTari");
     var input=document.createElement("input");
     input.setAttribute("type","text");

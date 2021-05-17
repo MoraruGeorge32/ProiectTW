@@ -21,15 +21,13 @@
       <a href="../homePage/home.html">
         <img src="../img/logo.png" alt="logo aplicație" />
       </a>
-      <form action="../loginPage/login.php">
+      <form action="../loginPage/formLogare.php">
         <button>Log In Admin</button>
       </form>
     </nav>
-    <hr />
-    <div class="divMapa">
-      <img src="../img/world.svg" alt="harta a lumii" />
-    </div>
-    <hr />
+
+
+
     <div class="mapFormBackground">
       <div class="mapForm1">
         <div class="formInfo">
@@ -45,6 +43,7 @@
         <div class="formStatistici">
           <form action="../../controllers/statisticiController.php" method="GET">
             <div id="listaTari" class="ListaTari">
+              <input type="number" name="numarTari" id="numarTari"/>
               <button type="button" onClick="adaugaInput()">Adaugati o tara</button>
               <br>
             </div>
@@ -128,7 +127,14 @@
           </form>
         </div>
       </div>
+      <div class="mapGenerate"></div>
+
+
     </div>
+
+
+
+
     <div class="footer">
       <div class="footer-title">
         <p>Contact</p>
