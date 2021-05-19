@@ -2,7 +2,7 @@
 class App
 {
 
-    protected $controller = 'home'; //default controller
+    protected $controller = 'homePage'; //default controller
 
     protected $method = 'index'; //default method
 

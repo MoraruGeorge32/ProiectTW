@@ -1,32 +1,25 @@
 <?php
+
 /**https://canvasjs.com/php-charts/column-chart/
  * link extrem de util si de important
  * bun pentru crearea de grafice
  * aici ii doar i reprezentare bruta a unui bar-chart
-*/
+ */
 
-$numartari = $_GET['numarTari'];
-$contor = 1;
-$dataPoints = array();
-$mysqlConnect = new mysqli("localhost", "Robert", "robert", "terrorismdatabase");
-$rez = array();
+ include_once "../models/dataBarChart.php";
 
-$stmt = $mysqlConnect->prepare("select sum(cast(nkill as unsigned)) from terro_events where country_txt=?");
-for ($contor = 1; $contor <= $numartari; $contor++) {
-    $currentCountry = $_GET['tara' . $contor];
-    $stmt->bind_param("s", $currentCountry);
-    $stmt->execute();
-    $countKills = 0;
-    $stmt->bind_result($countKills);
-    $stmt->fetch();
-    $rez[$currentCountry] = $countKills;
+class statisticiController
+{
+    public  $dataPoints = array();
+    public  function index()
+    {
+        
+        $this->dataPoints = DataBarChart::getData($_GET);
+    }
 }
 
-
-for ($contor = 1; $contor <= $numartari; $contor++) {
-    $currentCountry = $_GET['tara' . $contor];
-    array_push($dataPoints, array("y" => $rez[$currentCountry], "label" => $currentCountry));
-}
+$dataStats = new statisticiController();
+$dataStats->index();
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -47,7 +40,7 @@ for ($contor = 1; $contor <= $numartari; $contor++) {
                 data: [{
                     type: "column",
                     yValueFormatString: "#,##0.## kills",
-                    dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+                    dataPoints: <?php echo json_encode($dataStats->dataPoints, JSON_NUMERIC_CHECK); ?>
                 }]
             });
             chart.render();
