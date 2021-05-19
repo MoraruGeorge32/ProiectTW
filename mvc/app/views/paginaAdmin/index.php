@@ -55,8 +55,10 @@
                 <!--Div dedicat unu meniu pentru perfomarea diferitelor actiuni-->
                 <div id="eventZone">
                     <div id="formAddEvent">
+                        <iframe name="response" ></iframe>
                         <form id="formAdaugare" method="GET" 
-                        action="../../controllers//AdminDataBaseControllers/requestAddEventController.php">
+                        action="../../controllers//AdminDataBaseControllers/requestAddEventController.php"
+                        target="response">
                             <div id="dateEvent">
                                 <label>Data evenimentului</label>
                                 <br>
