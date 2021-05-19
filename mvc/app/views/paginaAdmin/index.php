@@ -55,7 +55,8 @@
                 <!--Div dedicat unu meniu pentru perfomarea diferitelor actiuni-->
                 <div id="eventZone">
                     <div id="formAddEvent">
-                        <form id="formAdaugare">
+                        <form id="formAdaugare" method="GET" 
+                        action="../../controllers//AdminDataBaseControllers/requestAddEventController.php">
                             <div id="dateEvent">
                                 <label>Data evenimentului</label>
                                 <br>
@@ -64,19 +65,19 @@
                                     An:
                                 </label>
                                 <br>
-                                <input type="text" id="year">
+                                <input  type="number" value="1970" id="year" name="year">
                                 <br>
-                                <label for="year">
+                                <label for="month">
                                     Luna (numeric):
                                 </label>
                                 <br>
-                                <input type="text" id="month">
+                                <input value="month" type="text" id="month" name="month">
                                 <br>
-                                <label for="month">
+                                <label for="day">
                                     Zi (numeric):
                                 </label>
                                 <br>
-                                <input type="text" id="day">
+                                <input value="1" type="number" id="day" name="day">
                                 <br>
                             </div>
 
@@ -88,57 +89,58 @@
                                     Țară:
                                 </label>
                                 <br>
-                                <input type="text" id="country">
+                                <input value="Tara" type="text" id="country" name="country">
                                 <br>
                                 <label for="region">
                                     Regiune:
                                 </label>
                                 <br>
-                                <input type="text" id="region">
+                                <input value="regiune" type="text" id="region" name="region">
                                 <br>
                                 <label for="city">
                                     Oraș:
                                 </label>
                                 <br>
-                                <input type="text" id="city">
+                                <input value="oras" type="text" id="city" name="city">
                                 <br>
                                 <label for="latitude">
                                     latitudine:
                                 </label>
                                 <br>
-                                <input type="text" id="latitude">
+                                <input value="1" type="text" id="latitude" name="city">
                                 <br>
                                 <label for="longitude">
                                     Longitudine:
                                 </label>
                                 <br>
-                                <input type="text" id="longitude">
+                                <input value="1" type="text" id="longitude" name="longitudine">
                                 <br>
                                 <label for="vecinity">
                                     Vecinătate:
                                 </label>
                                 <br>
-                                <input type="text" id="vecinity">
+                                <input value="vecini" type="text" id="vecinity" name="vecinity">
                                 <br>
                             </div>
+
                             <div id="clasificareEvent">
                                 <label>Tipul de atac</label>
                                 <br>
                                 <br>
                                 <label for="suicide">Suicid</label>
                                 <br>
-                                <select id="suicide">
+                                <select id="suicide" name="suicid">
                                     <option value="da">Da</option>
                                     <option value="nu">Nu</option>
                                 </select>
                                 <br>
                                 <label for="type">Tipul eveniment</label>
                                 <br>
-                                <input type="text" id="type">
+                                <input value="tip" type="text" id="type" name="type">
                                 <br>
                                 <label for="target">Țintă eveniment</label>
                                 <br>
-                                <input type="text" id="target">
+                                <input value="tinta" type="text" id="target" name="target">
                                 <br>
                             </div>
                             <div></div>
@@ -151,7 +153,8 @@
                     </div>
                     <div id="removeEvent">
                         <p>Lista evenimente </p>
-                        <form id="countElements">
+                        <form id="countElements" method="GET"
+                        action="../../controllers/AdminDataBaseControllers/requestDeleteEventController.php">
                             <input type="radio" id="5elements" value="5" name="chooseCounter" onclick="setNumberEvents(value)">
                             <label for="5elements">5 evenimente</label><br>
                             <input type="radio" id="10elements" value="10" name="chooseCounter" onclick="setNumberEvents(value)">
