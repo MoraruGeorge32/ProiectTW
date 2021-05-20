@@ -142,7 +142,7 @@ html, body {
     color: white;
 }
 
-#formAddEvent, #removeEvent {
+#formAddEvent, #removeEvent,#updateEvent {
     padding-top: 5%;
     padding-right: 15%;
     padding-left: 15%;

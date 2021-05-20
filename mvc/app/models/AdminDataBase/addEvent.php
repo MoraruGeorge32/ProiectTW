@@ -4,35 +4,53 @@ class addEvent
 {
     public static function insertData($formInfo)
     {
-        $columns=array();
-        $datas=array();
-        foreach($formInfo as $data)
-            array_push($datas,$data);
-        foreach($formInfo as $key => $value)
-            array_push($columns,$key);
-        $mysql = new mysqli("localhost", "Robert", "robert", "terrorismdatabase");
+        $columns = array();
+        $datas = array();
+        foreach ($formInfo as $data)
+            array_push($datas, $data);
+        foreach ($formInfo as $key => $value)
+            array_push($columns, $key);
+
         $columns_to_text = "";
         $values_to_text = "";
+
         foreach ($columns as $column) {
             $columns_to_text = $columns_to_text . $column . ",";
         }
-        $columns = substr($columns_to_text, 0, -1);
         foreach ($datas as $value) {
             $values_to_text = $values_to_text . $value . ",";
         }
+        $values_to_text = substr($values_to_text, 0, -1);
+        $columns = substr($columns_to_text, 0, -1);
+
+        $mysql = new mysqli("localhost", "Robert", "robert", "terrorismdatabase");
+        $max_id_query = "Select eventid from terro_events order by eventid desc limit 1";
+        $newID=$formInfo['iyear'].$formInfo['imonth'].$formInfo['iday'];
         
-        $maxid="Select eventid from terro_events order by eventid desc limit 1";
-        $values=substr($values_to_text,0,-1);
-        //echo $columns . "<br><br><br>" . $values;
-        /*
-        $values=substr($values,0,-1);
-        $query = "INSERT INTO terro_events ("
-                    .$columns." ) VALUES ( "
-                    .$values.")";
-        if($mysql->query($query)===TRUE){
+        
+        $res=$mysql->query($max_id_query);
+        $maxID=$res->fetch_assoc();
+        $lastDigits=substr($maxID["eventid"],strlen($maxID["eventid"])-4,4);
+        $newID=$newID.$lastDigits;
+
+        echo "<br>".$newID."<br>";
+
+        var_dump($columns_to_text);
+        echo "<br>";
+        var_dump($values_to_text);
+        echo "<br>";
+        
+        $query = "INSERT INTO terro_events (eventid,"
+                    .$columns_to_text." ) VALUES ( ".$newID.","
+                    .$values_to_text.")";
+        /*if($mysql->query($query)===TRUE){
             echo "done";
         }
         $mysql->close();*/
-        echo "Cerere realizata de adaugare a evenimentului";
+        
+        echo "<br>";
+        echo "<br>";
+        echo $query;
+        echo "<br>Cerere realizata de adaugare a evenimentului";
     }
 }

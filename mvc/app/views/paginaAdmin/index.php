@@ -1,5 +1,5 @@
 <?php
- include 'verifica_provinienta.php';
+include 'verifica_provinienta.php';
 ?>
 <!DOCTYPE html>
 <html lang="ro">
@@ -32,6 +32,9 @@
                     <div id="stergereBtn" class="action" onclick="arataStergeEveniment()">
                         Stergere event
                     </div>
+                    <div id="updateBtn" class="action" onclick="arataModificaEveniment()">
+                        Stergere event
+                    </div>
                 </div>
                 <a id="btn" href="delogare.php">
                     <div id="delog">
@@ -55,10 +58,8 @@
                 <!--Div dedicat unu meniu pentru perfomarea diferitelor actiuni-->
                 <div id="eventZone">
                     <div id="formAddEvent">
-                        <iframe name="response" ></iframe>
-                        <form id="formAdaugare" method="GET" 
-                        action="../../controllers//AdminDataBaseControllers/requestAddEventController.php"
-                        target="response">
+                        <iframe name="response"></iframe>
+                        <form id="formAdaugare" method="GET" action="../../controllers//AdminDataBaseControllers/requestAddEventController.php" target="response">
                             <div id="dateEvent">
                                 <label>Data evenimentului</label>
                                 <br>
@@ -67,7 +68,7 @@
                                     An:
                                 </label>
                                 <br>
-                                <input  type="number" value="1970" id="year" name="iyear">
+                                <input type="number" value="1970" id="year" name="iyear">
                                 <br>
                                 <label for="month">
                                     Luna (numeric):
@@ -186,7 +187,7 @@
                                 <label for="nr_teroristi">Numărul total de teroriști implicați</label>
                                 <br>
                                 <input value="1" type="number" id="nperps" name="nperps">
-                                <br> 
+                                <br>
                             </div>
                             <div></div>
                             <!--Div pentru plasarea butonului de submit in a doua coloana din grid-->
@@ -198,8 +199,7 @@
                     </div>
                     <div id="removeEvent">
                         <p>Lista evenimente </p>
-                        <form id="countElements" method="GET"
-                        action="../../controllers/AdminDataBaseControllers/requestDeleteEventController.php">
+                        <form id="countElements" method="GET" action="../../controllers/AdminDataBaseControllers/requestDeleteEventController.php">
                             <input type="radio" id="5elements" value="5" name="chooseCounter" onclick="setNumberEvents(value)">
                             <label for="5elements">5 evenimente</label><br>
                             <input type="radio" id="10elements" value="10" name="chooseCounter" onclick="setNumberEvents(value)">
@@ -221,6 +221,7 @@
 
                         </div>
                     </div>
+                    <div id="updateEvent">alooo</div>
                 </div>
             </div>
         </div>
