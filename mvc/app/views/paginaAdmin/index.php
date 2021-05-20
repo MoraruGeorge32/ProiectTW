@@ -67,19 +67,19 @@
                                     An:
                                 </label>
                                 <br>
-                                <input  type="number" value="1970" id="year" name="year">
+                                <input  type="number" value="1970" id="year" name="iyear">
                                 <br>
                                 <label for="month">
                                     Luna (numeric):
                                 </label>
                                 <br>
-                                <input value="month" type="text" id="month" name="month">
+                                <input value="month" type="text" id="month" name="imonth">
                                 <br>
                                 <label for="day">
                                     Zi (numeric):
                                 </label>
                                 <br>
-                                <input value="1" type="number" id="day" name="day">
+                                <input value="1" type="number" id="day" name="iday">
                                 <br>
                             </div>
 
@@ -91,13 +91,13 @@
                                     Țară:
                                 </label>
                                 <br>
-                                <input value="Tara" type="text" id="country" name="country">
+                                <input value="Tara" type="text" id="country" name="country_txt">
                                 <br>
                                 <label for="region">
                                     Regiune:
                                 </label>
                                 <br>
-                                <input value="regiune" type="text" id="region" name="region">
+                                <input value="regiune" type="text" id="region" name="region_txts">
                                 <br>
                                 <label for="city">
                                     Oraș:
@@ -109,13 +109,13 @@
                                     latitudine:
                                 </label>
                                 <br>
-                                <input value="1" type="text" id="latitude" name="city">
+                                <input value="1" type="text" id="latitude" name="latitude">
                                 <br>
                                 <label for="longitude">
                                     Longitudine:
                                 </label>
                                 <br>
-                                <input value="1" type="text" id="longitude" name="longitudine">
+                                <input value="1" type="text" id="longitude" name="longitude">
                                 <br>
                                 <label for="vecinity">
                                     Vecinătate:
@@ -136,14 +136,57 @@
                                     <option value="nu">Nu</option>
                                 </select>
                                 <br>
+                                <label for="extended">Extins pe mai mult de 24h?</label>
+                                <br>
+                                <select id="extended" name="extended">
+                                    <option value="da">Da</option>
+                                    <option value="nu">Nu</option>
+                                </select>
+                                <br>
                                 <label for="type">Tipul eveniment</label>
                                 <br>
-                                <input value="tip" type="text" id="type" name="type">
+                                <input value="tip" type="text" id="type" name="attacktype1_txt">
                                 <br>
                                 <label for="target">Țintă eveniment</label>
                                 <br>
-                                <input value="tinta" type="text" id="target" name="target">
+                                <input value="tinta" type="text" id="target" name="targsubtype1_txt">
                                 <br>
+                                <label for="success">A avut succes?</label>
+                                <br>
+                                <select id="success" name="success">
+                                    <option value="da">Da</option>
+                                    <option value="nu">Nu</option>
+                                </select>
+                                <br>
+                                <label for="tip_arma"> Tipul armei</label>
+                                <br>
+                                <input value="tip arma" type="text" id="weaptype1_txt" name="weaptype1_txt">
+                                <br>
+                                <label for="nr_ucisi"> Numărul persoanelor ucise</label>
+                                <br>
+                                <input value="1" type="number" id="nkill" name="nkill">
+                                <br>
+                                <label for="nr_raniti"> Numărul persoanelor rănite</label>
+                                <br>
+                                <input value="1" type="number" id="nwound" name="nwound">
+                                <br>
+                            </div>
+                            <div id="atacator">
+                                <label>Autorii atacului terorist</label>
+                                <br>
+                                <br>
+                                <label for="gname">Numele grupului terorist</label>
+                                <br>
+                                <input value="numele grupului terorist" type="text" id="gname" name="gname">
+                                <br>
+                                <label for="motive"> Motivul </label>
+                                <br>
+                                <input value="motiv" type="text" id="motive" name="motive">
+                                <br>
+                                <label for="nr_teroristi">Numărul total de teroriști implicați</label>
+                                <br>
+                                <input value="1" type="number" id="nperps" name="nperps">
+                                <br> 
                             </div>
                             <div></div>
                             <!--Div pentru plasarea butonului de submit in a doua coloana din grid-->
