@@ -33,7 +33,7 @@ include 'verifica_provinienta.php';
                         Stergere event
                     </div>
                     <div id="updateBtn" class="action" onclick="arataModificaEveniment()">
-                        Stergere event
+                        Update event
                     </div>
                 </div>
                 <a id="btn" href="delogare.php">
@@ -58,142 +58,144 @@ include 'verifica_provinienta.php';
                 <!--Div dedicat unu meniu pentru perfomarea diferitelor actiuni-->
                 <div id="eventZone">
                     <div id="formAddEvent">
-                        <iframe name="response"></iframe>
+                        <!-- <iframe name="response"></iframe> -->
                         <form id="formAdaugare" method="GET" action="../../controllers//AdminDataBaseControllers/requestAddEventController.php" target="response">
-                            <div id="dateEvent">
-                                <label>Data evenimentului</label>
-                                <br>
-                                <br>
-                                <label for="year">
-                                    An:
-                                </label>
-                                <br>
-                                <input type="number" value="1970" id="year" name="iyear">
-                                <br>
-                                <label for="month">
-                                    Luna (numeric):
-                                </label>
-                                <br>
-                                <input value="month" type="text" id="month" name="imonth">
-                                <br>
-                                <label for="day">
-                                    Zi (numeric):
-                                </label>
-                                <br>
-                                <input value="1" type="number" id="day" name="iday">
-                                <br>
-                            </div>
+                            <div id="formAdaugare1">
+                                <div id="dateEvent">
+                                    <label>Data evenimentului</label>
+                                    <br>
+                                    <br>
+                                    <label for="year">
+                                        An:
+                                    </label>
+                                    <br>
+                                    <input type="number" value="1970" id="year" name="iyear">
+                                    <br>
+                                    <label for="month">
+                                        Luna (numeric):
+                                    </label>
+                                    <br>
+                                    <input value="month" type="text" id="month" name="imonth">
+                                    <br>
+                                    <label for="day">
+                                        Zi (numeric):
+                                    </label>
+                                    <br>
+                                    <input value="1" type="number" id="day" name="iday">
+                                    <br>
+                                </div>
 
-                            <div id="locationEvent">
-                                <label>Locul evenimentului</label>
-                                <br>
-                                <br>
-                                <label for="country">
-                                    Țară:
-                                </label>
-                                <br>
-                                <input value="Tara" type="text" id="country" name="country_txt">
-                                <br>
-                                <label for="region">
-                                    Regiune:
-                                </label>
-                                <br>
-                                <input value="regiune" type="text" id="region" name="region_txts">
-                                <br>
-                                <label for="city">
-                                    Oraș:
-                                </label>
-                                <br>
-                                <input value="oras" type="text" id="city" name="city">
-                                <br>
-                                <label for="latitude">
-                                    latitudine:
-                                </label>
-                                <br>
-                                <input value="1" type="text" id="latitude" name="latitude">
-                                <br>
-                                <label for="longitude">
-                                    Longitudine:
-                                </label>
-                                <br>
-                                <input value="1" type="text" id="longitude" name="longitude">
-                                <br>
-                                <label for="vecinity">
-                                    Vecinătate:
-                                </label>
-                                <br>
-                                <input value="vecini" type="text" id="vecinity" name="vecinity">
-                                <br>
-                            </div>
+                                <div id="locationEvent">
+                                    <label>Locul evenimentului</label>
+                                    <br>
+                                    <br>
+                                    <label for="country">
+                                        Țară:
+                                    </label>
+                                    <br>
+                                    <input value="Tara" type="text" id="country" name="country_txt">
+                                    <br>
+                                    <label for="region">
+                                        Regiune:
+                                    </label>
+                                    <br>
+                                    <input value="regiune" type="text" id="region" name="region_txts">
+                                    <br>
+                                    <label for="city">
+                                        Oraș:
+                                    </label>
+                                    <br>
+                                    <input value="oras" type="text" id="city" name="city">
+                                    <br>
+                                    <label for="latitude">
+                                        latitudine:
+                                    </label>
+                                    <br>
+                                    <input value="1" type="text" id="latitude" name="latitude">
+                                    <br>
+                                    <label for="longitude">
+                                        Longitudine:
+                                    </label>
+                                    <br>
+                                    <input value="1" type="text" id="longitude" name="longitude">
+                                    <br>
+                                    <label for="vecinity">
+                                        Vecinătate:
+                                    </label>
+                                    <br>
+                                    <input value="vecini" type="text" id="vecinity" name="vecinity">
+                                    <br>
+                                </div>
 
-                            <div id="clasificareEvent">
-                                <label>Tipul de atac</label>
-                                <br>
-                                <br>
-                                <label for="suicide">Suicid</label>
-                                <br>
-                                <select id="suicide" name="suicid">
-                                    <option value="da">Da</option>
-                                    <option value="nu">Nu</option>
-                                </select>
-                                <br>
-                                <label for="extended">Extins pe mai mult de 24h?</label>
-                                <br>
-                                <select id="extended" name="extended">
-                                    <option value="da">Da</option>
-                                    <option value="nu">Nu</option>
-                                </select>
-                                <br>
-                                <label for="type">Tipul eveniment</label>
-                                <br>
-                                <input value="tip" type="text" id="type" name="attacktype1_txt">
-                                <br>
-                                <label for="target">Țintă eveniment</label>
-                                <br>
-                                <input value="tinta" type="text" id="target" name="targsubtype1_txt">
-                                <br>
-                                <label for="success">A avut succes?</label>
-                                <br>
-                                <select id="success" name="success">
-                                    <option value="da">Da</option>
-                                    <option value="nu">Nu</option>
-                                </select>
-                                <br>
-                                <label for="tip_arma"> Tipul armei</label>
-                                <br>
-                                <input value="tip arma" type="text" id="weaptype1_txt" name="weaptype1_txt">
-                                <br>
-                                <label for="nr_ucisi"> Numărul persoanelor ucise</label>
-                                <br>
-                                <input value="1" type="number" id="nkill" name="nkill">
-                                <br>
-                                <label for="nr_raniti"> Numărul persoanelor rănite</label>
-                                <br>
-                                <input value="1" type="number" id="nwound" name="nwound">
-                                <br>
+                                <div id="clasificareEvent">
+                                    <label>Tipul de atac</label>
+                                    <br>
+                                    <br>
+                                    <label for="suicide">Suicid</label>
+                                    <br>
+                                    <select id="suicide" name="suicid">
+                                        <option value="da">Da</option>
+                                        <option value="nu">Nu</option>
+                                    </select>
+                                    <br>
+                                    <label for="extended">Extins pe mai mult de 24h?</label>
+                                    <br>
+                                    <select id="extended" name="extended">
+                                        <option value="da">Da</option>
+                                        <option value="nu">Nu</option>
+                                    </select>
+                                    <br>
+                                    <label for="type">Tipul eveniment</label>
+                                    <br>
+                                    <input value="tip" type="text" id="type" name="attacktype1_txt">
+                                    <br>
+                                    <label for="target">Țintă eveniment</label>
+                                    <br>
+                                    <input value="tinta" type="text" id="target" name="targsubtype1_txt">
+                                    <br>
+                                    <label for="success">A avut succes?</label>
+                                    <br>
+                                    <select id="success" name="success">
+                                        <option value="da">Da</option>
+                                        <option value="nu">Nu</option>
+                                    </select>
+                                    <br>
+                                    <label for="tip_arma"> Tipul armei</label>
+                                    <br>
+                                    <input value="tip arma" type="text" id="weaptype1_txt" name="weaptype1_txt">
+                                    <br>
+                                    <label for="nr_ucisi"> Numărul persoanelor ucise</label>
+                                    <br>
+                                    <input value="1" type="number" id="nkill" name="nkill">
+                                    <br>
+                                    <label for="nr_raniti"> Numărul persoanelor rănite</label>
+                                    <br>
+                                    <input value="1" type="number" id="nwound" name="nwound">
+                                    <br>
+                                </div>
+                                <div id="atacator">
+                                    <label>Autorii atacului terorist</label>
+                                    <br>
+                                    <br>
+                                    <label for="gname">Numele grupului terorist</label>
+                                    <br>
+                                    <input value="numele grupului terorist" type="text" id="gname" name="gname">
+                                    <br>
+                                    <label for="motive"> Motivul </label>
+                                    <br>
+                                    <input value="motiv" type="text" id="motive" name="motive">
+                                    <br>
+                                    <label for="nr_teroristi">Numărul total de teroriști implicați</label>
+                                    <br>
+                                    <input value="1" type="number" id="nperps" name="nperps">
+                                    <br>
+                                </div>
                             </div>
-                            <div id="atacator">
-                                <label>Autorii atacului terorist</label>
-                                <br>
-                                <br>
-                                <label for="gname">Numele grupului terorist</label>
-                                <br>
-                                <input value="numele grupului terorist" type="text" id="gname" name="gname">
-                                <br>
-                                <label for="motive"> Motivul </label>
-                                <br>
-                                <input value="motiv" type="text" id="motive" name="motive">
-                                <br>
-                                <label for="nr_teroristi">Numărul total de teroriști implicați</label>
-                                <br>
-                                <input value="1" type="number" id="nperps" name="nperps">
-                                <br>
-                            </div>
-                            <div></div>
                             <!--Div pentru plasarea butonului de submit in a doua coloana din grid-->
                             <div id="submitBtn">
                                 <button onclick="" class="glow-on-hover">
-                                    Adauga eveniment </button>
+                                    Adauga eveniment
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -221,7 +223,28 @@ include 'verifica_provinienta.php';
 
                         </div>
                     </div>
-                    <div id="updateEvent">alooo</div>
+                    <div id="updateEvent">
+                            <label for="idEventModif">Introduceti ID-ul evenimentului pe care il doriti schimbat</label>
+                            <input id="idvalue" name="idEventModif" type="text" placeholder="id eveniment">
+                            <br>
+                            <button onclick="sendData()"> Cautați eveniment </button>
+                        <div id="eventGasit" style="display:none">
+                            <!--
+                                initial display none
+                            de pus aici info returnat de la request
+                            daca ii gasit aratam idk valorile si coloanele
+                            -->
+
+                            <button onclick="baga_input_pereche()">Adaugati campuri + valori ce doriti a fi actualizate</button>
+
+                        </div>
+                        <div id="eventNotFound" style="display:none">
+                        <!--
+                            la fel initial display none
+                            nasol man nu s-o gasit-->
+                        <p>evenimentul nu a fost gasit</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

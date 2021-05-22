@@ -150,10 +150,14 @@ html, body {
 }
 
 #formAddEvent {
-    height: 80%;
-    font-size:1.15em;
+    height: 100%;
+    font-size:1em;
 }
 #formAdaugare{
+
+    /** TODO
+     de modificat din grid in flex ptr ca vreau sa am butonu ala centrat 
+     (George) **/
     display:grid;
     grid-template-columns: auto auto auto auto;
     grid-column-gap: 20px;
