@@ -41,7 +41,7 @@ function sendData() {
     let request = new Request(URL, {
       method: "POST",
       body: JSON.stringify(object),
-      headers: {"Content-Type": "application/json"},
+      headers: { "Content-Type": "application/json" },
     });
     fetch(request)
       .then((response) => {
@@ -92,6 +92,22 @@ function listEvents(start) {
    */
   var list = document.getElementById("list-events");
   list.textContent = "";
+
+   var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log("merge aici");
+        console.log(this.responseText);
+      }
+      xhttp.open("GET", "lista_evenimente.php?start=" + start + '&counter=' + counter, true);
+      xhttp.send();
+    }
+      
+ /* fetch("./lista_evenimente.php?start="+start+"&counter="+counter).then(response=>{
+    console.log("merge pana aici");
+    console.log(response.text());
+  }) */
+
   for (let i = start; i < start + counter; i++) {
     var div_eveniment = document.createElement("div");
     div_eveniment.style.display = "flex";
@@ -113,6 +129,7 @@ function listEvents(start) {
     list.appendChild(entry);
   }
 }
+
 function showEvents(flowDirection) {
   /**
    * functie cu rol in setarea indexului de start de afisare al evenimentelor

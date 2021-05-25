@@ -60,7 +60,7 @@ include 'verifica_provinienta.php';
                     <div id="formAddEvent">
                         <!-- <iframe name="response"></iframe> -->
                         <form id="formAdaugare" method="GET" action="../../controllers//AdminDataBaseControllers/requestAddEventController.php" target="response">
-                            <div id="formAdaugare1">
+                            <div id="formAdaugare">
                                 <div id="dateEvent">
                                     <label>Data evenimentului</label>
                                     <br>
@@ -208,20 +208,21 @@ include 'verifica_provinienta.php';
                             <label for="10elements">10 evenimente</label><br>
                             <input type="radio" id="15elements" value="15" name="chooseCounter" onclick="setNumberEvents(value)">
                             <label for="15elements">15 evenimente</label><br>
-                        </form>
-                        <!--lista de evenimente teroriste din baza de date-->
+                            <!--lista de evenimente teroriste din baza de date-->
                         <ol id="list-events">
                         </ol>
 
                         <div id="butoaneMeniuStergere">
                             <button type="button" id="backward" onclick="showEvents(id)">Evenimente
                                 mai vechi</button>
-                            <button type="button">Stergeti evenimentele
+                            <button type="submit" value="">Stergeti evenimentele
                                 selectate</button>
                             <button type="button" id="forward" onclick="showEvents(id)">Evenimente
                                 mai noi</button>
 
                         </div>
+                        </form>
+                        
                     </div>
                     <div id="updateEvent">
                             <label for="idEventModif">Introduceti ID-ul evenimentului pe care il doriti schimbat</label>
