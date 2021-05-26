@@ -8,6 +8,21 @@ class DataBarChart
         $dataPoints = array();
         $mysqlConnect = new mysqli("localhost", "Robert", "robert", "terrorismdatabase");
         $rez = array();
+        $column = "";
+        switch ($$dataToProcess['tipStatistica']) {
+            case 'numarDecese': {
+                    $column = "nkill";
+                    break;
+                }
+            case 'numarAtacuri': {
+                    $column = "count(*)";
+                    break;
+                }
+            case 'numarRaniti': {
+                    $column = "nwound";
+                    break;
+                }
+        }
 
         $stmt = $mysqlConnect->prepare("select sum(cast(nkill as unsigned)) from terro_events where country_txt=?");
         for ($contor = 1; $contor <= $numartari; $contor++) {
