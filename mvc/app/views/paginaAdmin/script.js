@@ -3,7 +3,7 @@ var counter = 5;
 function setNumberEvents(value) {
   /* functie cu rol in setarea numarului de evenimente arata unui administrator */
   counter = parseInt(value);
-  listEvents(contor);
+  listEvents(contor, cfunction);
 }
 function trateazaEvent() {
   var object = {};
@@ -86,29 +86,54 @@ function arataModificaEveniment() {
   document.getElementById("updateEvent").style.display = "block";
   document.getElementById("removeEvent").style.display = "none";
 }
-function listEvents(start) {
+
+function cfunction(response, start){
+
+  var list = document.getElementById("list-events");
+  list.textContent = "";
+  var obj_response = JSON.parse(response);
+  console.log("JSON: " + obj_response[0]);
+  var j=0;
+  for (let i = start; i < start + counter; i++) {
+    var div_eveniment = document.createElement("div");
+    div_eveniment.style.display = "flex";
+    div_eveniment.style.flexDirection = "row";
+
+    var checkbox_to_remove = document.createElement("input");
+    checkbox_to_remove.setAttribute("type", "checkbox");
+
+    var eveniment_terro = document.createElement("em");
+    eveniment_terro.appendChild(
+      document.createTextNode("Evenimentul cu id-ul " + obj_response[j].eventid + " de la data de " + obj_response[j].iday + '/' + obj_response[j].imonth + '/' + obj_response[j].iyear + " in " + obj_response[j].country_txt)
+      //document.createTextNode("Evenimentu cu num " + i)
+    );
+    
+    j++;
+    div_eveniment.appendChild(checkbox_to_remove);
+    div_eveniment.appendChild(eveniment_terro);
+
+    var entry = document.createElement("li");
+    entry.appendChild(div_eveniment);
+    list.appendChild(entry);
+  }
+}
+
+function listEvents(start, cfunction) {
   /**
    * functie ce afiseaza evenimentele din baza de date de la un indice/start dat
    */
-  var list = document.getElementById("list-events");
-  list.textContent = "";
-
    var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
-        console.log("merge aici");
+        console.log("merge pana aici");
         console.log(this.responseText);
+        cfunction(this.responseText, start);
       }
+    }
       xhttp.open("GET", "lista_evenimente.php?start=" + start + '&counter=' + counter, true);
       xhttp.send();
-    }
-      
- /* fetch("./lista_evenimente.php?start="+start+"&counter="+counter).then(response=>{
-    console.log("merge pana aici");
-    console.log(response.text());
-  }) */
 
-  for (let i = start; i < start + counter; i++) {
+  /*for (let i = start; i < start + counter; i++) {
     var div_eveniment = document.createElement("div");
     div_eveniment.style.display = "flex";
     div_eveniment.style.flexDirection = "row";
@@ -127,7 +152,7 @@ function listEvents(start) {
     var entry = document.createElement("li");
     entry.appendChild(div_eveniment);
     list.appendChild(entry);
-  }
+  } */
 }
 
 function showEvents(flowDirection) {
