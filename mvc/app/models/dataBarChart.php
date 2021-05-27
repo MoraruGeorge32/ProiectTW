@@ -8,23 +8,23 @@ class DataBarChart
         $dataPoints = array();
         $mysqlConnect = new mysqli("localhost", "Robert", "robert", "terrorismdatabase");
         $rez = array();
-        $column = "";
-        switch ($$dataToProcess['tipStatistica']) {
+        $stmt = '';
+        $interval = $dataToProcess['perioadaStatistica'];
+        switch ($dataToProcess['tipStatistica']) {
             case 'numarDecese': {
-                    $column = "nkill";
+                    $stmt = $mysqlConnect->prepare("select sum(cast( nkill as unsigned)) from terro_events where country_txt=? and iyear>=" . (2017 - $interval));
                     break;
                 }
             case 'numarAtacuri': {
-                    $column = "count(*)";
+                    $stmt = $mysqlConnect->prepare("select count(*) from terro_events where country_txt=? and iyear>=" . (2017 - $interval));
                     break;
                 }
             case 'numarRaniti': {
-                    $column = "nwound";
+                    $stmt = $mysqlConnect->prepare("select sum(cast(nwound as unsigned)) from terro_events where country_txt=? and iyear>=" . (2017 - $interval));
                     break;
                 }
         }
 
-        $stmt = $mysqlConnect->prepare("select sum(cast(nkill as unsigned)) from terro_events where country_txt=?");
         for ($contor = 1; $contor <= $numartari; $contor++) {
             $currentCountry = $dataToProcess['tara' . $contor];
             $stmt->bind_param("s", $currentCountry);

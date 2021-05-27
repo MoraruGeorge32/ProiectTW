@@ -29,7 +29,7 @@ function parseParamsStats() {
     params = params + "numarTari=" + document.getElementById("numarTari").value;
     let i = 1;
     for (i = 1; i <= contor; i++) {
-        console.log(document.getElementById("tara" + i));
+        //console.log(document.getElementById("tara" + i));
         params = params + "&tara" + i + "=" + document.getElementById("tara" + i).value;
     }
     params = params + "&tipStatistica=" + document.getElementById("listaStatistici").value;
@@ -42,20 +42,20 @@ function parseParamsStats() {
 function drawGraphic(data) {
     let typeStat = "";
     switch (document.getElementById("listaStatistici").value) {
-        case 'numarDecese':{
-            typeStat="Evolutie numar decese";
+        case 'numarDecese': {
+            typeStat = "Evolutie numar decese";
             break;
         }
-        case 'numarAtacuri':{
-            typeStat="Evolutie numar atacuri";
+        case 'numarAtacuri': {
+            typeStat = "Evolutie numar atacuri";
             break;
         }
-        case 'numarRaniti':{
-            typeStat="Evolutie numar raniti";
+        case 'numarRaniti': {
+            typeStat = "Evolutie numar raniti";
             break;
         }
-        default:{
-            typeStat="Evolutie numar incidente";
+        default: {
+            typeStat = "Evolutie numar incidente";
             break;
         }
     }
@@ -146,6 +146,50 @@ function drawGraphic(data) {
     chart.render();
 }
 
+
+function drawColumns(data) {
+    let title = "";
+    let text = "";
+    switch (document.getElementById("listaStatistici").value) {
+        case 'numarDecese': {
+            text = "Barchart numar omoruri in ultimii " + document.getElementById("perioadaCalculStatistica").value + " ani";
+            title = "Numar omoruri";
+            break;
+        }
+        case 'numarAtacuri': {
+            text = "Barchart numar atacuri in ultimii " + document.getElementById("perioadaCalculStatistica").value + " ani";
+            title = "Numar atacuri/evenimente";
+            break;
+        }
+        case 'numarRaniti': {
+            text = "Barchart numar raniti in ultimii " + document.getElementById("perioadaCalculStatistica").value + " ani";
+            title = "Numar raniti";
+            break;
+        }
+        default: {
+            text = "error";
+            title = "errorColumn";
+            break;
+        }
+    }
+    var chart = new CanvasJS.Chart("drawHere", {
+        animationEnabled: true,
+        theme: "light2",
+        title: {
+            text: text
+        },
+        axisY: {
+            title: title
+        },
+        data: [{
+            type: "column",
+            yValueFormatString: "#,##0.## kills",
+            dataPoints: data
+        }]
+    });
+    chart.render();
+}
+
 async function showStats() {
     let paramURL = parseParamsStats();
     var data;
@@ -159,26 +203,12 @@ async function showStats() {
         })
         .catch(error => console.error(error));
     console.log(data);
-    // document.getElementsByClassName("mapGenerate")[0].setAttribute("id", "drawHere");
+
     document.getElementsByClassName("mapGenerate")[0].innerHTML = "";
     switch (document.getElementById('tipRedare').value) {
         case 'barChart': {
-            var chart = new CanvasJS.Chart("drawHere", {
-                animationEnabled: true,
-                theme: "light2",
-                title: {
-                    text: "Grafic numar decese in total"
-                },
-                axisY: {
-                    title: "Numar omoruri"
-                },
-                data: [{
-                    type: "column",
-                    yValueFormatString: "#,##0.## kills",
-                    dataPoints: data
-                }]
-            });
-            chart.render();
+            document.getElementsByClassName("mapGenerate")[0].style.backgroundColor = "white";
+            drawColumns(data);
             break;
         }
         case 'grafic2D': {

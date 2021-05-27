@@ -4,7 +4,11 @@ include_once "../../core/Controller.php";
 class requestAddEventDataBase extends Controller
 {
     public static function index(){
-        addEvent::insertData($_GET);
+        $dataEvent =  json_decode(file_get_contents('php://input'), true);
+        //echo json_encode($dataEvent);
+        $message=addEvent::insertData($dataEvent);
+        $response=array("message"=>$message);
+        echo json_encode($response);
     }
 }
 requestAddEventDataBase::index();

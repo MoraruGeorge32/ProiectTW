@@ -153,7 +153,7 @@ html, body {
     height: 100%;
     font-size:1em;
 }
-#formAdaugare{
+#formAdaugareDiv{
 
     /** TODO
      de modificat din grid in flex ptr ca vreau sa am butonu ala centrat 
@@ -175,6 +175,12 @@ html, body {
     top:2px;
 }
 
+#submitBtn{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 25px;
+}
 
 .glow-on-hover {
     border: none;

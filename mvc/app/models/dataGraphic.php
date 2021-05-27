@@ -28,6 +28,9 @@ class DataGraphic
         }
         $mysqlConnect = new mysqli("localhost", "Robert", "robert", "terrorismdatabase");
         $stmt = $mysqlConnect->prepare("select ".$column." from terro_events where country_txt=? and iyear = ?");
+        /*
+        alta idee
+        se selectez coloana cu numarul si anul pentru iyear >=2017-interval */
         $numartari = $requestData['numarTari'];
         $currentYear = 2017;
         $interval = $requestData['perioadaStatistica'];

@@ -87,13 +87,13 @@ function arataModificaEveniment() {
   document.getElementById("removeEvent").style.display = "none";
 }
 
-function cfunction(response, start){
+function cfunction(response, start) {
 
   var list = document.getElementById("list-events");
   list.textContent = "";
   var obj_response = JSON.parse(response);
   console.log("JSON: " + obj_response[0]);
-  var j=0;
+  var j = 0;
   for (let i = start; i < start + counter; i++) {
     var div_eveniment = document.createElement("div");
     div_eveniment.style.display = "flex";
@@ -107,7 +107,7 @@ function cfunction(response, start){
       document.createTextNode("Evenimentul cu id-ul " + obj_response[j].eventid + " de la data de " + obj_response[j].iday + '/' + obj_response[j].imonth + '/' + obj_response[j].iyear + " in " + obj_response[j].country_txt)
       //document.createTextNode("Evenimentu cu num " + i)
     );
-    
+
     j++;
     div_eveniment.appendChild(checkbox_to_remove);
     div_eveniment.appendChild(eveniment_terro);
@@ -122,16 +122,16 @@ function listEvents(start, cfunction) {
   /**
    * functie ce afiseaza evenimentele din baza de date de la un indice/start dat
    */
-   var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-        console.log("merge pana aici");
-        console.log(this.responseText);
-        cfunction(this.responseText, start);
-      }
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log("merge pana aici");
+      console.log(this.responseText);
+      cfunction(this.responseText, start);
     }
-      xhttp.open("GET", "lista_evenimente.php?start=" + start + '&counter=' + counter, true);
-      xhttp.send();
+  }
+  xhttp.open("GET", "lista_evenimente.php?start=" + start + '&counter=' + counter, true);
+  xhttp.send();
 
   /*for (let i = start; i < start + counter; i++) {
     var div_eveniment = document.createElement("div");
@@ -169,4 +169,64 @@ function showEvents(flowDirection) {
     contor = 1;
   }
   listEvents(contor);
+}
+function status(response) {
+  if (response.status >= 200 && response.status < 300) {
+      // cererea poate fi rezolvată – fulfill
+      console.log(response);
+      return Promise.resolve(response)
+  } else {
+      // cererea a fost refuzată – reject
+      return Promise.reject(new Error(response.statusText))
+  }
+}
+
+async function sendDataAdd() {
+  //preparing the data for the JSON
+  var data = new Map();
+  var dateData = document.getElementById("dateEvent").childNodes;
+  var locationData = document.getElementById("locationEvent").childNodes;
+  var clasificareData = document.getElementById("clasificareEvent").childNodes;
+  var atacatorEvent = document.getElementById("atacator").childNodes;
+  let URL = "../../controllers/AdminDataBaseControllers/requestAddEventController.php";
+  let URL_test="../../../public/testsAdmin.php";
+  for (var input of dateData.values()) {
+    if (input.tagName === "INPUT" || input.tagName === "input") {
+      data[input.name] = input.value;
+    }
+  }
+
+  for (var input of locationData.values()) {
+    if (input.tagName === "INPUT" || input.tagName === "input") {
+      data[input.name] = input.value;
+    }
+  }
+
+  for (var input of clasificareData.values()) {
+    if (input.tagName === "INPUT" || input.tagName === "input") {
+      data[input.name] = input.value;
+    }
+    else if (input.tagName === "SELECT" || input.tagName === "select") {
+      data[input.name] = input.value;
+    }
+  }
+  
+  for (var input of atacatorEvent.values()) {
+    if (input.tagName === "INPUT" || input.tagName === "input") {
+      data[input.name] = input.value;
+    }
+  }
+
+  console.log(JSON.stringify(data));
+
+  await fetch(URL,{
+    method:"POST",
+    body:JSON.stringify(data),
+    headers:{'Content-Type': 'application/json'}
+  }).then(status)
+  .then(res=>res.json())
+  .then(resJson=>{
+    console.log(resJson);//afisare mesaj daca s-a reusit sau nu plus motivul daca s-a reusit sau nu
+  })
+  .catch(error=>console.log(error));
 }

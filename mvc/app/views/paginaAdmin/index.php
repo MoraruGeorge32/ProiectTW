@@ -59,8 +59,13 @@ include 'verifica_provinienta.php';
                 <div id="eventZone">
                     <div id="formAddEvent">
                         <!-- <iframe name="response"></iframe> -->
-                        <form id="formAdaugare" method="GET" action="../../controllers//AdminDataBaseControllers/requestAddEventController.php" target="response">
-                            <div id="formAdaugare">
+                        <!---
+                            <form id="formAdaugare" 
+                            method="GET" 
+                            action="../../controllers//AdminDataBaseControllers/requestAddEventController.php">
+                        -->
+                        <form id="AdaugareEvent">
+                            <div id="formAdaugareDiv">
                                 <div id="dateEvent">
                                     <label>Data evenimentului</label>
                                     <br>
@@ -75,7 +80,7 @@ include 'verifica_provinienta.php';
                                         Luna (numeric):
                                     </label>
                                     <br>
-                                    <input value="month" type="text" id="month" name="imonth">
+                                    <input value="1" type="number" id="month" name="imonth">
                                     <br>
                                     <label for="day">
                                         Zi (numeric):
@@ -99,7 +104,7 @@ include 'verifica_provinienta.php';
                                         Regiune:
                                     </label>
                                     <br>
-                                    <input value="regiune" type="text" id="region" name="region_txts">
+                                    <input value="regiune" type="text" id="region" name="region_txt">
                                     <br>
                                     <label for="city">
                                         Oraș:
@@ -119,12 +124,6 @@ include 'verifica_provinienta.php';
                                     <br>
                                     <input value="1" type="text" id="longitude" name="longitude">
                                     <br>
-                                    <label for="vecinity">
-                                        Vecinătate:
-                                    </label>
-                                    <br>
-                                    <input value="vecini" type="text" id="vecinity" name="vecinity">
-                                    <br>
                                 </div>
 
                                 <div id="clasificareEvent">
@@ -133,7 +132,7 @@ include 'verifica_provinienta.php';
                                     <br>
                                     <label for="suicide">Suicid</label>
                                     <br>
-                                    <select id="suicide" name="suicid">
+                                    <select id="suicide" name="suicide">
                                         <option value="da">Da</option>
                                         <option value="nu">Nu</option>
                                     </select>
@@ -193,7 +192,7 @@ include 'verifica_provinienta.php';
                             </div>
                             <!--Div pentru plasarea butonului de submit in a doua coloana din grid-->
                             <div id="submitBtn">
-                                <button onclick="" class="glow-on-hover">
+                                <button type="button" onclick="sendDataAdd()" class="glow-on-hover">
                                     Adauga eveniment
                                 </button>
                             </div>
@@ -209,26 +208,26 @@ include 'verifica_provinienta.php';
                             <input type="radio" id="15elements" value="15" name="chooseCounter" onclick="setNumberEvents(value)">
                             <label for="15elements">15 evenimente</label><br>
                             <!--lista de evenimente teroriste din baza de date-->
-                        <ol id="list-events">
-                        </ol>
+                            <ol id="list-events">
+                            </ol>
 
-                        <div id="butoaneMeniuStergere">
-                            <button type="button" id="backward" onclick="showEvents(id)">Evenimente
-                                mai vechi</button>
-                            <button type="submit" value="">Stergeti evenimentele
-                                selectate</button>
-                            <button type="button" id="forward" onclick="showEvents(id)">Evenimente
-                                mai noi</button>
+                            <div id="butoaneMeniuStergere">
+                                <button type="button" id="backward" onclick="showEvents(id)">Evenimente
+                                    mai vechi</button>
+                                <button type="submit" value="">Stergeti evenimentele
+                                    selectate</button>
+                                <button type="button" id="forward" onclick="showEvents(id)">Evenimente
+                                    mai noi</button>
 
-                        </div>
+                            </div>
                         </form>
-                        
+
                     </div>
                     <div id="updateEvent">
-                            <label for="idEventModif">Introduceti ID-ul evenimentului pe care il doriti schimbat</label>
-                            <input id="idvalue" name="idEventModif" type="text" placeholder="id eveniment">
-                            <br>
-                            <button onclick="sendData()"> Cautați eveniment </button>
+                        <label for="idEventModif">Introduceti ID-ul evenimentului pe care il doriti schimbat</label>
+                        <input id="idvalue" name="idEventModif" type="text" placeholder="id eveniment">
+                        <br>
+                        <button onclick="sendData()"> Cautați eveniment </button>
                         <div id="eventGasit" style="display:none">
                             <!--
                                 initial display none
@@ -240,10 +239,10 @@ include 'verifica_provinienta.php';
 
                         </div>
                         <div id="eventNotFound" style="display:none">
-                        <!--
+                            <!--
                             la fel initial display none
                             nasol man nu s-o gasit-->
-                        <p>evenimentul nu a fost gasit</p>
+                            <p>evenimentul nu a fost gasit</p>
                         </div>
                     </div>
                 </div>

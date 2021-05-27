@@ -52,3 +52,11 @@ class addEvent
 
     }
 }
+//$data=json_decode(file_get_contents('php://input'), true);
+$message = '{"iyear":"2022","imonth":"12","iday":"26","country_txt":"Romania","region_txt":"Eastern Europe","city":"Hirlau","latitude":"47.4278","longitude":"26.9114","suicide":"nu","extended":"nu","attacktype1_txt":"Atac asupra adresei mele personale","targsubtype1_txt":"Eu","success":"nu","weaptype1_txt":"prea multa militarie la ei","nkill":"0","nwound":"999","gname":"Facultate de informatica Iasi","motive":"Prea multe proiecte","nperps":"999"}';
+$data = json_decode($message, true);
+ echo "<br>".addEvent::insertData($data);
+//echo json_encode('{"a":1,"b":2,"c":3,"d":4,"e":5}');
+/*
+{"iyear":"2022","imonth":"12","iday":"26","country_txt":"Romania","region_txt":"Eastern Europe","city":"Hirlau","latitude":"47.4278","longitude":"26.9114","vecinity":"Iasi,Botosani,Pascani,Piatra Neamt","suicide":"nu","extended":"nu","attacktype1_txt":"Atac asupra adresei mele personale","targsubtype1_txt":"Eu","success":"nu","weaptype1_txt":"prea multa militarie la ei","nkill":"0","nwound":"999","gname":"Facultate de informatica Iasi","motive":"Prea multe proiecte","nperps":"999"}
+*/
