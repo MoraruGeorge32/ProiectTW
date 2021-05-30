@@ -200,7 +200,7 @@ include 'verifica_provinienta.php';
                     </div>
                     <div id="removeEvent">
                         <p>Lista evenimente </p>
-                        <form id="countElements" method="GET" action="../../controllers/AdminDataBaseControllers/requestDeleteEventController.php">
+                        <form id="countElements" method="POST" action="../../controllers/AdminDataBaseControllers/requestDeleteEventController.php">
                             <input type="radio" id="5elements" value="5" name="chooseCounter" onclick="setNumberEvents(value)">
                             <label for="5elements">5 evenimente</label><br>
                             <input type="radio" id="10elements" value="10" name="chooseCounter" onclick="setNumberEvents(value)">

@@ -8,11 +8,6 @@
     $stmt = $dbconn->prepare($sql);
     $stmt->bind_param("i", $_GET['counter']);
     $stmt->execute();
-   // $stmt->store_result();
-   // $stmt->bind_result($evid, $an, $luna, $zi, $tara);
-   // while( $stmt->fetch() ){
-   //     echo htmlspecialchars($evid . " " . $an . " " . $luna . " " . $zi . " " . $tara . "\n");
-   // }
     $result = $stmt->get_result();
     $out = $result->fetch_all(MYSQLI_ASSOC);
     $stmt->close();
