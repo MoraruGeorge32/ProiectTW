@@ -11,6 +11,9 @@ html{
 #numarTari{
     display: none;
 }
+.mapGenerate{
+    height:auto;
+}
 body{
     width:100%;
     height:100%;
@@ -18,7 +21,9 @@ body{
     font-family: 'Oswald';
     color: blueviolet;
     background-color: white;
-    position: absolute;
+    display: flex;
+    flex-direction: column;
+    
 }
 .mapFormBackground{
     background-color: black;
@@ -28,6 +33,9 @@ body{
     align-items: center;
     width: 100%;
     height: auto;
+}
+.mapFormBackground > div{
+    height: 100%;
 }
 .mapForm1{
     background-color: ghostwhite;
@@ -39,6 +47,14 @@ body{
 }
 .mapGenerate{
     width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    background-color: ghostwhite;
+}
+.mapGenerate1{
+    height:95%;
+    width: 95%;
 }
 
 /*toti primii copii din mapForm1*/

@@ -1,12 +1,14 @@
 <?php
-function eJSONValid($sir)
-{ // verifică dacă datele JSON sunt corecte
-    json_decode($sir);
-    return json_last_error() == JSON_ERROR_NONE;
+include_once "../../models/AdminDataBase/updateEvent.php";
+include_once "../../core/Controller.php";
+class requestUpdateEventDataBase extends Controller
+{
+    public static function index(){
+        $dataEvent =  json_decode(file_get_contents('php://input'), true);
+        //echo json_encode($dataEvent);
+        $message=addEvent::insertData($dataEvent);
+        $response=array("message"=>$message);
+        echo json_encode($response);
+    }
 }
-$date = trim(file_get_contents("php://input"));
-if (eJSONValid($date)) { 
-    header("Content-type: application/json");
-    echo json_encode($date);
-} else
-    die('Date incorecte');
+requestAddEventDataBase::index();

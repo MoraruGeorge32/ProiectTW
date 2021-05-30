@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harta Vizualizator</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      />
+    <link
+      href='https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap'
+      rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css2?family=Oswald&display=swap'
+      rel='stylesheet' type='text/css'>
+    <script src="script.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="../homePage/home.html">
+        <img src="../img/logo.png" alt="logo aplicație" />
+      </a>
+      <form action="../loginPage/formLogare.php">
+        <button>Log In Admin</button>
+      </form>
+    </nav>
+
+<div class="mapFormBackground">
+    <div class="formStatistici">
+    <form method="GET">
+      <div id="listaTari" class="ListaTari">
+        <input type="radio" id="regiuni" name="reg" value="regiuni">
+        <label for="Regiuni">Regiuni</label>
+        <input type="radio" id="tari" name="reg" value="tari">
+        <label for="Tari">Tari</label>
+        <div id="regiuniDrop">
+            <form>
+                <div class="multiselect">
+                  <div class="selectBox" onclick="showCheckboxes()">
+                    <select>
+                      <option>Select an option</option>
+                    </select>
+                    <div class="overSelect"></div>
+                  </div>
+                  <div id="checkboxes">
+                    <label for="one">
+                      <input type="checkbox" id="one" />First checkbox</label>
+                    <label for="two">
+                      <input type="checkbox" id="two" />Second checkbox</label>
+                    <label for="three">
+                      <input type="checkbox" id="three" />Third checkbox</label>
+                  </div>
+                </div>
+              </form>
+        </div>
+        <div id="tariDrop">
+            <select >
+
+            </select>
+        </div>
+        <br>
+      </div>
+      <label for="listaStatistici">
+        Selectați o statistică pentru a o vizualiza
+      </label>
+      <select id="listaStatistici" name="tipStatistica">
+        <option value="numarDecese">Număr decese</option>
+        <option value="numarAtacuri">Număr atacuri</option>
+        <option value="numarRaniti">Număr răniți</option>
+      </select>
+      <br>
+      <label for="perioadaCalculStatistica">Selectați o perioadă</label>
+      <select id="perioadaCalculStatistica" name="perioadaStatistica">
+        <option value="5">5 ani</option>
+        <option value="10">10 ani</option>
+        <option value="15">15 ani</option>
+      </select>
+      <br>
+      <label for="tipRedare">Selectați un tip de redare</label>
+      <select id="tipRedare" name="tipRedare">
+        <option value="grafic2D">Grafică</option>
+        <option value="tabel">Tabelar</option>
+        <option value="barChart">Cu coloane</option>
+      </select>
+      <br>
+      <button type="button" onclick="showStats()">apasa</button>
+        </form>
+    </div>
+    <div>
+
+    </div>
+</div>    
+
+  <footer class="footer">
+    <div class="footer-title">
+      <p>Contact</p>
+    </div>
+    <hr />
+    <div class="footer-team">
+      <div class="Vlad">
+        <p>Anghelus Ionut-Vlad</p>
+        <p>" Best day ever! "</p>
+        <div class="icons">
+          <i class="fa fa-facebook-f"></i>
+          <i class="fa fa-instagram"></i>
+        </div>
+      </div>
+      <div class="Robert">
+        <p>Musteata Robert-Andrei</p>
+        <p>" Live high and expect higher! "</p>
+        <div class="icons">
+          <i class="fa fa-facebook-f"></i>
+          <i class="fa fa-instagram"></i>
+        </div>
+      </div>
+      <div class="George">
+        <p>Moraru George</p>
+        <p>" Live the moment! "</p>
+        <div class="icons">
+          <i class="fa fa-facebook-f"></i>
+          <i class="fa fa-instagram"></i>
+        </div>
+      </div>
+    </footer>
+  </body>
+  </html>

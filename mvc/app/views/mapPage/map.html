@@ -17,6 +17,11 @@
     <script src="script.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="tari.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6ibJluJURAnhrpfRX34TWNKqmz_oPEzo&callback=initMap"
+      async
+    ></script>
   </head>
   <body>
     <nav class="navbar">
@@ -45,7 +50,8 @@
         <div class="formStatistici">
           <form method="GET">
             <div id="listaTari" class="ListaTari">
-              <input type="number" name="numarTari" id="numarTari" />
+
+              <input name="numarTari" id="numarTari" />
               <button type="button" onClick="adaugaInput()">Adaugati o tara</button>
               <br>
             </div>
@@ -132,7 +138,11 @@
           </form>
         </div>
       </div>
-      <div class="mapGenerate" id="drawHere"></div>
+      <div class="mapGenerate">
+          <div class="mapGenerate1" id="drawHere">
+
+          </div>
+      </div>
 
 
     </div>

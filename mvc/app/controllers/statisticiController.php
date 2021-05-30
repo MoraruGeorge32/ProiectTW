@@ -12,7 +12,7 @@ include_once "../models/dataGraphic.php";
 class statisticiController
 {
     public  $dataPoints = array();
-    public $dataGraphic = array();
+    public  $dataGraphic = array();
     public  function __construct()
     {
         switch($_GET['tipRedare']){
