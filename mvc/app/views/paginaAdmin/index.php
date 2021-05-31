@@ -224,26 +224,41 @@ include 'verifica_provinienta.php';
 
                     </div>
                     <div id="updateEvent">
-                        <label for="idEventModif">Introduceti ID-ul evenimentului pe care il doriti schimbat</label>
+
+                        <div>
+                        
+                        </div>
+                        <div>
+                        
+                        </div>
+
+
+
+
+
+
+
+
+                        <!-- <label for="idEventModif">Introduceti ID-ul evenimentului pe care il doriti schimbat</label>
                         <input id="idvalue" name="idEventModif" type="text" placeholder="id eveniment">
                         <br>
-                        <button onclick="sendData()"> Cautați eveniment </button>
-                        <div id="eventGasit" style="display:none">
+                        <button onclick="sendDataUpdate()"> Cautați eveniment </button>
+                        <div id="eventGasit" style="display:none"> -->
                             <!--
                                 initial display none
                             de pus aici info returnat de la request
                             daca ii gasit aratam idk valorile si coloanele
                             -->
 
-                            <button onclick="baga_input_pereche()">Adaugati campuri + valori ce doriti a fi actualizate</button>
+                            <!-- <button onclick="baga_input_pereche()">Adaugati campuri + valori ce doriti a fi actualizate</button>
 
                         </div>
                         <div id="eventNotFound" style="display:none">
-                            <!--
+                            
                             la fel initial display none
                             nasol man nu s-o gasit-->
-                            <p>evenimentul nu a fost gasit</p>
-                        </div>
+                            <!-- <p>Evenimentul nu a fost gasit</p> -->
+                        <!-- </div> -->
                     </div>
                 </div>
             </div>

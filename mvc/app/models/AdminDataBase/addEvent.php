@@ -1,5 +1,5 @@
 <?php
-
+include "../../Utilitati/Conexiune.php";
 class addEvent
 {
     public static function insertData($formInfo)
@@ -23,12 +23,15 @@ class addEvent
         $values_to_text = substr($values_to_text, 0, -2);
         $columns_to_text = substr($columns_to_text, 0, -1);
 
-        $mysql = new mysqli("localhost", "Robert", "robert", "terrorismdatabase");
+        $dbconn=getConnection();
+
+        //$mysql = new mysqli("localhost", "Robert", "robert", "terrorismdatabase");
         $max_id_query = "Select eventid from terro_events order by eventid desc limit 1";
         $newID = $formInfo['iyear'] . $formInfo['imonth'] . $formInfo['iday'];
 
 
-        $res = $mysql->query($max_id_query);
+        //$res = $mysql->query($max_id_query);
+        $res=$dbconn->query($max_id_query);
         $maxID = $res->fetch_assoc();
         $lastDigits = substr($maxID["eventid"], strlen($maxID["eventid"]) - 4, 4);
         $newID = $newID . $lastDigits;
@@ -44,10 +47,10 @@ class addEvent
             . $columns_to_text . " ) VALUES ( " . $newID . ",'"
             . $values_to_text . ")";
 
-        if ($mysql->query($query) === TRUE) {
+        if (/*$mysql->query($query)*/$dbconn->query($query) === TRUE) {
             return "Success";
         } else {
-            return "Something went wrong!!! " . $mysql->error;
+            return "Something went wrong!!! " . $dbconn->error;
         }
 
     }

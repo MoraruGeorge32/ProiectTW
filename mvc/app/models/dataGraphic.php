@@ -1,4 +1,6 @@
 <?php
+
+include "../../Utilitati/Conexiune.php";
 class DataGraphic
 {
     public static function getData($requestData)
@@ -26,8 +28,9 @@ class DataGraphic
                     break;
                 }
         }
-        $mysqlConnect = new mysqli("localhost", "Robert", "robert", "terrorismdatabase");
-        $stmt = $mysqlConnect->prepare("select ".$column." from terro_events where country_txt=? and iyear = ?");
+        //$dbconn = new mysqli("localhost", "Robert", "robert", "terrorismdatabase");
+        $dbconn=getConnection();
+        $stmt = $dbconn->prepare("select ".$column." from terro_events where country_txt=? and iyear = ?");
         /*
         alta idee
         se selectez coloana cu numarul si anul pentru iyear >=2017-interval */
@@ -56,7 +59,7 @@ class DataGraphic
             array_push($sendData, array("name" => $currentCountry, "data" => $valuesCountry));
         }
 
-        $mysqlConnect->close();
+        $dbconn->close();
 
         return $sendData;
     }

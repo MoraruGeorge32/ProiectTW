@@ -28,7 +28,7 @@ function trateazaEvent() {
     .catch((err) => console.error(err));
 }
 
-function sendData() {
+function sendDataUpdate() {
   var input = document.getElementById("idvalue").value;
   if (!input) alert("Introduceti o valoare!");
   else {
@@ -85,12 +85,12 @@ function cfunction(response, start) {
   var list = document.getElementById("list-events");
   list.textContent = "";
   var obj_response = JSON.parse(response);
-  console.log("JSON: " + obj_response[0]);
   var j = 0;
   for (let i = start; i < start + counter; i++) {
     var div_eveniment = document.createElement("div");
     div_eveniment.style.display = "flex";
     div_eveniment.style.flexDirection = "row";
+    div_eveniment.setAttribute("id", "div_events");
 
     var checkbox_to_remove = document.createElement("input");
     checkbox_to_remove.setAttribute("type", "checkbox");
@@ -120,12 +120,10 @@ function listEvents(start, cfunction) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      console.log("merge pana aici");
-      console.log(this.responseText);
       cfunction(this.responseText, start);
     }
   }
-  xhttp.open("GET", "lista_evenimente.php?start=" + start + '&counter=' + counter, true);
+  xhttp.open("GET", "../../models/AdminDataBase/lista_evenimente.php?start=" + start + '&counter=' + counter, true);
   xhttp.send();
 }
 
@@ -140,9 +138,10 @@ function showEvents(flowDirection) {
   }
 
   if (contor < 0) {
+    alert("Nu exista evenimente mai vechi!");
     contor = 1;
   }
-  listEvents(contor);
+  listEvents(contor, cfunction);
 }
 function status(response) {
   if (response.status >= 200 && response.status < 300) {
