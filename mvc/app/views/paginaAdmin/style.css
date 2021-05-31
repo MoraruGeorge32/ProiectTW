@@ -16,14 +16,33 @@ html, body {
     display: flex;
     justify-content: space-around;
 }
-.dateShow{
+
+.updateRow{
+    margin: 1.2vh 0 1.2vh 0;
+    font-size: 1vw;
+}
+
+.updateRow button{
+    font-size: 1vw;
+}
+
+.editButton:hover{
+    background-color: blueviolet;
+    color: white;
+    border-radius: 10px;
+    border: 3px solid white;
+}
+
+#dateShow{
     height:90%;
 }
 .submitAndPage{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
     height: 10%;
+    justify-self: flex-end;
 }
 
 .showPage input{
@@ -163,7 +182,7 @@ html, body {
     color: white;
 }
 
-#formAddEvent, #removeEvent,#updateEvent {
+#formAddEvent, #removeEvent {
     padding-top: 5%;
     padding-right: 15%;
     padding-left: 15%;
@@ -171,14 +190,21 @@ html, body {
 }
 
 #updateEvent{
+    display:none;
+}
+
+#updateEvent{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 100%;
+    
 }
 
 .editButton{
     background-color: white;
     color: blueviolet;
+    border-radius: 10px;
     border: 3px solid blueviolet;
 }
 
@@ -186,7 +212,7 @@ html, body {
     background-color: blueviolet;
     color: white;
     border-radius: 10px;
-    padding: 5px 5px 5px 5px;
+    padding: 1px 1px 1px 1px;
 }
 
 #formAddEvent {
@@ -207,7 +233,7 @@ html, body {
     background-color: gainsboro;
     border-radius: 20px;
     width: 85%;
-    height: 85%;
+    height: 85vh;
 }
 
 #submitEvent{

@@ -240,6 +240,104 @@ include 'verifica_provinienta.php';
                                 <p>BlaBlaBlaBla</p>
                                 <button class="editButton">Edit</button>
                             </div>
+                            <div class="updateRow">
+                                <p>Bla</p>
+                                <p>BlaBla</p>
+                                <p>BlaBlaBla</p>
+                                <p>BlaBlaBlaBla</p>
+                                <button class="editButton">Edit</button>
+                            </div>
+                            <div class="updateRow">
+                                <p>Bla</p>
+                                <p>BlaBla</p>
+                                <p>BlaBlaBla</p>
+                                <p>BlaBlaBlaBla</p>
+                                <button class="editButton">Edit</button>
+                            </div>
+                            <div class="updateRow">
+                                <p>Bla</p>
+                                <p>BlaBla</p>
+                                <p>BlaBlaBla</p>
+                                <p>BlaBlaBlaBla</p>
+                                <button class="editButton">Edit</button>
+                            </div>
+                            <div class="updateRow">
+                                <p>Bla</p>
+                                <p>BlaBla</p>
+                                <p>BlaBlaBla</p>
+                                <p>BlaBlaBlaBla</p>
+                                <button class="editButton">Edit</button>
+                            </div>
+                            <div class="updateRow">
+                                <p>Bla</p>
+                                <p>BlaBla</p>
+                                <p>BlaBlaBla</p>
+                                <p>BlaBlaBlaBla</p>
+                                <button class="editButton">Edit</button>
+                            </div>
+                            <div class="updateRow">
+                                <p>Bla</p>
+                                <p>BlaBla</p>
+                                <p>BlaBlaBla</p>
+                                <p>BlaBlaBlaBla</p>
+                                <button class="editButton">Edit</button>
+                            </div>
+                            <div class="updateRow">
+                                <p>Bla</p>
+                                <p>BlaBla</p>
+                                <p>BlaBlaBla</p>
+                                <p>BlaBlaBlaBla</p>
+                                <button class="editButton">Edit</button>
+                            </div>
+                            <div class="updateRow">
+                                <p>Bla</p>
+                                <p>BlaBla</p>
+                                <p>BlaBlaBla</p>
+                                <p>BlaBlaBlaBla</p>
+                                <button class="editButton">Edit</button>
+                            </div>
+                            <div class="updateRow">
+                                <p>Bla</p>
+                                <p>BlaBla</p>
+                                <p>BlaBlaBla</p>
+                                <p>BlaBlaBlaBla</p>
+                                <button class="editButton">Edit</button>
+                            </div>
+                            <div class="updateRow">
+                                <p>Bla</p>
+                                <p>BlaBla</p>
+                                <p>BlaBlaBla</p>
+                                <p>BlaBlaBlaBla</p>
+                                <button class="editButton">Edit</button>
+                            </div>
+                            <div class="updateRow">
+                                <p>Bla</p>
+                                <p>BlaBla</p>
+                                <p>BlaBlaBla</p>
+                                <p>BlaBlaBlaBla</p>
+                                <button class="editButton">Edit</button>
+                            </div>
+                            <div class="updateRow">
+                                <p>Bla</p>
+                                <p>BlaBla</p>
+                                <p>BlaBlaBla</p>
+                                <p>BlaBlaBlaBla</p>
+                                <button class="editButton">Edit</button>
+                            </div>
+                            <div class="updateRow">
+                                <p>Bla</p>
+                                <p>BlaBla</p>
+                                <p>BlaBlaBla</p>
+                                <p>BlaBlaBlaBla</p>
+                                <button class="editButton">Edit</button>
+                            </div>
+                            <div class="updateRow">
+                                <p>Bla</p>
+                                <p>BlaBla</p>
+                                <p>BlaBlaBla</p>
+                                <p>BlaBlaBlaBla</p>
+                                <button class="editButton">Edit</button>
+                            </div>
                         </div>
                         <div class="submitAndPage">
                             <button onclick="decreasePage()"> &lt;&lt;Previous </button>
