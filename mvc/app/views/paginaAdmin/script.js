@@ -94,11 +94,11 @@ function cfunction(response, start) {
 
     var checkbox_to_remove = document.createElement("input");
     checkbox_to_remove.setAttribute("type", "checkbox");
-    checkbox_to_remove.setAttribute("name", "c_"+j);
+    checkbox_to_remove.setAttribute("name", "c_" + j);
     checkbox_to_remove.setAttribute("value", obj_response[j].eventid);
 
     var eveniment_terro = document.createElement("em");
-    eveniment_terro.setAttribute("name", "t_"+j);
+    eveniment_terro.setAttribute("name", "t_" + j);
     eveniment_terro.appendChild(
       document.createTextNode("Evenimentul cu id-ul " + obj_response[j].eventid + " de la data de " + obj_response[j].iday + '/' + obj_response[j].imonth + '/' + obj_response[j].iyear + " in " + obj_response[j].country_txt)
     );
@@ -145,12 +145,12 @@ function showEvents(flowDirection) {
 }
 function status(response) {
   if (response.status >= 200 && response.status < 300) {
-      // cererea poate fi rezolvată – fulfill
-      console.log(response);
-      return Promise.resolve(response)
+    // cererea poate fi rezolvată – fulfill
+    console.log(response);
+    return Promise.resolve(response)
   } else {
-      // cererea a fost refuzată – reject
-      return Promise.reject(new Error(response.statusText))
+    // cererea a fost refuzată – reject
+    return Promise.reject(new Error(response.statusText))
   }
 }
 
@@ -162,7 +162,7 @@ async function sendDataAdd() {
   var clasificareData = document.getElementById("clasificareEvent").childNodes;
   var atacatorEvent = document.getElementById("atacator").childNodes;
   let URL = "../../controllers/AdminDataBaseControllers/requestAddEventController.php";
-  let URL_test="../../../public/testsAdmin.php";
+  let URL_test = "../../../public/testsAdmin.php";
   for (var input of dateData.values()) {
     if (input.tagName === "INPUT" || input.tagName === "input") {
       data[input.name] = input.value;
@@ -183,7 +183,7 @@ async function sendDataAdd() {
       data[input.name] = input.value;
     }
   }
-  
+
   for (var input of atacatorEvent.values()) {
     if (input.tagName === "INPUT" || input.tagName === "input") {
       data[input.name] = input.value;
@@ -192,14 +192,44 @@ async function sendDataAdd() {
 
   console.log(JSON.stringify(data));
 
-  await fetch(URL,{
-    method:"POST",
-    body:JSON.stringify(data),
-    headers:{'Content-Type': 'application/json'}
+  await fetch(URL, {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: { 'Content-Type': 'application/json' }
   }).then(status)
-  .then(res=>res.json())
-  .then(resJson=>{
-    console.log(resJson);//afisare mesaj daca s-a reusit sau nu plus motivul daca s-a reusit sau nu
-  })
-  .catch(error=>console.log(error));
+    .then(res => res.json())
+    .then(resJson => {
+      console.log(resJson);//afisare mesaj daca s-a reusit sau nu plus motivul daca s-a reusit sau nu
+    })
+    .catch(error => console.log(error));
 }
+
+function provideEvents(page_number) {
+  
+}
+
+function receiveEvents(e){
+  if(window.event){
+    if(e.keyCode===13){
+      alert(document.getElementById("numPage").value);
+      provideEvents(parseInt(document.getElementById("numPage").value));
+    }
+  }
+}
+
+function increasePage() {
+  let num_page = document.getElementById("numPage").value;
+  num_page = parseInt(num_page) + 1;
+  document.getElementById("numPage").setAttribute("value", parseInt(num_page));
+  provideEvents(parseInt(num_page));
+}
+
+function decreasePage() {
+  let num_page = document.getElementById("numPage").value;
+  if (num_page > 1) {
+    num_page = num_page - 1;
+    document.getElementById("numPage").setAttribute("value", num_page);
+    provideEvents(parseInt(num_page));
+  }
+}
+

@@ -1,5 +1,5 @@
 <?php
-include "../../Utilitati/Conexiune.php";
+require_once "../Utilitati/Conexiune.php";
 class addEvent
 {
     public static function insertData($formInfo)

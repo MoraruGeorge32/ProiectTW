@@ -41,7 +41,7 @@ function parseParamsStats() {
 
 function drawGraphic(data) {
     let typeStat = "";
-    switch (document.getElementById("listaStatistici").value) {
+    switch (document.getElementsByClassName("mapGenerate")[0]) {
         case 'numarDecese': {
             typeStat = "Evolutie numar decese";
             break;
@@ -195,13 +195,13 @@ async function showStats() {
     var data;
     //waiting for the data from the back-end
     await fetch("../../controllers/statisticiController.php?" + paramURL)
-        .then(status)
-        .then(response => response.json())
-        .then(res => {
-            alert("data received!")
-            data = res;
-        })
-        .catch(error => console.error(error));
+         .then(status)
+         .then(response => response.json())
+         .then(res => {
+             alert("data received!")
+             data = res;
+         })
+         .catch(error => console.error(error));
     console.log(data);
 
     document.getElementsByClassName("mapGenerate")[0].innerHTML = "";

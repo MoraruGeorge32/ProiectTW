@@ -12,6 +12,27 @@ html, body {
     width: 100%;
     height: 100%;
 }
+.labels, .updateRow{
+    display: flex;
+    justify-content: space-around;
+}
+.dateShow{
+    height:90%;
+}
+.submitAndPage{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 10%;
+}
+
+.showPage input{
+    background-color: blueviolet;
+    color: white;
+    border-radius: 10px;
+    width: 3vw;
+    text-align: center !important;
+}
 
 #leftside {
     background-color: #243a47;
@@ -147,6 +168,25 @@ html, body {
     padding-right: 15%;
     padding-left: 15%;
     display:none;
+}
+
+#updateEvent{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.editButton{
+    background-color: white;
+    color: blueviolet;
+    border: 3px solid blueviolet;
+}
+
+.submitAndPage button {
+    background-color: blueviolet;
+    color: white;
+    border-radius: 10px;
+    padding: 5px 5px 5px 5px;
 }
 
 #formAddEvent {

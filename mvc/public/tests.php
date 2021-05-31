@@ -1,6 +1,6 @@
 <?php
 
-
+include "../app/Utilitati/Conexiune.php";
 class DataBarChart
 {
     public static function getData($dataToProcess)
@@ -8,21 +8,22 @@ class DataBarChart
         $numartari = $dataToProcess['numarTari'];
         $contor = 1;
         $dataPoints = array();
-        $mysqlConnect = new mysqli("localhost", "Robert", "robert", "terrorismdatabase");
+        //$dbconn = new mysqli("localhost", "Robert", "robert", "terrorismdatabase");
+        $dbconn=getConnection();
         $rez = array();
         $stmt = '';
         $interval = $dataToProcess['perioadaStatistica'];
         switch ($dataToProcess['tipStatistica']) {
             case 'numarDecese': {
-                    $stmt = $mysqlConnect->prepare("select sum(cast( nkill as unsigned)) from terro_events where country_txt=? ");
+                    $stmt = $dbconn->prepare("select sum(cast( nkill as unsigned)) from terro_events where country_txt=? and iyear>=" . (2017 - $interval));
                     break;
                 }
             case 'numarAtacuri': {
-                    $stmt = $mysqlConnect->prepare("select count(*) from terro_events where country_txt=? ");
+                    $stmt = $dbconn->prepare("select count(*) from terro_events where country_txt=? and iyear>=" . (2017 - $interval));
                     break;
                 }
             case 'numarRaniti': {
-                    $stmt = $mysqlConnect->prepare("select sum(cast(nwound as unsigned)) from terro_events where country_txt=?");
+                    $stmt = $dbconn->prepare("select sum(cast(nwound as unsigned)) from terro_events where country_txt=? and iyear>=" . (2017 - $interval));
                     break;
                 }
         }

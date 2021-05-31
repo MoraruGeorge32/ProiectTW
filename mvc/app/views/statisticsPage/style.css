@@ -26,7 +26,10 @@ body {
 #numarTari{
     display: none;
 }
-
+#checkboxes{
+    display: flex;
+    flex-direction: column;
+}
 .mapFormBackground{
     width:100%;
     height:100%;

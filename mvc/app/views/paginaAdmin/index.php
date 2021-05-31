@@ -155,7 +155,7 @@ include 'verifica_provinienta.php';
                                     <label for="success">A avut succes?</label>
                                     <br>
                                     <select id="success" name="success">
-                                        <option value="da">Da</option>
+ u                                       <option value="da">Da</option>
                                         <option value="nu">Nu</option>
                                     </select>
                                     <br>
@@ -225,11 +225,28 @@ include 'verifica_provinienta.php';
                     </div>
                     <div id="updateEvent">
 
-                        <div>
-                        
+                        <div id="dateShow">
+                            <div class="labels">
+                                <label>ID</label>
+                                <label>Country</label>
+                                <label>Region</label>
+                                <label>Date</label>
+                                <label>Edit Option</label>  
+                            </div>
+                            <div class="updateRow">
+                                <p>Bla</p>
+                                <p>BlaBla</p>
+                                <p>BlaBlaBla</p>
+                                <p>BlaBlaBlaBla</p>
+                                <button class="editButton">Edit</button>
+                            </div>
                         </div>
-                        <div>
-                        
+                        <div class="submitAndPage">
+                            <button onclick="decreasePage()"> &lt;&lt;Previous </button>
+                            <div class="showPage"> 
+                                <input onkeypress="receiveEvents(event)" id="numPage" value="1" >
+                            </div>
+                            <button onclick="increasePage()"> Next&gt;&gt; </button> 
                         </div>
 
 

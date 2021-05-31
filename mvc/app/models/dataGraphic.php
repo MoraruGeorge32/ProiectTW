@@ -1,6 +1,6 @@
 <?php
 
-include "../../Utilitati/Conexiune.php";
+require_once "../Utilitati/Conexiune.php";
 class DataGraphic
 {
     public static function getData($requestData)

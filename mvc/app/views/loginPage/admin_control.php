@@ -1,5 +1,5 @@
 <?php
-include "../../Utilitati/Conexiune.php";
+require_once "../Utilitati/Conexiune.php";
 // @$dbconn = new mysqli (
 // 	'localhost', // locatia serverului (aici, masina locala)
 // 	'Robert',       // numele de cont
