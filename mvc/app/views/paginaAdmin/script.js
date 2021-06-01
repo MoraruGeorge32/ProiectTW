@@ -204,14 +204,32 @@ async function sendDataAdd() {
     .catch(error => console.log(error));
 }
 
+function placeEvents(response) {
+  var obj_response = JSON.parse(response);
+  var j = 0;
+  for (let i = 1; i <= 15; i++) {
+    document.getElementById("eur"+i+"1").innerHTML=obj_response[i-1].eventid;
+    document.getElementById("eur"+i+"2").innerHTML=obj_response[i-1].country_txt;
+    document.getElementById("eur"+i+"3").innerHTML=obj_response[i-1].region_txt;
+    document.getElementById("eur"+i+"4").innerHTML=obj_response[i-1].iday+'/'+obj_response[i-1].imonth+'/'+obj_response[i-1].iyear;
+  }
+}
+
 function provideEvents(page_number) {
-  
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      placeEvents(this.responseText);
+    }
+  }
+  xhttp.open("GET", "../../controllers/AdminDataBaseControllers/requestUpdateEventController.php?page=" + page_number, true);
+  xhttp.send();
 }
 
 function receiveEvents(e){
   if(window.event){
     if(e.keyCode===13){
-      alert(document.getElementById("numPage").value);
+      //alert(document.getElementById("numPage").value);
       provideEvents(parseInt(document.getElementById("numPage").value));
     }
   }
@@ -220,15 +238,16 @@ function receiveEvents(e){
 function increasePage() {
   let num_page = document.getElementById("numPage").value;
   num_page = parseInt(num_page) + 1;
-  document.getElementById("numPage").setAttribute("value", parseInt(num_page));
+  document.getElementById("numPage").value = num_page;
   provideEvents(parseInt(num_page));
+  console.log("increase: " + num_page);
 }
 
 function decreasePage() {
   let num_page = document.getElementById("numPage").value;
   if (num_page > 1) {
     num_page = num_page - 1;
-    document.getElementById("numPage").setAttribute("value", num_page);
+    document.getElementById("numPage").value = num_page;
     provideEvents(parseInt(num_page));
   }
 }

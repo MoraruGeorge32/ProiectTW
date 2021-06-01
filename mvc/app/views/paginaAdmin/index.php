@@ -155,7 +155,7 @@ include 'verifica_provinienta.php';
                                     <label for="success">A avut succes?</label>
                                     <br>
                                     <select id="success" name="success">
- u                                       <option value="da">Da</option>
+                                        <option value="da">Da</option>
                                         <option value="nu">Nu</option>
                                     </select>
                                     <br>
@@ -233,109 +233,109 @@ include 'verifica_provinienta.php';
                                 <label>Date</label>
                                 <label>Edit Option</label>  
                             </div>
-                            <div class="updateRow">
-                                <p>Bla</p>
-                                <p>BlaBla</p>
-                                <p>BlaBlaBla</p>
-                                <p>BlaBlaBlaBla</p>
+                            <div class="updateRow" id="eu1">
+                                <p id="eur11"></p>
+                                <p id="eur12"></p>
+                                <p id="eur13" ></p>
+                                <p id="eur14"></p>
                                 <button class="editButton">Edit</button>
                             </div>
-                            <div class="updateRow">
-                                <p>Bla</p>
-                                <p>BlaBla</p>
-                                <p>BlaBlaBla</p>
-                                <p>BlaBlaBlaBla</p>
+                            <div class="updateRow" id="eu2">
+                                <p id="eur21"></p>
+                                <p id="eur22"></p>
+                                <p id="eur23" ></p>
+                                <p id="eur24"></p>
                                 <button class="editButton">Edit</button>
                             </div>
-                            <div class="updateRow">
-                                <p>Bla</p>
-                                <p>BlaBla</p>
-                                <p>BlaBlaBla</p>
-                                <p>BlaBlaBlaBla</p>
+                            <div class="updateRow" id="eu3">
+                                <p id="eur31"></p>
+                                <p id="eur32"></p>
+                                <p id="eur33" ></p>
+                                <p id="eur34"></p>
                                 <button class="editButton">Edit</button>
                             </div>
-                            <div class="updateRow">
-                                <p>Bla</p>
-                                <p>BlaBla</p>
-                                <p>BlaBlaBla</p>
-                                <p>BlaBlaBlaBla</p>
+                            <div class="updateRow" id="eu4">
+                                <p id="eur41"></p>
+                                <p id="eur42"></p>
+                                <p id="eur43" ></p>
+                                <p id="eur44"></p>
                                 <button class="editButton">Edit</button>
                             </div>
-                            <div class="updateRow">
-                                <p>Bla</p>
-                                <p>BlaBla</p>
-                                <p>BlaBlaBla</p>
-                                <p>BlaBlaBlaBla</p>
+                            <div class="updateRow" id="eu5">
+                                <p id="eur51"></p>
+                                <p id="eur52"></p>
+                                <p id="eur53" ></p>
+                                <p id="eur54"></p>
                                 <button class="editButton">Edit</button>
                             </div>
-                            <div class="updateRow">
-                                <p>Bla</p>
-                                <p>BlaBla</p>
-                                <p>BlaBlaBla</p>
-                                <p>BlaBlaBlaBla</p>
+                            <div class="updateRow" id="eu6">
+                                <p id="eur61"></p>
+                                <p id="eur62"></p>
+                                <p id="eur63" ></p>
+                                <p id="eur64"></p>
                                 <button class="editButton">Edit</button>
                             </div>
-                            <div class="updateRow">
-                                <p>Bla</p>
-                                <p>BlaBla</p>
-                                <p>BlaBlaBla</p>
-                                <p>BlaBlaBlaBla</p>
+                            <div class="updateRow" id="eu7">
+                                <p id="eur71"></p>
+                                <p id="eur72"></p>
+                                <p id="eur73" ></p>
+                                <p id="eur74"></p>
                                 <button class="editButton">Edit</button>
                             </div>
-                            <div class="updateRow">
-                                <p>Bla</p>
-                                <p>BlaBla</p>
-                                <p>BlaBlaBla</p>
-                                <p>BlaBlaBlaBla</p>
+                            <div class="updateRow" id="eu8">
+                                <p id="eur81"></p>
+                                <p id="eur82"></p>
+                                <p id="eur83" ></p>
+                                <p id="eur84"></p>
                                 <button class="editButton">Edit</button>
                             </div>
-                            <div class="updateRow">
-                                <p>Bla</p>
-                                <p>BlaBla</p>
-                                <p>BlaBlaBla</p>
-                                <p>BlaBlaBlaBla</p>
+                            <div class="updateRow" id="eu9">
+                                <p id="eur91"></p>
+                                <p id="eur92"></p>
+                                <p id="eur93" ></p>
+                                <p id="eur94"></p>
                                 <button class="editButton">Edit</button>
                             </div>
-                            <div class="updateRow">
-                                <p>Bla</p>
-                                <p>BlaBla</p>
-                                <p>BlaBlaBla</p>
-                                <p>BlaBlaBlaBla</p>
+                            <div class="updateRow" id="eu10">
+                                <p id="eur101"></p>
+                                <p id="eur102"></p>
+                                <p id="eur103" ></p>
+                                <p id="eur104"></p>
                                 <button class="editButton">Edit</button>
                             </div>
-                            <div class="updateRow">
-                                <p>Bla</p>
-                                <p>BlaBla</p>
-                                <p>BlaBlaBla</p>
-                                <p>BlaBlaBlaBla</p>
+                            <div class="updateRow" id="eu11">
+                                <p id="eur111"></p>
+                                <p id="eur112"></p>
+                                <p id="eur113" ></p>
+                                <p id="eur114"></p>
                                 <button class="editButton">Edit</button>
                             </div>
-                            <div class="updateRow">
-                                <p>Bla</p>
-                                <p>BlaBla</p>
-                                <p>BlaBlaBla</p>
-                                <p>BlaBlaBlaBla</p>
+                            <div class="updateRow" id="eu12">
+                                <p id="eur121"></p>
+                                <p id="eur122"></p>
+                                <p id="eur123" ></p>
+                                <p id="eur124"></p>
                                 <button class="editButton">Edit</button>
                             </div>
-                            <div class="updateRow">
-                                <p>Bla</p>
-                                <p>BlaBla</p>
-                                <p>BlaBlaBla</p>
-                                <p>BlaBlaBlaBla</p>
+                            <div class="updateRow" id="eu13">
+                                <p id="eur131"></p>
+                                <p id="eur132"></p>
+                                <p id="eur133" ></p>
+                                <p id="eur134"></p>
                                 <button class="editButton">Edit</button>
                             </div>
-                            <div class="updateRow">
-                                <p>Bla</p>
-                                <p>BlaBla</p>
-                                <p>BlaBlaBla</p>
-                                <p>BlaBlaBlaBla</p>
+                            <div class="updateRow" id="eu14">
+                                <p id="eur141"></p>
+                                <p id="eur142"></p>
+                                <p id="eur143" ></p>
+                                <p id="eur144"></p>
                                 <button class="editButton">Edit</button>
                             </div>
-                            <div class="updateRow">
-                                <p>Bla</p>
-                                <p>BlaBla</p>
-                                <p>BlaBlaBla</p>
-                                <p>BlaBlaBlaBla</p>
+                            <div class="updateRow" id="eu15">
+                                <p id="eur151"></p>
+                                <p id="eur152"></p>
+                                <p id="eur153" ></p>
+                                <p id="eur154"></p>
                                 <button class="editButton">Edit</button>
                             </div>
                         </div>
