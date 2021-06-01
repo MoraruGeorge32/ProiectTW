@@ -251,4 +251,17 @@ function decreasePage() {
     provideEvents(parseInt(num_page));
   }
 }
+function redirectToEditPage(idBtn){
+  let idEvent=document.getElementById(idBtn).getElementsByTagName("p")[0].textContent;
+  alert(idEvent);
+  let urlToController="../../controllers/requestEditPage.php?idEvent="+idEvent;
+  fetch(urlToController)
+    .then(status)
+    .then(response=>response.text())
+    .then(resp=>{console.log(resp); window.location.href = resp;})
+    .catch(error=>console.log(error));
+    //the fetch will provide to us the link to the specific page where the user will edit the inputs
+    //the inputs will be populated by default from the js (the whole link is provided in the response from the controller)
+    //la body la pagina aia din url trebuie sa avem onload="numeFunctiePopulare"
+}
 

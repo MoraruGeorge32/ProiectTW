@@ -1,10 +1,10 @@
 <?php
     
-    $dbconn = new mysqli("localhost", "Robert", "robert", "globalterrorismdb");
+    $dbconn = new mysqli("localhost", "root", "", "terrorismdatabase");
     if($dbconn->connect_error) {
         exit('Could not connect');
       }
-    $sql = "SELECT eventid, iyear, imonth, iday, country_txt FROM globalterrorismdb_0718dist ORDER BY eventid LIMIT ?";
+    $sql = "SELECT eventid, iyear, imonth, iday, country_txt FROM terro_events ORDER BY eventid LIMIT ?";
     $stmt = $dbconn->prepare($sql);
     $stmt->bind_param("i", $_GET['counter']);
     $stmt->execute();

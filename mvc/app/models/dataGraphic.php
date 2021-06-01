@@ -48,9 +48,9 @@ class DataGraphic
                 //per year
                 $countvalues = 0;
                 $resultCount = 0;
-                $stmt->bind_param("sd", $currentCountry, $year);
-                $stmt->execute();
-                $stmt->bind_result($resultCount);
+                $stmt->bind_param("sd", $currentCountry, $year); // completezi query-ul
+                $stmt->execute();// executi query-ul
+                $stmt->bind_result($resultCount); //rez obtinut de la fetch il voi prelua din $resultCount
                 while ($stmt->fetch()) {
                     $countvalues = $countvalues + $resultCount;
                 }

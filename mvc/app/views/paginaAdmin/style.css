@@ -12,8 +12,9 @@ html, body {
     width: 100%;
     height: 100%;
 }
-.labels, .updateRow{
+#labels, .updateRow{
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
 }
 
@@ -194,7 +195,7 @@ html, body {
 }
 
 #updateEvent{
-   /* display: flex; */
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;

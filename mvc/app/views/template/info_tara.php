@@ -1,7 +1,7 @@
 <?php
 function tara_detalii($tara)
 {
-    libxml_clear_errors();
+libxml_clear_errors();
     libxml_use_internal_errors(true);
     $path = "https://ro.wikipedia.org/wiki/" . $tara;
     $domTree = new DOMDocument();
