@@ -18,7 +18,7 @@
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   </head>
-  <body>
+  <body onload="getListCountries()">
     <nav class="navbar">
       <a href="../homePage/home.html">
         <img src="../img/logo.png" alt="logo aplicație" />
@@ -28,108 +28,106 @@
       </form>
     </nav>
 
-<div class="mapFormBackground">
-    <div class="formStatistici">
-    <form method="GET">
-      <div id="listaTari" class="ListaTari">
-        <input type="radio" id="regiuni" name="choice" value="regiuni">
-        <label for="Regiuni">Regiuni</label>
-        <input type="radio" id="tari" name="choice" value="tari">
-        <label for="Tari">Tari</label>
-        <div id="regiuniDrop">
-            <form>
-                <div class="multiselect">
-                  <div class="selectBox" onclick="showCheckboxes()">
-                    <select>
-                      <option>Select an option</option>
-                    </select>
-                    <div class="overSelect"></div>
-                  </div>
-                  <div id="checkboxes">
-                    <label for="one">
-                      <input type="checkbox" id="one" />First checkbox</label>
-                    <label for="two">
-                      <input type="checkbox" id="two" />Second checkbox</label>
-                    <label for="three">
-                      <input type="checkbox" id="three" />Third checkbox</label>
-                  </div>
-                </div>
-              </form>
-        </div>
-        <div id="tariDrop">
-            <select >
+    <div class="mapFormBackground">
+      <div class="formStatistici">
+        <form method="GET">
+          <div id="listaStats" class="ListaStats">
+            <input type="radio" id="regiuni" name="choice"
+              onclick="setForRegions()" value="regiuni">
+            <label for="Regiuni">Regiuni</label>
+            <input type="radio" id="tari" name="choice" value="tari"
+              onclick="setForCountries()">
+            <label for="Tari">Tari</label>
 
-            </select>
-        </div>
-        <br>
-      </div>
-      <label for="listaStatistici">
-        Selectați o statistică pentru a o vizualiza
-      </label>
-      <select id="listaStatistici" name="tipStatistica">
-        <option value="numarDecese">Număr decese</option>
-        <option value="numarAtacuri">Număr atacuri</option>
-        <option value="numarRaniti">Număr răniți</option>
-      </select>
-      <br>
-      <label for="perioadaCalculStatistica">Selectați o perioadă</label>
-      <select id="perioadaCalculStatistica" name="perioadaStatistica">
-        <option value="5">5 ani</option>
-        <option value="10">10 ani</option>
-        <option value="15">15 ani</option>
-        <option value="20">20 ani</option>
-        <option value="25">25 ani</option>
-        <option value="30">30 ani</option>
-        <option value="35">35 ani</option>
-        <option value="40">40 ani</option>
-        <option value="45">45 ani</option>
-      </select>
-      <br>
-      <label for="tipRedare">Selectați un tip de redare</label>
-      <select id="tipRedare" name="tipRedare">
-        <option value="grafic2D">Grafică</option>
-        <option value="tabel">Tabelar</option>
-        <option value="barChart">Cu coloane</option>
-      </select>
-      <br>
-      <button type="button" onclick="showStats()">apasa</button>
+
+            <div class="countries">
+              <button type="button" onclick="adaugaInputTari()">Adauga tara</button>
+            </div>
+
+
+            <div class="regions">
+              <button type="button" onclick="adaugaInputRegiuni()">Adauga regiune</button>
+            </div>
+
+
+
+            <br>
+          </div>
+          <label for="tipStatistica">
+            Selectați o statistică pentru a o vizualiza
+          </label>
+          <select id="listaStatistici" name="tipStatistica">
+            <option value="numarDecese">Număr decese</option>
+            <option value="numarAtacuri">Număr atacuri</option>
+            <option value="numarRaniti">Număr răniți</option>
+          </select>
+          <br>
+          <!-- <label for="perioadaCalculStatistica">Selectați o perioadă</label>
+          <select id="perioadaCalculStatistica" name="perioadaStatistica">
+            <option value="5">5 ani</option>
+            <option value="10">10 ani</option>
+            <option value="15">15 ani</option>
+            <option value="20">20 ani</option>
+            <option value="25">25 ani</option>
+            <option value="30">30 ani</option>
+            <option value="35">35 ani</option>
+            <option value="40">40 ani</option>
+            <option value="45">45 ani</option>
+          </select> -->
+          <div class="perioada">
+            <label for="beginYear">De la</label>
+            <input value="1970" type="number" min="1970" max="2017"
+              name="beginYear" id="infYear">
+            <label for="lastYear">Pana la</label>
+            <input value="2017" type="number" min="1970" max="2017"
+              name="lastYear" id="supYear">
+          </div>
+          <br>
+          <label for="tipRedare">Selectați un tip de redare</label>
+          <select id="tipRedare" name="tipRedare">
+            <option value="grafic2D">Grafică</option>
+            <option value="tabel">Tabelar</option>
+            <option value="barChart">Cu coloane</option>
+          </select>
+          <br>
+          <button type="button" onclick="showStats()">apasa</button>
         </form>
-    </div>
-    <div>
+      </div>
+      <div id="drawHere">
 
+      </div>
     </div>
-</div>    
 
-  <footer class="footer">
-    <div class="footer-title">
-      <p>Contact</p>
-    </div>
-    <hr />
-    <div class="footer-team">
-      <div class="Vlad">
-        <p>Anghelus Ionut-Vlad</p>
-        <p>" Best day ever! "</p>
-        <div class="icons">
-          <i class="fa fa-facebook-f"></i>
-          <i class="fa fa-instagram"></i>
-        </div>
+    <footer class="footer">
+      <div class="footer-title">
+        <p>Contact</p>
       </div>
-      <div class="Robert">
-        <p>Musteata Robert-Andrei</p>
-        <p>" Live high and expect higher! "</p>
-        <div class="icons">
-          <i class="fa fa-facebook-f"></i>
-          <i class="fa fa-instagram"></i>
+      <hr />
+      <div class="footer-team">
+        <div class="Vlad">
+          <p>Anghelus Ionut-Vlad</p>
+          <p>" Best day ever! "</p>
+          <div class="icons">
+            <i class="fa fa-facebook-f"></i>
+            <i class="fa fa-instagram"></i>
+          </div>
         </div>
-      </div>
-      <div class="George">
-        <p>Moraru George</p>
-        <p>" Live the moment! "</p>
-        <div class="icons">
-          <i class="fa fa-facebook-f"></i>
-          <i class="fa fa-instagram"></i>
+        <div class="Robert">
+          <p>Musteata Robert-Andrei</p>
+          <p>" Live high and expect higher! "</p>
+          <div class="icons">
+            <i class="fa fa-facebook-f"></i>
+            <i class="fa fa-instagram"></i>
+          </div>
         </div>
-      </div>
-    </footer>
-  </body>
+        <div class="George">
+          <p>Moraru George</p>
+          <p>" Live the moment! "</p>
+          <div class="icons">
+            <i class="fa fa-facebook-f"></i>
+            <i class="fa fa-instagram"></i>
+          </div>
+        </div>
+      </footer>
+    </body>
   </html>

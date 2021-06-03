@@ -3,7 +3,7 @@
 require_once "../Utilitati/Conexiune.php";
 class DataGraphic
 {
-    public static function getData($requestData)
+    public static function getData($requestData,$valuesCount,$searchedColumn)
     {
         /*
         ce am nevoie sa intorc:
@@ -30,21 +30,21 @@ class DataGraphic
         }
         //$dbconn = new mysqli("localhost", "Robert", "robert", "terrorismdatabase");
         $dbconn=getConnection();
-        $stmt = $dbconn->prepare("select ".$column." from terro_events where country_txt=? and iyear = ?");
+        $stmt = $dbconn->prepare("select ".$column." from terro_events where ".$searchedColumn."=? and iyear = ?");
         /*
         alta idee
         se selectez coloana cu numarul si anul pentru iyear >=2017-interval */
-        $numartari = $requestData['numarTari'];
-        $currentYear = 2017;
-        $interval = $requestData['perioadaStatistica'];
+        $numarlocatii = $valuesCount;
+        $beginYear=$requestData['beginYear'];
+        $lastYear=$requestData['lastYear'];
 
         $sendData = array();
 
-        for ($contor = 1; $contor <= $numartari; $contor++) {
-            //per country
-            $currentCountry = $requestData["tara" . $contor];
+        for ($contor = 1; $contor <= $numarlocatii; $contor++) {
+            //per country   
+            $currentCountry = $requestData["locatie" . $contor];
             $valuesCountry = array();
-            for ($year = $currentYear - $interval; $year <= $currentYear; $year++) {
+            for ($year = $beginYear; $year <= $lastYear; $year++) {
                 //per year
                 $countvalues = 0;
                 $resultCount = 0;

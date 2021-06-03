@@ -15,7 +15,6 @@ function adaugaInput() {
 function status(response) {
     if (response.status >= 200 && response.status < 300) {
         // cererea poate fi rezolvată – fulfill
-        console.log(response);
         return Promise.resolve(response)
     } else {
         // cererea a fost refuzată – reject
@@ -141,8 +140,8 @@ function drawGraphic(data) {
             offsetX: -5
         }
     };
-
-    var chart = new ApexCharts(document.querySelector("#drawHere"), options);
+    console.log(document.querySelector("#chart"))
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
     chart.render();
 }
 
@@ -172,7 +171,7 @@ function drawColumns(data) {
             break;
         }
     }
-    var chart = new CanvasJS.Chart("drawHere", {
+    var chart = new CanvasJS.Chart("chart", {
         animationEnabled: true,
         theme: "light2",
         title: {

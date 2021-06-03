@@ -22,7 +22,9 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-
+#drawHere{
+    width: 100%;
+}
 #numarTari{
     display: none;
 }
@@ -52,7 +54,9 @@ body {
     text-align: center;
     align-items: center;
 }
-
+.countries,.regions{
+    display: none;
+}
 
 .formStatistici select{
     width: 80%;
