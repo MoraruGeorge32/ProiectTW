@@ -41,12 +41,13 @@
 
 
             <div class="countries">
-              <button type="button" onclick="adaugaInputTari()">Adauga tara</button>
+              <button type="button" onclick="adaugaInputTari()" class="addBtn">Adauga tara</button>
             </div>
 
 
             <div class="regions">
-              <button type="button" onclick="adaugaInputRegiuni()">Adauga regiune</button>
+              <button type="button" onclick="adaugaInputRegiuni()" class="addBtn">Adauga
+                regiune</button>
             </div>
 
 
@@ -62,18 +63,6 @@
             <option value="numarRaniti">Număr răniți</option>
           </select>
           <br>
-          <!-- <label for="perioadaCalculStatistica">Selectați o perioadă</label>
-          <select id="perioadaCalculStatistica" name="perioadaStatistica">
-            <option value="5">5 ani</option>
-            <option value="10">10 ani</option>
-            <option value="15">15 ani</option>
-            <option value="20">20 ani</option>
-            <option value="25">25 ani</option>
-            <option value="30">30 ani</option>
-            <option value="35">35 ani</option>
-            <option value="40">40 ani</option>
-            <option value="45">45 ani</option>
-          </select> -->
           <div class="perioada">
             <label for="beginYear">De la</label>
             <input value="1970" type="number" min="1970" max="2017"
@@ -93,8 +82,11 @@
           <button type="button" onclick="showStats()">apasa</button>
         </form>
       </div>
-      <div id="drawHere">
+      <div class="wrapperDrawMe">
 
+        <div id="drawHere">
+
+        </div>
       </div>
     </div>
 

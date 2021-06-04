@@ -12,7 +12,7 @@ function adaugaInputTari() {
 
   selectCountry.setAttribute("name", "tara" + contor);
   selectCountry.setAttribute("id", "tara" + contor);
-  selectReg.setAttribute("id", "Regiune" + contor);
+  selectReg.setAttribute("id", "RegiuneTara" + contor);
 
   adaugaOptionsReg(selectReg.id);
   selectReg.setAttribute("onchange", "setCountriesSelect(value," + selectCountry.id + ")");
@@ -21,20 +21,47 @@ function adaugaInputTari() {
   DIV.style.display = "inherit";
   contor++;
 }
+//poate mai bine ii sa creez ambele butoane global
+//in acelasi timp nu poate fi chiar ok cand sterg
+function createButton(content,action){
+  let btn=document.createElement("button");
+  btn.setAttribute("class","addBtn");
+  btn.setAttribute("type","button");
+  btn.setAttribute("onclick",action);
+  btn.textContent=content;
+  return btn;
+}
 function setForRegions() {
   //also reset the other div content and the data
   contor = 1;
-  document.getElementsByClassName("countries")[0].style.display = "none";
-  document.getElementsByClassName("regions")[0].style.display = "block";
+  let tari = document.getElementsByClassName("countries")[0];
+  let regiuni = document.getElementsByClassName("regions")[0];
+  console.log(tari);
+  console.log(regiuni);
+  regiuni.style.display = "block";
+  tari.style.display = "none";
+  let btn=createButton("Adauga Tari","adaugaInputTari()");
+  while (tari.firstChild) {
+    console.log(tari.childNodes);
+      tari.removeChild(tari.firstChild);
+  }
+  tari.appendChild(btn);
 }
 function setForCountries() {
   //also reset the other div content and the data
   contor = 1;
-  document.getElementsByClassName("countries")[0].style.display = "block";
-  document.getElementsByClassName("regions")[0].style.display = "none";
+  let tari = document.getElementsByClassName("countries")[0];
+  let regiuni = document.getElementsByClassName("regions")[0];
+  tari.style.display = "block";
+  regiuni.style.display = "none";
+  let btn=createButton("Adauga Regiuni","adaugaInputRegiuni()");
+  while (regiuni.firstChild) {
+    regiuni.removeChild(regiuni.firstChild);
+  }
+  regiuni.appendChild(btn);
 }
 
-function adaugaInputRegiuni(){
+function adaugaInputRegiuni() {
   var DIV = document.getElementsByClassName("regions")[0];
   var selectReg = document.createElement("select");
 
@@ -42,6 +69,7 @@ function adaugaInputRegiuni(){
   DIV.appendChild(selectReg);
   DIV.appendChild(BR);
   selectReg.setAttribute("id", "Regiune" + contor);
+  selectReg.setAttribute("name", "Regiune" + contor);
 
   adaugaOptionsReg(selectReg.id);
 
@@ -106,7 +134,8 @@ function setCountriesSelect(nume_reg, countrySelect) {
 function parseParamsStats() {
   var params = "";
   if (document.getElementById("tari").checked) {
-
+    console.log(tari);
+    params = "";
     params = params + "numarTari=" + (contor - 1);
     let i = 1;
     for (i = 1; i < contor; i++) {
@@ -115,6 +144,7 @@ function parseParamsStats() {
 
   }
   else {
+    params = "";
     params = params + "numarRegiuni=" + (contor - 1);
     let i = 1;
     for (i = 1; i < contor; i++) {
@@ -354,21 +384,30 @@ async function showStats() {
   // await fetch("../../controllers/statisticiController.php?" + paramURL)
   // .then(res=>res.text())
   // .then(resT=>console.log(resT));
+
+  //reseting the drawMe Div
   console.log(data);
-  let draw=document.getElementById("drawHere");
-  while(draw.firstChild){
+  let draw = document.getElementById("drawHere");
+  let parent = draw.parentNode;
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+  draw = document.createElement("div");
+  draw.id = "drawHere";
+  parent.appendChild(draw);
+
+
+  while (draw.firstChild) {
     draw.removeChild(draw.firstChild);
   }
   switch (document.getElementById('tipRedare').value) {
     case 'barChart': {
       document.getElementById("drawHere").style.backgroundColor = "white";
-      document.getElementById("drawHere").innerHTML = "";
       drawColumns(data);
       break;
     }
     case 'grafic2D': {
       document.getElementById("drawHere").style.backgroundColor = "white";
-      document.getElementById("drawHere").innerHTML = "";
       drawGraphic(data);
       break;
     }
