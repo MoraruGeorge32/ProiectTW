@@ -8,11 +8,13 @@
 
 include_once "../models/dataBarChart.php";
 include_once "../models/dataGraphic.php";
+include_once "../models/scatterDataChart.php";
 
 class statisticiController
 {
-    public  $dataPoints = array();
-    public  $dataGraphic = array();
+    public $dataPoints = array();
+    public $dataGraphic = array();
+    public $dataArea = array();
     public $numarlocatii = 0;
     public $column = "";
     public  function __construct()
@@ -34,12 +36,16 @@ class statisticiController
                     $this->dataGraphicStats();
                     break;
                 }
-            case 'tabel': {
-                    //$obs=["text"=>"nope"];
-                    //echo json_encode($obs);
+            case 'scatter': {
+                    $this->dataScatter();
                     break;
                 }
         }
+    }
+    public function dataScatter()
+    {
+        $this->dataPolarArea=DataScatter::getData($_GET, $this->numarlocatii, $this->column);
+        echo json_encode($this->dataPolarArea,JSON_NUMERIC_CHECK);
     }
     public function dataBarChartStats()
     {
@@ -48,7 +54,7 @@ class statisticiController
     }
     public function dataGraphicStats()
     {
-        $this->dataGraphic = DataGraphic::getData($_GET,$this->numarlocatii, $this->column);
+        $this->dataGraphic = DataGraphic::getData($_GET, $this->numarlocatii, $this->column);
         echo json_encode($this->dataGraphic);
     }
 }

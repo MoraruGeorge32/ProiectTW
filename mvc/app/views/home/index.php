@@ -1,1 +1,0 @@
-Hello this is the view <?=$data['name']?>

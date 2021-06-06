@@ -1,6 +1,7 @@
 <?php
 
-include "../app/Utilitati/Conexiune.php";class DataBarChart
+include "../app/Utilitati/Conexiune.php";
+class DataBarChart
 {
     public static function getData($dataToProcess)
     {
@@ -55,9 +56,10 @@ include "../app/Utilitati/Conexiune.php";class DataBarChart
     }
 }
 
+
 class DataGraphic
 {
-    public static function getData($requestData)
+    public static function getData($requestData,$valuesCount,$searchedColumn)
     {
         /*
         ce am nevoie sa intorc:
@@ -65,8 +67,9 @@ class DataGraphic
         anii pentru axa Ox (pt fiecare an si pt fiecare tara este cate un numar de incidente)  ---> pt xaxis in js
 
 
-        select nkill from terro_events where country_txt='China' and iyear = 1994
+        select nkill from terro_events where country_txt='China' and iyear = 1994 //exmaple
         */
+        var_dump($requestData);
         $column = "";
         switch ($requestData['tipStatistica']) {
             case 'numarDecese': {
@@ -83,27 +86,27 @@ class DataGraphic
                 }
         }
         //$dbconn = new mysqli("localhost", "Robert", "robert", "terrorismdatabase");
-        $dbconn = getConnection();
-        $stmt = $dbconn->prepare("select " . $column . " from terro_events where country_txt=? and iyear = ?");
+        $dbconn=getConnection();
+        $stmt = $dbconn->prepare("select ".$column." from terro_events where ".$searchedColumn."=? and iyear = ?");
         /*
         alta idee
         se selectez coloana cu numarul si anul pentru iyear >=2017-interval */
-        $numartari = $requestData['numarTari'];
-        $beginYear = $requestData['beginYear'];
-        $lastYear = $requestData['lastYear'];
+        $numarlocatii = $valuesCount;
+        $beginYear=$requestData['beginYear'];
+        $lastYear=$requestData['lastYear'];
 
         $sendData = array();
 
-        for ($contor = 1; $contor <= $numartari; $contor++) {
-            //per country
-            $currentCountry = $requestData["tara" . $contor];
+        for ($contor = 1; $contor <= $numarlocatii; $contor++) {
+            //per country   
+            $currentCountry = $requestData["locatie" . $contor];
             $valuesCountry = array();
             for ($year = $beginYear; $year <= $lastYear; $year++) {
                 //per year
                 $countvalues = 0;
                 $resultCount = 0;
                 $stmt->bind_param("sd", $currentCountry, $year); // completezi query-ul
-                $stmt->execute(); // executi query-ul
+                $stmt->execute();// executi query-ul
                 $stmt->bind_result($resultCount); //rez obtinut de la fetch il voi prelua din $resultCount
                 while ($stmt->fetch()) {
                     $countvalues = $countvalues + $resultCount;
@@ -118,9 +121,65 @@ class DataGraphic
         return $sendData;
     }
 }
+class DataScatter
+{
+    public static function getData($requestData, $countLocs, $column)
+    {
+        //column is the search column exactly  country_txt or region_txt
+        $numarlocatii = $countLocs;
+        $dataForChart = array();
+        //$dbconn = new mysqli("localhost", "Robert", "robert", "terrorismdatabase");
+        $dbconn = getConnection();
+        $stmt = '';
+        $beginYear = $requestData['beginYear'];
+        $lastYear = $requestData['lastYear'];
+        $count = 0;
+        $year = "";
+        $month = "";
+        $day = "";
+        switch ($requestData['tipStatistica']) {
+            case 'numarDecese': {
+                    $stmt = $dbconn->prepare("SELECT sum(nkill),iyear,imonth,iday FROM `terro_events` WHERE "
+                    . $column . "=? AND iyear>=" . $beginYear . " AND iyear<=" . $lastYear 
+                    . " GROUP BY iyear,imonth,iday HAVING sum(nkill)>0");
+                    break;
+                }
+            case 'numarAtacuri': {
+                    $stmt = $dbconn->prepare("SELECT count(*),iyear,imonth,iday FROM `terro_events` WHERE "
+                        . $column . "=? AND iyear>=" . $beginYear . " AND iyear<=" . $lastYear 
+                        . " GROUP BY iyear,imonth,iday");
+                    break;
+                }
+            case 'numarRaniti': {
+                    $stmt = $dbconn->prepare("select sum(nwound),iyear,imonth,iday from terro_events where "
+                        . $column . "=? and iyear >= " . $beginYear . " and iyear<= " . $lastYear 
+                        ." group by iyear,imonth,iday HAVING sum(nwound)>0");
+                    break;
+                }
+        }
+        if($stmt===false){
+            echo $dbconn->error;
+            die("murim cu gratie. Eroare de conectare la baza de date");
+        }
+        for ($i = 1; $i <= $numarlocatii; $i++) {
+            $currentLocation = $requestData["locatie" . $i];
+            $dataValue = array();
+            $stmt->bind_param("s", $currentLocation);
+            $stmt->execute();
+            $stmt->bind_result($count, $year, $month, $day);
+            while ($stmt->fetch()) {
+                array_push($dataValue, array($year . "-" . $month . "-" . $day, $count));//standard format
+            }
+            array_push($dataForChart, array("name"=>$currentLocation,"data"=> $dataValue));
+        }
+        return( $dataForChart);
+    }
+}
+
 //$requestData=["numarTari"=>4,"tara1"=>"Romania","tara2"=>"Hungary","tara3"=>"Italy","tara4"=>"Ucraina","perioadaStatistica"=>15,"tipStatistica"=>"numarDecese"];
-$requestData = ["numarTari" => 1, "tara1" => "China", "perioadaStatistica" => 15, "tipStatistica" => "numarDecese", "beginYear" => 2005, "lastYear" => 2017];
-var_dump(DataBarChart::getData($requestData));
+$requestData = ["numarTari" => 3, "locatie1" => "Mexico", "perioadaStatistica" => 15, "tipStatistica" => "numarDecese", "beginYear" => 2010, "lastYear" => 2012];
+$bigData=["numarTari"=>3,"locatie1"=>"Mexico","locatie2"=>"Canada","locatie3"=>"United States","tipStatistica" => "numarDecese", "beginYear" => 1970, "lastYear" => 2017];
+var_dump(DataGraphic::getData($bigData,3,'country_txt'));
 //var_dump(DataGraphic::getData($requestData));
 //numarTari=4&tara1=Romania&tara2=Hungary&tara3=Italy&tara4=Germany&tipStatistica=numarDecese&perioadaStatistica=15&tipRedare=barChart
 /*

@@ -4,7 +4,6 @@ class DataBarChart
 {
     public static function getData($dataToProcess, $valuesCount, $column)
     {
-
         $numarlocatii = $valuesCount;
         $contor = 1;
         $dataPoints = array();

@@ -1,5 +1,6 @@
 var contor = 1;
 var counter = 5;
+window.onload(provideEvents(1));
 function setNumberEvents(value) {
   /* functie cu rol in setarea numarului de evenimente arata unui administrator */
   counter = parseInt(value);
@@ -78,6 +79,7 @@ function arataModificaEveniment() {
   document.getElementById("formAddEvent").style.display = "none";
   document.getElementById("updateEvent").style.display = "block";
   document.getElementById("removeEvent").style.display = "none";
+  provideEvents(1);
 }
 
 function cfunction(response, start) {
@@ -180,7 +182,7 @@ async function sendDataAdd() {
       data[input.name] = input.value;
     }
     else if (input.tagName === "SELECT" || input.tagName === "select") {
-      data[input.name] = input.value;
+      data[input.name] = input.value==="da"?1:0;
     }
   }
 
@@ -200,6 +202,7 @@ async function sendDataAdd() {
     .then(res => res.json())
     .then(resJson => {
       console.log(resJson);//afisare mesaj daca s-a reusit sau nu plus motivul daca s-a reusit sau nu
+      alert(resJson);
     })
     .catch(error => console.log(error));
 }

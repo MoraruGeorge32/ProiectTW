@@ -41,12 +41,14 @@
 
 
             <div class="countries">
-              <button type="button" onclick="adaugaInputTari()" class="addBtn">Adauga tara</button>
+              <button type="button" onclick="adaugaInputTari()" class="addBtn">Adauga
+                tara</button>
             </div>
 
 
             <div class="regions">
-              <button type="button" onclick="adaugaInputRegiuni()" class="addBtn">Adauga
+              <button type="button" onclick="adaugaInputRegiuni()"
+                class="addBtn">Adauga
                 regiune</button>
             </div>
 
@@ -62,6 +64,18 @@
             <option value="numarAtacuri">Număr atacuri</option>
             <option value="numarRaniti">Număr răniți</option>
           </select>
+          <p>Selectati filtre pentru a realiza chart-urile</p>
+          <div class="checkboxexFilter">
+            <input type="checkbox" value="Succesed" name="filterSucces">
+            <label for="filterSucces">Evenimente cu succes</label>
+            <br>
+            <input type="checkbox" value="Extended" name="filterExtend">
+            <label for="filterExtend">Evenimente extinse</label>
+            <br>
+            <input type="checkbox" value="Suicide" name="filterSuicide">
+            <label for="filterSuicide">Evenimente ce au reprezentat sucicid</label>
+            <br>
+          </div>
           <br>
           <div class="perioada">
             <label for="beginYear">De la</label>
@@ -74,14 +88,15 @@
           <br>
           <label for="tipRedare">Selectați un tip de redare</label>
           <select id="tipRedare" name="tipRedare">
-            <option value="grafic2D">Grafică</option>
-            <option value="tabel">Tabelar</option>
-            <option value="barChart">Cu coloane</option>
+            <option value="grafic2D">Line chart</option>
+            <option value="scatter">Scatter area chart</option>
+            <option value="barChart">Columns chart</option>
           </select>
           <br>
           <button type="button" onclick="showStats()">apasa</button>
         </form>
       </div>
+      <!--This div is used for containing the charts and deleting them when another one is created-->
       <div class="wrapperDrawMe">
 
         <div id="drawHere">

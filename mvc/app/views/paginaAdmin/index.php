@@ -1,5 +1,5 @@
 <?php
-include 'verifica_provinienta.php';
+require_once "../../Utilitati/verifica_provinienta.php"
 ?>
 <!DOCTYPE html>
 <html lag="ro">

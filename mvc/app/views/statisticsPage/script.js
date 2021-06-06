@@ -23,12 +23,12 @@ function adaugaInputTari() {
 }
 //poate mai bine ii sa creez ambele butoane global
 //in acelasi timp nu poate fi chiar ok cand sterg
-function createButton(content,action){
-  let btn=document.createElement("button");
-  btn.setAttribute("class","addBtn");
-  btn.setAttribute("type","button");
-  btn.setAttribute("onclick",action);
-  btn.textContent=content;
+function createButton(content, action) {
+  let btn = document.createElement("button");
+  btn.setAttribute("class", "addBtn");
+  btn.setAttribute("type", "button");
+  btn.setAttribute("onclick", action);
+  btn.textContent = content;
   return btn;
 }
 function setForRegions() {
@@ -40,10 +40,10 @@ function setForRegions() {
   console.log(regiuni);
   regiuni.style.display = "block";
   tari.style.display = "none";
-  let btn=createButton("Adauga Tari","adaugaInputTari()");
+  let btn = createButton("Adauga Tari", "adaugaInputTari()");
   while (tari.firstChild) {
     console.log(tari.childNodes);
-      tari.removeChild(tari.firstChild);
+    tari.removeChild(tari.firstChild);
   }
   tari.appendChild(btn);
 }
@@ -54,7 +54,7 @@ function setForCountries() {
   let regiuni = document.getElementsByClassName("regions")[0];
   tari.style.display = "block";
   regiuni.style.display = "none";
-  let btn=createButton("Adauga Regiuni","adaugaInputRegiuni()");
+  let btn = createButton("Adauga Regiuni", "adaugaInputRegiuni()");
   while (regiuni.firstChild) {
     regiuni.removeChild(regiuni.firstChild);
   }
@@ -164,10 +164,10 @@ function parseParamsStats() {
 function status(response) {
   if (response.status >= 200 && response.status < 300) {
     // cererea poate fi rezolvată – fulfill
-    console.log(response);
     return Promise.resolve(response)
   } else {
     // cererea a fost refuzată – reject
+    console.log(response.text());
     return Promise.reject(new Error(response.statusText))
   }
 }
@@ -214,7 +214,7 @@ function drawGraphic(data) {
   var options = {
     series: data,
     chart: {
-      height: 700,
+      height: 'auto',
       type: 'line',
       dropShadow: {
         enabled: true,
@@ -277,6 +277,84 @@ function drawGraphic(data) {
   chart.render();
 }
 
+function drawScatterChart(data) {
+  let typeStat = "";
+  switch (document.getElementById("listaStatistici").value) {
+    case 'numarDecese': {
+      typeStat = "Evolutie numar decese";
+      break;
+    }
+    case 'numarAtacuri': {
+      typeStat = "Evolutie numar atacuri";
+      break;
+    }
+    case 'numarRaniti': {
+      typeStat = "Evolutie numar raniti";
+      break;
+    }
+    default: {
+      typeStat = "Evolutie numar incidente";
+      break;
+    }
+  }
+  let processedData = [];
+  let maximValue = -1;
+  console.log("----------------------");
+  console.log(data);
+  data.forEach(function (item) {
+    var events = [];
+    item.data.forEach(function (value) {
+      var miliseconds = new Date(value[0]).getTime();
+      if (value[1] > maximValue) maximValue = value[1];
+      events.push([miliseconds, value[1]]);
+    })
+    processedData.push({ name: item.name, data: events });
+  });
+  console.log("+++++++++++++++++++++++++++++++++");
+  console.log(processedData);
+  maximValue += 5;
+
+  let beginYear = document.getElementById("infYear").value;
+  let lastYear = document.getElementById("supYear").value;
+
+  var options = {
+    series: processedData,
+    chart: {
+      height: 'auto',
+      type: 'scatter',
+      zoom: {
+        type: 'xy'
+      },
+      toolbar: {
+        show: true
+      }
+    },
+    dataLabels: {
+      enabled: true
+    },
+    grid: {
+      xaxis: {
+        lines: {
+          show: true
+        }
+      },
+      yaxis: {
+        lines: {
+          show: true
+        }
+      },
+    },
+    xaxis: {
+      type: 'datetime',
+    },
+    yaxis: {
+      max: maximValue
+    }
+  };
+
+  var chart = new ApexCharts(document.querySelector("#drawHere"), options);
+  chart.render();
+}
 
 function drawColumns(data) {
   console.log(data);
@@ -317,7 +395,7 @@ function drawColumns(data) {
     annotations: {
     },
     chart: {
-      height: 600,
+      height: 'auto',
       type: 'bar',
     },
     plotOptions: {
@@ -387,31 +465,25 @@ async function showStats() {
 
   //reseting the drawMe Div
   console.log(data);
-  let draw = document.getElementById("drawHere");
-  let parent = draw.parentNode;
+  let areaDraw = document.createElement("div");
+  areaDraw.id = "drawHere";
+  let parent = document.getElementsByClassName("wrapperDrawMe")[0];
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
   }
-  draw = document.createElement("div");
-  draw.id = "drawHere";
-  parent.appendChild(draw);
-
-
-  while (draw.firstChild) {
-    draw.removeChild(draw.firstChild);
-  }
+  parent.appendChild(areaDraw);
+  parent.style.background = "white";
   switch (document.getElementById('tipRedare').value) {
     case 'barChart': {
-      document.getElementById("drawHere").style.backgroundColor = "white";
       drawColumns(data);
       break;
     }
     case 'grafic2D': {
-      document.getElementById("drawHere").style.backgroundColor = "white";
       drawGraphic(data);
       break;
     }
-    case 'tabel': {
+    case 'scatter': {
+      drawScatterChart(data);
       break;
     }
   }
