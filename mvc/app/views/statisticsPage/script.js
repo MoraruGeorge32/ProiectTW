@@ -148,6 +148,9 @@ function parseParamsStats() {
     params = params + "numarRegiuni=" + (contor - 1);
     let i = 1;
     for (i = 1; i < contor; i++) {
+      if(document.getElementById("Regiune"+i).value==="Central America & Caribbean")
+      params=params+"&locatie"+i+"="+"Central America %26 Caribbean"//escape the & character
+      else
       params = params + "&locatie" + i + "=" + document.getElementById("Regiune" + i).value;
     }
   }
@@ -214,7 +217,7 @@ function drawGraphic(data) {
   var options = {
     series: data,
     chart: {
-      height: 'auto',
+      height: '100%',
       type: 'line',
       dropShadow: {
         enabled: true,
@@ -304,7 +307,7 @@ function drawScatterChart(data) {
   data.forEach(function (item) {
     var events = [];
     item.data.forEach(function (value) {
-      var miliseconds = new Date(value[0]).getTime();
+      var miliseconds = new Date(value[0]).getTime()+86400000;//i added one day because the events were shown for the precedent day
       if (value[1] > maximValue) maximValue = value[1];
       events.push([miliseconds, value[1]]);
     })
@@ -320,7 +323,7 @@ function drawScatterChart(data) {
   var options = {
     series: processedData,
     chart: {
-      height: 'auto',
+      height: '100%',
       type: 'scatter',
       zoom: {
         type: 'xy'
@@ -395,7 +398,7 @@ function drawColumns(data) {
     annotations: {
     },
     chart: {
-      height: 'auto',
+      height: '100%',
       type: 'bar',
     },
     plotOptions: {

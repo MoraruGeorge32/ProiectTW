@@ -39,7 +39,7 @@ class DataScatter
         }
         if ($stmt === false) {
             echo $dbconn->error;
-            die("murim cu gratie. Eroare de conectare la baza de date");
+            die($dbconn->error);
         }
         for ($i = 1; $i <= $numarlocatii; $i++) {
             $currentLocation = $requestData["locatie" . $i];

@@ -3,7 +3,7 @@
 require_once "../Utilitati/Conexiune.php";
 class DataGraphic
 {
-    public static function getData($requestData,$valuesCount,$searchedColumn)
+    public static function getData($requestData, $valuesCount, $searchedColumn)
     {
         /*
         ce am nevoie sa intorc:
@@ -14,47 +14,50 @@ class DataGraphic
         select nkill from terro_events where country_txt='China' and iyear = 1994
         */
         $column = "";
+        $dbconn = getConnection();
+        $numarlocatii = $valuesCount;
+        $beginYear = $requestData['beginYear'];
+        $lastYear = $requestData['lastYear'];
         switch ($requestData['tipStatistica']) {
             case 'numarDecese': {
-                    $column = "nkill";
+                    $stmt = $dbconn->prepare("SELECT sum(nkill),iyear FROM terro_events where "
+                        . $searchedColumn . "=? and iyear >=" . $beginYear . " AND iyear <=" . $lastYear . " GROUP BY iyear");
                     break;
                 }
             case 'numarAtacuri': {
-                    $column = "count(*)";
+                    $stmt = $dbconn->prepare("SELECT count(*),iyear FROM terro_events where "
+                        . $searchedColumn . "=? and iyear >=" . $beginYear . " AND iyear <=" . $lastYear . " GROUP BY iyear");
                     break;
                 }
             case 'numarRaniti': {
-                    $column = "nwound";
+                    $stmt = $dbconn->prepare("SELECT sum(nwound),iyear FROM terro_events where "
+                        . $searchedColumn . "=? and iyear >=" . $beginYear . " AND iyear <=" . $lastYear . " GROUP BY iyear");
                     break;
                 }
         }
         //$dbconn = new mysqli("localhost", "Robert", "robert", "terrorismdatabase");
-        $dbconn=getConnection();
-        $stmt = $dbconn->prepare("select ".$column." from terro_events where ".$searchedColumn."=? and iyear = ?");
         /*
         alta idee
         se selectez coloana cu numarul si anul pentru iyear >=2017-interval */
-        $numarlocatii = $valuesCount;
-        $beginYear=$requestData['beginYear'];
-        $lastYear=$requestData['lastYear'];
 
         $sendData = array();
 
         for ($contor = 1; $contor <= $numarlocatii; $contor++) {
             //per country   
             $currentCountry = $requestData["locatie" . $contor];
+            $year = 1970;
+            $currentYear=$beginYear;
             $valuesCountry = array();
-            for ($year = $beginYear; $year <= $lastYear; $year++) {
-                //per year
-                $countvalues = 0;
-                $resultCount = 0;
-                $stmt->bind_param("sd", $currentCountry, $year); // completezi query-ul
-                $stmt->execute();// executi query-ul
-                $stmt->bind_result($resultCount); //rez obtinut de la fetch il voi prelua din $resultCount
-                while ($stmt->fetch()) {
-                    $countvalues = $countvalues + $resultCount;
+            $countvalues = 0;
+            $stmt->bind_param("s", $currentCountry);
+            $stmt->execute();
+            $stmt->bind_result($countvalues, $year);
+            while ($stmt->fetch()) {
+                for(;$currentYear<$year&&$currentYear<=$lastYear;$currentYear++){
+                    array_push($valuesCountry,0);//filling with 0 for the year that isn't any recorded data
                 }
-                array_push($valuesCountry, $countvalues);
+                $currentYear=$year+1;
+                array_push($valuesCountry,$countvalues);
             }
             array_push($sendData, array("name" => $currentCountry, "data" => $valuesCountry));
         }
