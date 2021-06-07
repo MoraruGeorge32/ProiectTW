@@ -1,6 +1,4 @@
 var COUNTRIES = [
-    "serviciu",
-    "produs",
     "Afghanistan",
     "Albania",
     "Algeria",

@@ -1,5 +1,4 @@
 let contor = 1;
-
 function adaugaInput() {
     document.getElementById("numarTari").setAttribute("value", contor);
     var DIV = document.getElementById("listaTari");
@@ -219,10 +218,4 @@ async function showStats() {
 
         }
     }
-
 }
-function initMap(){
-map = new google.maps.Map(document.getElementById('drawHere'), {
-    center: {lat: -34.397, lng: 150.644},
-    zoom: 8
-  });}

@@ -18,10 +18,12 @@
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="tari.js"></script>
+    <script src="map.js"></script>
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6ibJluJURAnhrpfRX34TWNKqmz_oPEzo&callback=initMap"
       async
     ></script>
+    <script src="https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js"></script>
   </head>
   <body>
     <nav class="navbar">
@@ -35,56 +37,92 @@
 
 
 
-    <div class="mapFormBackground">
+  <div class="mapFormBackground">
       <div class="mapForm1">
-        <div class="formInfo">
-          <!--Buton cerere detalii tari-->
-          <form action="../template/templateInfoTari.php"
-            id="detaliiTara" method="GET">
-            <label> Arătați detalii legate de țara selectată
-              (populație,religii etc.)</label>
-            <input type="submit" value="Cereti detalii">
-          </form>
-
+        <div class="period">
+          <label for="perioada">Selectati o perioada</label>        
+          <input type="number" min="1970" max="2017" name="perioada" id="beginYear">
+          <input type="number" min="1970" max="2017" name="perioada" id="lastYear">
         </div>
-        <div class="formStatistici">
-          <form method="GET">
-            <div id="listaTari" class="ListaTari">
-
-              <input name="numarTari" id="numarTari" />
-              <button type="button" onClick="adaugaInput()">Adaugati o tara</button>
-              <br>
-            </div>
-            <label for="listaStatistici">
-              Selectați o statistică pentru a o vizualiza
-            </label>
-            <select id="listaStatistici" name="tipStatistica">
-              <option value="numarDecese">Număr decese</option>
-              <option value="numarAtacuri">Număr atacuri</option>
-              <option value="numarRaniti">Număr răniți</option>
-            </select>
-            <br>
-            <label for="perioadaCalculStatistica">Selectați o perioadă</label>
-            <select id="perioadaCalculStatistica" name="perioadaStatistica">
-              <option value="5">5 ani</option>
-              <option value="10">10 ani</option>
-              <option value="15">15 ani</option>
-            </select>
-            <br>
-            <label for="tipRedare">Selectați un tip de redare</label>
-            <select id="tipRedare" name="tipRedare">
-              <option value="grafic2D">Grafică</option>
-              <option value="tabel">Tabelar</option>
-              <option value="barChart">Cu coloane</option>
-            </select>
-            <br>
-            <button type="button" onclick="showStats()">apasa</button>
-          </form>
+        <div class="regiune">
+          <select name="Regions">
+            <option value="North America">North America</option>
+            <option value="Central America & Caribbean">Central America & Caribbean</option>
+            <option value="South America">South America</option>
+            <option value="East Asia">East Asia</option>
+            <option value="Southeast Asia">Southeast Asia</option>
+            <option value="South Asia">South Asia</option>
+            <option value="Central Asia">Central Asia</option>
+            <option value="Western Europe">Western Europe</option>
+            <option value="Eastern Europe">Eastern Europe</option>
+            <option value="Middle East & North Africa">Middle East & North Africa</option>
+            <option value="Sub-Saharan Africa">Sub-Saharan Africa</option>
+            <option value="Australasia & Oceania">Australasia & Oceania</option>
+          </select>
         </div>
+        
+        <div class="success">
+            <label for="success">Succeded: </label>
+            <select name="succes">
+              <option>Da</option>
+              <option>Nu</option>
+            </select>
+        </div>
+        <div class="suicide">
+          <label for="suicide">Suicide: </label>
+          <select name="suicide">
+            <option>Da</option>
+            <option>Nu</option>
+          </select>
+        </div>
+      </div>
+      <div class="mapGenerate" id="drawHere">
+          <div class="mapGenerate1" >
+
+          </div>
+      </div>
+  </div>
 
 
 
-        <div class="formIncidentCautare">
+
+    <div class="footer">
+      <div class="footer-title">
+        <p>Contact</p>
+      </div>
+      <hr />
+      <div class="footer-team">
+        <div class="Vlad">
+          <p>Anghelus Ionut-Vlad</p>
+          <p>" Best day ever! "</p>
+          <div class="icons">
+            <i class="fa fa-facebook-f"></i>
+            <i class="fa fa-instagram"></i>
+          </div>
+        </div>
+        <div class="Robert">
+          <p>Musteata Robert-Andrei</p>
+          <p>" Live high and expect higher! "</p>
+          <div class="icons">
+            <i class="fa fa-facebook-f"></i>
+            <i class="fa fa-instagram"></i>
+          </div>
+        </div>
+        <div class="George">
+          <p>Moraru George</p>
+          <p>" Live the moment! "</p>
+          <div class="icons">
+            <i class="fa fa-facebook-f"></i>
+            <i class="fa fa-instagram"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+<!-- <div class="formIncidentCautare">
           <p>Pentru a putea căuta un incident, vă rugăm să selectați dintre
             atributele de mai jos care considerați că au legatură cu atacul</p>
           <form action="researchIncident.php">
@@ -133,54 +171,6 @@
             <input type="checkbox" id="fatalities">
             <label for="fatalities">Număr de cazuri de persoane vătămate</label>
             <br>
-            <!--TODO: adaugat posibile detalii de ales cum ar fi arme folosite, modul in care s-a organizar (retele de socializare, intalniri etc.) etc.-->
-            <input type="submit" name="Submit" />
-          </form>
-        </div>
-      </div>
-      <div class="mapGenerate" id="chart">
-          <div class="mapGenerate1" >
-
-          </div>
-      </div>
-
-
-    </div>
-
-
-
-
-    <div class="footer">
-      <div class="footer-title">
-        <p>Contact</p>
-      </div>
-      <hr />
-      <div class="footer-team">
-        <div class="Vlad">
-          <p>Anghelus Ionut-Vlad</p>
-          <p>" Best day ever! "</p>
-          <div class="icons">
-            <i class="fa fa-facebook-f"></i>
-            <i class="fa fa-instagram"></i>
-          </div>
-        </div>
-        <div class="Robert">
-          <p>Musteata Robert-Andrei</p>
-          <p>" Live high and expect higher! "</p>
-          <div class="icons">
-            <i class="fa fa-facebook-f"></i>
-            <i class="fa fa-instagram"></i>
-          </div>
-        </div>
-        <div class="George">
-          <p>Moraru George</p>
-          <p>" Live the moment! "</p>
-          <div class="icons">
-            <i class="fa fa-facebook-f"></i>
-            <i class="fa fa-instagram"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+             TODO: adaugat posibile detalii de ales cum ar fi arme folosite, modul in care s-a organizar (retele de socializare, intalniri etc.) etc.-->
+            <!-- <input type="submit" name="Submit" />
+          </form> -->
