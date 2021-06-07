@@ -144,6 +144,10 @@ require_once "../../Utilitati/verifica_provinienta.php"
                                         <option value="nu">Nu</option>
                                     </select>
                                     <br>
+                                    <label for="descriere">Descriere</label>
+                                    <br>
+                                    <input value="descriere" type="text" id="summary" name="summary">
+                                    <br>
                                     <label for="type">Tipul eveniment</label>
                                     <br>
                                     <input value="tip" type="text" id="type" name="attacktype1_txt">
