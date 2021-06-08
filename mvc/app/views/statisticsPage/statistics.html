@@ -18,7 +18,7 @@
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   </head>
-  <body onload="getListCountries()">
+  <body onload="getListFilters()">
     <nav class="navbar">
       <a href="../homePage/home.html">
         <img src="../img/logo.png" alt="logo aplicație" />
@@ -55,27 +55,53 @@
 
             <br>
           </div>
-          <label for="tipStatistica">
-            Selectați o statistică pentru a o vizualiza
-          </label>
-          <select id="listaStatistici" name="tipStatistica">
-            <option value="numarDecese">Număr decese</option>
-            <option value="numarAtacuri">Număr atacuri</option>
-            <option value="numarRaniti">Număr răniți</option>
-          </select>
-
 
           <p>Selectati filtre pentru a realiza chart-urile</p>
           <div class="checkboxexFilter">
             <input type="checkbox" value="Succesed" name="filterSucces">
-            <label for="filterSucces">Evenimente cu succes</label>
+            <label for="filterSucces">Dupa succes</label>
             <br>
+            <select id="filtruSucces">
+              <option value="1">Da</option>
+              <option value="0">Nu</option>
+            </select>
+            <br>
+
             <input type="checkbox" value="Extended" name="filterExtend">
-            <label for="filterExtend">Evenimente extinse</label>
+            <label for="filterExtend">Dupa extindere</label>
             <br>
+            <select id="filtruExtend">
+              <option value="1">Mai mult de 24 de ore</option>
+              <option value="0">Mai putin de 24 de ore</option>
+            </select>
+            <br>
+
+
             <input type="checkbox" value="Suicide" name="filterSuicide">
-            <label for="filterSuicide">Evenimente ce au reprezentat sinucidere</label>
+            <label for="filterSuicide">Dupa sinucidere</label>
             <br>
+            <select id="filtruSuicid">
+              <option value="1">Evenimentul a fost sinucidere</option>
+              <option value="0">Evenimentul nu a fost sinucidere</option>
+            </select>
+            <br>
+            
+            <input type="checkbox" name="tipAtacuri">
+            <label for="tipAtacuri">Dupa tipul atacului</label>
+            <br>
+            <select id="tipAtac">
+              <option value="6">Luare de ostatici (Rapiri)</option>
+              <option value="8">Atac neinarmat</option>
+              <option value="5">Luare de ostatici (Incident Baricadat)</option>
+              <option value="2">Atac armat</option>
+              <option value="4">Hijacking</option>
+              <option value="9">Necunoscut</option>
+              <option value="7">Atac asupra unei cladiri/infrastructuri</option>
+              <option value="3">Explozii/Bombardament</option>
+              <option value="1">Asasinare</option>
+            </select>
+            <br>
+
             <input type="checkbox" value="numarDecese" name="filterDecese">
             <label for="filterDecese">Numar decese</label>
             <br>
@@ -83,8 +109,9 @@
             <label for="filterRaniti">Numar raniti</label>
             <br>
             <input type="checkbox" value="numarAtacuri" name="filterAtacuri">
-            <label for="filterAtacuri">numarAtacuri</label>
+            <label for="filterAtacuri">Numar atacuri</label>
             <br>
+
           </div>
           <br>
           <div class="perioada">

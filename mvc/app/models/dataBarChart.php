@@ -2,7 +2,7 @@
 require_once "../Utilitati/Conexiune.php";
 class DataBarChart
 {
-    public static function getData($dataToProcess, $valuesCount, $column)
+    public static function getData($dataToProcess, $valuesCount, $column, $columnSearchedValues)
     {
         $numarlocatii = $valuesCount;
         $contor = 1;
@@ -14,21 +14,37 @@ class DataBarChart
         $beginYear = $dataToProcess['beginYear'];
         $lastYear = $dataToProcess['lastYear'];
         $list = [];
+        $filtre = "";
         for ($year = $beginYear; $year <= $lastYear; $year++) {
             array_push($list, $year);
         }
         $arrayYears = implode(',', $list);
-        switch ($dataToProcess['tipStatistica']) {
+        $filtre = $filtre . $column . " =? AND iyear IN (" . $arrayYears . ")";
+        //the construction of the string filter
+        if (isset($dataToProcess['filtruSuicid']))
+            $filtre = $filtre . " AND suicide=" . $dataToProcess['filtruSuicid'];
+        if (isset($dataToProcess['filtruExtend']))
+            $filtre = $filtre . " AND extended=" . $dataToProcess['filtruExtend'];
+        if (isset($dataToProcess['filtruSucces']))
+            $filtre = $filtre . " AND success=" . $dataToProcess['filtruSucces'];
+        if (isset($dataToProcess['filtruTipAtac']))
+            $filtre = $filtre . " AND attacktype1=" . $dataToProcess['filtruTipAtac'];
+
+
+        switch ($columnSearchedValues) {
             case 'numarDecese': {
-                    $stmt = $dbconn->prepare("select sum(cast( nkill as unsigned)) from terro_events where " . $column . "=? and iyear IN (" . $arrayYears . ")");
+                    //$stmt = $dbconn->prepare("select sum(cast( nkill as unsigned)) from terro_events where " . $column . "=? and iyear IN (" . $arrayYears . ")");
+                    $stmt = $dbconn->prepare("select sum(cast( nkill as unsigned)) from terro_events where " . $filtre);
                     break;
                 }
             case 'numarAtacuri': {
-                    $stmt = $dbconn->prepare("select count(*) from terro_events where " . $column . "=? and iyear IN (" . $arrayYears . ")");
+                    //$stmt = $dbconn->prepare("select count(*) from terro_events where " . $column . "=? and iyear IN (" . $arrayYears . ")");
+                    $stmt = $dbconn->prepare("select count(*) from terro_events where " . $filtre);
                     break;
                 }
             case 'numarRaniti': {
-                    $stmt = $dbconn->prepare("select sum(cast(nwound as unsigned)) from terro_events where " . $column . "=? and iyear IN (" . $arrayYears . ")");
+                    //$stmt = $dbconn->prepare("select sum(cast(nwound as unsigned)) from terro_events where " . $column . "=? and iyear IN (" . $arrayYears . ")");
+                    $stmt = $dbconn->prepare("select sum(cast(nwound as unsigned)) from terro_events where " . $filtre);
                     break;
                 }
         }

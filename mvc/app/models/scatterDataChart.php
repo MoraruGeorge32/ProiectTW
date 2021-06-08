@@ -3,7 +3,7 @@ require_once "../Utilitati/Conexiune.php";
 
 class DataScatter
 {
-    public static function getData($requestData, $countLocs, $column)
+    public static function getData($requestData, $countLocs, $column,$columnSearchedValues)
     {
         //column is the search column exactly  country_txt or region_txt
         $numarlocatii = $countLocs;
@@ -17,23 +17,29 @@ class DataScatter
         $year = "";
         $month = "";
         $day = "";
-        switch ($requestData['tipStatistica']) {
+        $filtre = "" . $column . "=? and iyear >=" . $beginYear . " AND iyear<=" . $lastYear;
+        //the construction of the string filter
+        if (isset($requestData['filtruSuicid']))
+            $filtre = $filtre . " AND suicide=" . $requestData['filtruSuicid'];
+        if (isset($requestData['filtruExtend']))
+            $filtre = $filtre . " AND extended=" . $requestData['filtruExtend'];
+        if (isset($requestData['filtruSucces']))
+            $filtre = $filtre . " AND success=" . $requestData['filtruSucces'];
+        if (isset($requestData['filtruTipAtac']))
+            $filtre = $filtre . " AND attacktype1=" . $requestData['filtruTipAtac'];
+
+
+        switch ($columnSearchedValues) {
             case 'numarDecese': {
-                    $stmt = $dbconn->prepare("SELECT sum(nkill),iyear,imonth,iday FROM `terro_events` WHERE "
-                        . $column . "=? AND iyear>=" . $beginYear . " AND iyear<=" . $lastYear
-                        . " GROUP BY iyear,imonth,iday HAVING sum(nkill)>0");
+                    $stmt = $dbconn->prepare("SELECT sum(nkill),iyear,imonth,iday FROM `terro_events` WHERE ".$filtre. " GROUP BY iyear,imonth,iday HAVING sum(nkill)>0");
                     break;
                 }
             case 'numarAtacuri': {
-                    $stmt = $dbconn->prepare("SELECT count(*),iyear,imonth,iday FROM `terro_events` WHERE "
-                        . $column . "=? AND iyear>=" . $beginYear . " AND iyear<=" . $lastYear
-                        . " GROUP BY iyear,imonth,iday");
+                    $stmt = $dbconn->prepare("SELECT count(*),iyear,imonth,iday FROM `terro_events` WHERE ".$filtre." GROUP BY iyear,imonth,iday");
                     break;
                 }
             case 'numarRaniti': {
-                    $stmt = $dbconn->prepare("select sum(nwound),iyear,imonth,iday from terro_events where "
-                        . $column . "=? and iyear >= " . $beginYear . " and iyear<= " . $lastYear
-                        . " group by iyear,imonth,iday HAVING sum(nwound)>0");
+                    $stmt = $dbconn->prepare("SELECT sum(nwound),iyear,imonth,iday FROM terro_events WHERE ".$filtre." GROUP BY iyear,imonth,iday HAVING sum(nwound)>0");
                     break;
                 }
         }

@@ -1,0 +1,50 @@
+[
+    {
+      "code":13,
+      "text":"Unknown"
+    },
+    {
+      "code":6,
+      "text":"Explosives"
+    },
+    {
+      "code":8,
+      "text":"Incendiary"
+    },
+    {
+      "code":5,
+      "text":"Firearms"
+    },
+    {
+      "code":2,
+      "text":"Chemical"
+    },
+    {
+      "code":9,
+      "text":"Melee"
+    },
+    {
+      "code":11,
+      "text":"Sabotage Equipment"
+    },
+    {
+      "code":10,
+      "text":"Vehicle (not to include vehicle-borne explosives, i.e., car or truck bombs)"
+    },
+    {
+      "code":7,
+      "text":"Fake Weapons"
+    },
+    {
+      "code":3,
+      "text":"Radiological"
+    },
+    {
+      "code":12,
+      "text":"Other"
+    },
+    {
+      "code":1,
+      "text":"Biological"
+    }
+  ]

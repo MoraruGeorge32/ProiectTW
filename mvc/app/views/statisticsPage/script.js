@@ -1,5 +1,6 @@
 let contor = 1;
 let allCountriesList = [];
+let allAttacksList = [];
 function adaugaInputTari() {
   var DIV = document.getElementsByClassName("countries")[0];
   var selectReg = document.createElement("select");
@@ -36,13 +37,13 @@ function setForRegions() {
   contor = 1;
   let tari = document.getElementsByClassName("countries")[0];
   let regiuni = document.getElementsByClassName("regions")[0];
-  console.log(tari);
-  console.log(regiuni);
+  // console.log(tari);
+  // console.log(regiuni);
   regiuni.style.display = "block";
   tari.style.display = "none";
   let btn = createButton("Adauga Tari", "adaugaInputTari()");
   while (tari.firstChild) {
-    console.log(tari.childNodes);
+    //console.log(tari.childNodes);
     tari.removeChild(tari.firstChild);
   }
   tari.appendChild(btn);
@@ -107,12 +108,19 @@ function removeOptions(selectElement) {
   }
 }
 
-function getListCountries() {
+function getListFilters() {
   fetch("./tari_reg.json")
     .then(status)
     .then(response => response.json())
     .then(resJson =>
       allCountriesList = resJson
+    )
+    .catch(err => console.log(err));
+  fetch("./atacuri.json")
+    .then(status)
+    .then(response => response.json())
+    .then(resJson =>
+      allAttacksList = resJson
     )
     .catch(err => console.log(err));
 }
@@ -130,7 +138,7 @@ function setCountriesSelect(nume_reg, countrySelect) {
   });
 }
 
-
+//deprecated
 function parseParamsStats() {
   var params = "";
   if (document.getElementById("tari").checked) {
@@ -148,10 +156,10 @@ function parseParamsStats() {
     params = params + "numarRegiuni=" + (contor - 1);
     let i = 1;
     for (i = 1; i < contor; i++) {
-      if(document.getElementById("Regiune"+i).value==="Central America & Caribbean")
-      params=params+"&locatie"+i+"="+"Central America %26 Caribbean"//escape the & character
+      if (document.getElementById("Regiune" + i).value === "Central America & Caribbean")
+        params = params + "&locatie" + i + "=" + "Central America %26 Caribbean"//escape the & character
       else
-      params = params + "&locatie" + i + "=" + document.getElementById("Regiune" + i).value;
+        params = params + "&locatie" + i + "=" + document.getElementById("Regiune" + i).value;
     }
   }
   params = params + "&tipStatistica=" + document.getElementById("listaStatistici").value;
@@ -177,36 +185,36 @@ function status(response) {
 
 
 function drawGraphic(data) {
-  let typeStat = "";
-  switch (document.getElementById("listaStatistici").value) {
-    case 'numarDecese': {
-      typeStat = "Evolutie numar decese";
-      break;
-    }
-    case 'numarAtacuri': {
-      typeStat = "Evolutie numar atacuri";
-      break;
-    }
-    case 'numarRaniti': {
-      typeStat = "Evolutie numar raniti";
-      break;
-    }
-    default: {
-      typeStat = "Evolutie numar incidente";
-      break;
-    }
-  }
+  // let typeStat = "";
+  // switch (document.getElementById("listaStatistici").value) {
+  //   case 'numarDecese': {
+  //     typeStat = "Evolutie numar decese";
+  //     break;
+  //   }
+  //   case 'numarAtacuri': {
+  //     typeStat = "Evolutie numar atacuri";
+  //     break;
+  //   }
+  //   case 'numarRaniti': {
+  //     typeStat = "Evolutie numar raniti";
+  //     break;
+  //   }
+  //   default: {
+  //     typeStat = "Evolutie numar incidente";
+  //     break;
+  //   }
+  // }
   let years = [];
   let beginYear = document.getElementById("infYear").value;
   let lastYear = document.getElementById("supYear").value;
   let colorsGenerate = [];
   for (i = beginYear; i <= lastYear; i++) {
-    let color = "#" + (Math.floor(Math.random() * 16777215).toString(16));
     years.push(i);
-    colorsGenerate.push(color);
   }
   let maximValue = -1;
   data.forEach(function getCurrentList(item) {
+    let color = "#" + (Math.floor(Math.random() * 16777215).toString(16));
+    colorsGenerate.push(color);
     item.data.forEach(function getMax(value) {
       if (value > maximValue) maximValue = value;
     })
@@ -239,7 +247,7 @@ function drawGraphic(data) {
       curve: 'smooth'
     },
     title: {
-      text: typeStat,//din js sa modific
+      text: "Evolutie numar evenimente raportate",//din js sa modific
       align: 'left'
     },
     grid: {
@@ -281,25 +289,25 @@ function drawGraphic(data) {
 }
 
 function drawScatterChart(data) {
-  let typeStat = "";
-  switch (document.getElementById("listaStatistici").value) {
-    case 'numarDecese': {
-      typeStat = "Evolutie numar decese";
-      break;
-    }
-    case 'numarAtacuri': {
-      typeStat = "Evolutie numar atacuri";
-      break;
-    }
-    case 'numarRaniti': {
-      typeStat = "Evolutie numar raniti";
-      break;
-    }
-    default: {
-      typeStat = "Evolutie numar incidente";
-      break;
-    }
-  }
+  // let typeStat = "";
+  // switch (document.getElementById("listaStatistici").value) {
+  //   case 'numarDecese': {
+  //     typeStat = "Evolutie numar decese";
+  //     break;
+  //   }
+  //   case 'numarAtacuri': {
+  //     typeStat = "Evolutie numar atacuri";
+  //     break;
+  //   }
+  //   case 'numarRaniti': {
+  //     typeStat = "Evolutie numar raniti";
+  //     break;
+  //   }
+  //   default: {
+  //     typeStat = "Evolutie numar incidente";
+  //     break;
+  //   }
+  // }
   let processedData = [];
   let maximValue = -1;
   console.log("----------------------");
@@ -307,7 +315,7 @@ function drawScatterChart(data) {
   data.forEach(function (item) {
     var events = [];
     item.data.forEach(function (value) {
-      var miliseconds = new Date(value[0]).getTime()+86400000;//i added one day because the events were shown for the precedent day
+      var miliseconds = new Date(value[0]).getTime() + 86400000;//i added one day because the events were shown for the precedent day
       if (value[1] > maximValue) maximValue = value[1];
       events.push([miliseconds, value[1]]);
     })
@@ -363,27 +371,26 @@ function drawColumns(data) {
   console.log(data);
   let locatiiList = [];
   let locatiiValues = [];
-  let typeStat = "";
   let beginYear = document.getElementById("infYear").value;
   let lastYear = document.getElementById("supYear").value;
-  switch (document.getElementById("listaStatistici").value) {
-    case 'numarDecese': {
-      typeStat = "numar decese";
-      break;
-    }
-    case 'numarAtacuri': {
-      typeStat = "numar atacuri";
-      break;
-    }
-    case 'numarRaniti': {
-      typeStat = "numar raniti";
-      break;
-    }
-    default: {
-      typeStat = "numar incidente";
-      break;
-    }
-  }
+  // switch (document.getElementById("listaStatistici").value) {
+  //   case 'numarDecese': {
+  //     typeStat = "numar decese";
+  //     break;
+  //   }
+  //   case 'numarAtacuri': {
+  //     typeStat = "numar atacuri";
+  //     break;
+  //   }
+  //   case 'numarRaniti': {
+  //     typeStat = "numar raniti";
+  //     break;
+  //   }
+  //   default: {
+  //     typeStat = "numar incidente";
+  //     break;
+  //   }
+  // }
   data.forEach(function (item) {
     locatiiList.push(item.name);
     locatiiValues.push(item.data);
@@ -392,7 +399,7 @@ function drawColumns(data) {
 
   var options = {
     series: [{
-      name: typeStat,
+      name: "Numar evenimente",
       data: locatiiValues
     }],
     annotations: {
@@ -428,7 +435,7 @@ function drawColumns(data) {
     },
     yaxis: {
       title: {
-        text: 'Evenimente ' + typeStat + " intre " + beginYear + " si " + lastYear,
+        text: "Evenimente inregistrate intre " + beginYear + " si " + lastYear,
       },
     },
     fill: {
@@ -450,10 +457,88 @@ function drawColumns(data) {
   chart.render();
 }
 
+function checkParams(params, countRedari, numarLocatii) {
+  var stringParams = "";
+
+  if (numarLocatii == 0)
+    return "Invalid: selectati o regiune sau o tara cel putin";
+
+  if (countRedari == 0)
+    return "Invalid: selectati o statistica numerica (numar decese,raniti,atacuri)";
+
+  if (countRedari > 1 && numarLocatii > 1)
+    return "Invalid: nu puteti alege mai multe tari/regiuni si mai multe statistici de generat";
+
+  if(countRedari>1&&numarLocatii==1)
+  return "FEATURE SPECIAL: acest feature va fi implementat poate in viitor";
+
+  for (var key in params) {
+    if (stringParams != "")
+      stringParams += "&";
+    stringParams += key + "=" + encodeURIComponent(params[key]);
+  }
+  return stringParams;
+}
+
+//the new style
+function parseParameters() {
+  var params = {};
+  if (document.getElementById("tari").checked) {
+    console.log(tari);
+    params = {};
+    params['numarTari'] = (contor - 1);
+    let i = 1;
+    for (i = 1; i < contor; i++) {
+      params['locatie' + i] = document.getElementById("tara" + i).value;
+    }
+
+  }
+  else {
+    params = {};
+    params['numarRegiuni'] = (contor - 1);
+    let i = 1;
+    for (i = 1; i < contor; i++) {
+      params['locatie' + i] = document.getElementById("Regiune" + i).value;
+    }
+  }
+  let countTipRedari = 0;
+  if (document.getElementsByName("filterAtacuri")[0].checked) {
+    params['numarAtacuri'] = "numarAtacuri";
+    countTipRedari++;
+  }
+  if (document.getElementsByName("filterRaniti")[0].checked) {
+    params['numarRaniti'] = "numarRaniti";
+    countTipRedari++;
+  }
+  if (document.getElementsByName("filterDecese")[0].checked) {
+    params['numarDecese'] = "numarDecese";
+    countTipRedari++;
+  }
+  params['numarRedari'] = countTipRedari;
+  if (document.getElementsByName("filterSuicide")[0].checked)
+    params['filtruSuicid'] = document.getElementById("filtruSuicid").value;
+  if (document.getElementsByName("filterExtend")[0].checked)
+    params['filtruExtend'] = document.getElementById("filtruExtend").value;
+  if (document.getElementsByName("filterSucces")[0].checked)
+    params['filtruSucces'] = document.getElementById("filtruSucces").value;
+  if (document.getElementsByName("tipAtacuri")[0].checked)
+    params['filtruTipAtac'] = document.getElementById("tipAtac").value;
+
+  params['tipRedare'] = document.getElementById("tipRedare").value;
+  params['beginYear'] = document.getElementById("infYear").value;
+  params['lastYear'] = document.getElementById("supYear").value;
+
+  var stringParams = checkParams(params, countTipRedari, contor - 1);
+  return stringParams;
+}
+
 async function showStats() {
-  let paramURL = parseParamsStats();
+  let paramURL = parseParameters();
+  alert("Verifica console.log-ul pentru a vedea daca sunt parametri buni!");
+  console.log(parseParameters());
   var data;
   //waiting for the data from the back-end
+
   await fetch("../../controllers/statisticiController.php?" + paramURL)
     .then(status)
     .then(response => response.json())
@@ -462,6 +547,8 @@ async function showStats() {
       data = res;
     })
     .catch(error => console.error(error));
+
+
   // await fetch("../../controllers/statisticiController.php?" + paramURL)
   // .then(res=>res.text())
   // .then(resT=>console.log(resT));
@@ -492,64 +579,3 @@ async function showStats() {
   }
 
 }
-
-
-// function downloadUrl(url, callback) {
-//   var request = window.ActiveXObject
-//     ? new ActiveXObject("Microsoft.XMLHTTP")
-//     : new XMLHttpRequest();
-
-//   request.onreadystatechange = function () {
-//     if (request.readyState == 4) {
-//       request.onreadystatechange = doNothing;
-//       callback(request, request.status);
-//     }
-//   };
-
-//   request.open("GET", url, true);
-//   request.send(null);
-// }
-
-// function drawMap(datas) {
-//   var map = new google.maps.Map(document.getElementById("map"), {
-//     center: new google.maps.LatLng(-33.863276, 151.207977),
-//     zoom: 12,
-//   });
-//   var infoWindows = new google.maps.InfoWindows();
-//   downloadUrl("../../controllerStats", function (datas) {
-//     //o sa trebuiasca schimbat acel link de la controller
-
-//     var xml = data.responseXML;
-//     var markers = xml.documentElement.getElementsByTagName("marker");
-//     Array.prototype.forEach.call(markers, function (markerElem) {
-//       var id = markerElem.getAttribute("id");
-//       var name = markerElem.getAttribute("name");
-//       var address = markerElem.getAttribute("address");
-//       var type = markerElem.getAttribute("type");
-//       var point = new google.maps.LatLng(
-//         parseFloat(markerElem.getAttribute("lat")),
-//         parseFloat(markerElem.getAttribute("lng"))
-//       );
-
-//       var infowincontent = document.createElement("div");
-//       var strong = document.createElement("strong");
-//       strong.textContent = name;
-//       infowincontent.appendChild(strong);
-//       infowincontent.appendChild(document.createElement("br"));
-
-//       var text = document.createElement("text");
-//       text.textContent = address;
-//       infowincontent.appendChild(text);
-//       var icon = customLabel[type] || {};
-//       var marker = new google.maps.Marker({
-//         map: map,
-//         position: point,
-//         label: icon.label,
-//       });
-//       marker.addListener("click", function () {
-//         infoWindow.setContent(infowincontent);
-//         infoWindow.open(map, marker);
-//       });
-//     });
-//   });
-// }
