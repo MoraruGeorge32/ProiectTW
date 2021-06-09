@@ -12,7 +12,8 @@ html{
     display: none;
 }
 .mapGenerate{
-    height:auto;
+    height:100%;
+    width: 100%;
 }
 body{
     width:100%;
@@ -22,8 +23,7 @@ body{
     color: blueviolet;
     background-color: white;
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column;   
 }
 .mapFormBackground{
     background-color: black;
@@ -44,6 +44,7 @@ body{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    border-right: 6px double blueviolet;
 }
 .mapGenerate{
     width: 80%;
@@ -55,6 +56,56 @@ body{
 .mapGenerate1{
     height:95%;
     width: 95%;
+}
+
+
+
+.regiune,.success,.suicide,.exceeded,.sendButton{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 4vw;
+    align-items: center;
+}
+
+.period{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 4vw;
+    align-items: center; 
+}
+.regiune select,.success select, .suicide select, .exceeded select{
+    width: 60%;
+    border: 1px solid blueviolet;
+}
+
+.periodInput input{
+    width: 30%;
+    border: 1px solid blueviolet;
+}
+.sendButton{
+    align-items: center;
+}
+.sendButton button{
+    width: 60%;
+    background-color: white;
+    color: blueviolet;
+    border: 3px blueviolet solid;
+    border-radius: 10px;
+}
+
+#woundContainer, #killnumContainer, #periodDiv{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2vw;
+}
+.periodInput{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
 }
 
 /*toti primii copii din mapForm1*/

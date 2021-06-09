@@ -6,14 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Harta Vizualizator</title>
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-      />
     <link
-      href='https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap'
-      rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css2?family=Oswald&display=swap'
-      rel='stylesheet' type='text/css'>
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald&display=swap"
+      rel="stylesheet"
+      type="text/css"
+    />
     <script src="script.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -35,19 +41,15 @@
       </form>
     </nav>
 
-
-
-  <div class="mapFormBackground">
+    <div class="mapFormBackground">
       <div class="mapForm1">
-        <div class="period">
-          <label for="perioada">Selectati o perioada</label>        
-          <input type="number" min="1970" max="2017" name="perioada" id="beginYear">
-          <input type="number" min="1970" max="2017" name="perioada" id="lastYear">
-        </div>
         <div class="regiune">
-          <select name="Regions">
-            <option value="North America">North America</option>
-            <option value="Central America & Caribbean">Central America & Caribbean</option>
+          <label for="regiune">Selectati o regiune</label>
+          <select id="regiune" name="Regions">
+            <option selected value="North America">North America</option>
+            <option value="Central America & Caribbean">
+              Central America & Caribbean
+            </option>
             <option value="South America">South America</option>
             <option value="East Asia">East Asia</option>
             <option value="Southeast Asia">Southeast Asia</option>
@@ -55,36 +57,121 @@
             <option value="Central Asia">Central Asia</option>
             <option value="Western Europe">Western Europe</option>
             <option value="Eastern Europe">Eastern Europe</option>
-            <option value="Middle East & North Africa">Middle East & North Africa</option>
+            <option value="Middle East & North Africa">
+              Middle East & North Africa
+            </option>
             <option value="Sub-Saharan Africa">Sub-Saharan Africa</option>
             <option value="Australasia & Oceania">Australasia & Oceania</option>
           </select>
         </div>
-        
-        <div class="success">
-            <label for="success">Succeded: </label>
-            <select name="succes">
-              <option>Da</option>
-              <option>Nu</option>
-            </select>
+        <div class="period">
+          <div>
+            <label for="periodDiv">Perioade:</label>
+            <input type="checkbox" name="periodDiv" onchange="displayFilters(this.name)" />
+          </div>
+          <div style = "display:none" id="periodDiv">
+            <label for="perioada">Selectati o perioada</label>
+            <div class="periodInput">
+              <input
+              type="number"
+              min="1970"
+              max="2017"
+              name="perioada"
+              id="beginYear"
+              />
+              <input
+              type="number"
+              min="1970"
+              max="2017"
+              name="perioada"
+              id="lastYear"
+              />
+            </div>
+          </div>
         </div>
-        <div class="suicide">
-          <label for="suicide">Suicide: </label>
-          <select name="suicide">
+        <div class="period">
+          <div>
+            <label for="woundContainer">Raniti:</label>
+            <input type="checkbox" name="woundContainer" onchange="displayFilters(this.name)" />
+          </div>
+          <div id="woundContainer" style= "display:none">
+            <label for="nwound">Selectati intervalul pentru oameni raniti</label>
+            <div class="periodInput">
+              <input
+                type="number"
+                min="1970"
+                max="2017"
+                name="nwound"
+                id="beginWound"
+              />
+              <input
+                type="number"
+                min="1970"
+                max="2017"
+                name="nwound"
+                id="lastWound"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="period">
+          <div>
+            <label for="killnumContainer">Ucisi:</label>
+            <input type="checkbox" name="killnumContainer" onchange="displayFilters(this.name)" />
+          </div>
+          <div style="display:none" id="killnumContainer">
+            <label for="nkills">Selectati intervalul pentru oameni ucisi</label>
+            <div class="periodInput">
+              <input
+                type="number"
+                min="1970"
+                max="2017"
+                name="nkills"
+                id="beginNKills"
+              />
+              <input
+                type="number"
+                min="1970"
+                max="2017"
+                name="nkills"
+                id="lastNKills"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="success">
+          <label for="success">Succeded: </label>
+          <select id="success" name="success">
+            <option selected>None</option>
             <option>Da</option>
             <option>Nu</option>
           </select>
         </div>
+        <div class="suicide">
+          <label for="suicide">Suicide: </label>
+          <select id="suicide" name="suicide">
+            <option selected>None</option>
+            <option>Da</option>
+            <option>Nu</option>
+          </select>
+        </div>
+        <div class="exceeded">
+          <label for="exceeded">Peste 24 de ore: </label>
+          <select id="exceeded" name="exceeded">
+            <option selected>None</option>
+            <option>Da</option>
+            <option>Nu</option>
+          </select>
+        </div>
+        <div class="sendButton">
+          <button onclick="createMarkers()">Send</button>
+        </div>
       </div>
-      <div class="mapGenerate" id="drawHere">
-          <div class="mapGenerate1" >
-
-          </div>
+      <div class="mapGenerate">
+        <div class="mapGenerate1" id="drawHere"></div>
       </div>
-  </div>
-
-
-
+    </div>
 
     <div class="footer">
       <div class="footer-title">
@@ -120,7 +207,6 @@
     </div>
   </body>
 </html>
-
 
 <!-- <div class="formIncidentCautare">
           <p>Pentru a putea căuta un incident, vă rugăm să selectați dintre
@@ -172,5 +258,5 @@
             <label for="fatalities">Număr de cazuri de persoane vătămate</label>
             <br>
              TODO: adaugat posibile detalii de ales cum ar fi arme folosite, modul in care s-a organizar (retele de socializare, intalniri etc.) etc.-->
-            <!-- <input type="submit" name="Submit" />
+<!-- <input type="submit" name="Submit" />
           </form> -->
