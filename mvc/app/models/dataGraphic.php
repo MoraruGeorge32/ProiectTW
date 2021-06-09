@@ -1,9 +1,8 @@
 <?php
 
-require_once "../Utilitati/Conexiune.php";
 class DataGraphic
 {
-    public static function getData($requestData, $valuesCount, $searchedColumn, $columnSearchedValues)
+    public function getData($requestData, $valuesCount, $searchedColumn, $columnSearchedValues)
     {
         /*
         ce am nevoie sa intorc:

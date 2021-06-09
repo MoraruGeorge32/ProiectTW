@@ -1,19 +1,14 @@
 <?php
 
 class Controller{
-    protected function model($model_type='sadsa')
+    protected function model($model_type)
     {
-        //echo $model_type ;
         require_once '../app/models/'.$model_type.'.php';
-        /**
-         * TODO check daca exista
-         */
+        require_once '../app/Utilitati/Conexiune.php';
         return new $model_type();
     }
 
-    public function view($view_path,$data=[]){
-        //echo $view_path;
-        //print_r($data);
+    public function view($view_path){
         require_once '../app/views/'.$view_path.'.php';
 
     }

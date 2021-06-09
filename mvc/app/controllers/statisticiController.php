@@ -1,16 +1,6 @@
 <?php
 
-/**https://canvasjs.com/php-charts/column-chart/
- * link extrem de util si de important
- * bun pentru crearea de grafice
- * aici ii doar i reprezentare bruta a unui bar-chart
- */
-
-include_once "../models/dataBarChart.php";
-include_once "../models/dataGraphic.php";
-include_once "../models/scatterDataChart.php";
-
-class statisticiController
+class StatisticiController extends Controller
 {
     public $dataPoints = array();
     public $dataGraphic = array();
@@ -18,7 +8,7 @@ class statisticiController
     public $numarlocatii = 0;
     public $columnLocation = "";
     public $columnSearchedValues = "";
-    public  function __construct()
+    public  function index()
     {
         if (isset($_GET['numarTari'])) {
             $this->numarlocatii = $_GET['numarTari'];
@@ -55,18 +45,23 @@ class statisticiController
     }
     public function dataScatter()
     {
-        $this->dataPolarArea = DataScatter::getData($_GET, $this->numarlocatii, $this->columnLocation, $this->columnSearchedValues);
-        echo json_encode($this->dataPolarArea, JSON_NUMERIC_CHECK);
+        //$this->dataPolarArea = DataScatter::getData($_GET, $this->numarlocatii, $this->columnLocation, $this->columnSearchedValues);
+        $model=$this->model("DataScatter");
+        $this->dataArea=$model->getData($_GET, $this->numarlocatii, $this->columnLocation, $this->columnSearchedValues);
+        echo json_encode($this->dataArea, JSON_NUMERIC_CHECK);
     }
     public function dataBarChartStats()
     {
-        $this->dataPoints = DataBarChart::getData($_GET, $this->numarlocatii, $this->columnLocation, $this->columnSearchedValues);
+        //$this->dataPoints = DataBarChart::getData($_GET, $this->numarlocatii, $this->columnLocation, $this->columnSearchedValues);
+        $model=$this->model("DataBarChart");
+        $this->dataPoints=$model->getData($_GET, $this->numarlocatii, $this->columnLocation, $this->columnSearchedValues);
         echo  json_encode($this->dataPoints, JSON_NUMERIC_CHECK);
     }
     public function dataGraphicStats()
     {
-        $this->dataGraphic = DataGraphic::getData($_GET, $this->numarlocatii, $this->columnLocation, $this->columnSearchedValues);
+        //$this->dataGraphic = DataGraphic::getData($_GET, $this->numarlocatii, $this->columnLocation, $this->columnSearchedValues);
+        $model=$this->model("DataGraphic");
+        $this->dataGraphic=$model->getData($_GET, $this->numarlocatii, $this->columnLocation, $this->columnSearchedValues);
         echo json_encode($this->dataGraphic);
     }
 }
-$dataStats = new statisticiController();

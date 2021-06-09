@@ -539,7 +539,7 @@ async function showStats() {
   var data;
   //waiting for the data from the back-end
 
-  await fetch("../../controllers/statisticiController.php?" + paramURL)
+  await fetch("../../../public/statisticiController?" + paramURL)
     .then(status)
     .then(response => response.json())
     .then(res => {

@@ -1,9 +1,7 @@
 <?php
-require_once "../Utilitati/Conexiune.php";
-
 class DataScatter
 {
-    public static function getData($requestData, $countLocs, $column,$columnSearchedValues)
+    public function getData($requestData, $countLocs, $column,$columnSearchedValues)
     {
         //column is the search column exactly  country_txt or region_txt
         $numarlocatii = $countLocs;

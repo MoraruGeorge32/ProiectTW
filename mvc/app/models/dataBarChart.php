@@ -1,8 +1,8 @@
 <?php
-require_once "../Utilitati/Conexiune.php";
+// require_once "../Utilitati/Conexiune.php";
 class DataBarChart
 {
-    public static function getData($dataToProcess, $valuesCount, $column, $columnSearchedValues)
+    public function getData($dataToProcess, $valuesCount, $column, $columnSearchedValues)
     {
         $numarlocatii = $valuesCount;
         $contor = 1;

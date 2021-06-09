@@ -1,14 +1,18 @@
 <?php
-require_once "../../Utilitati/Conexiune.php";
+// require_once "../../Utilitati/Conexiune.php";
 class addEvent
 {
-    public static function createID($year, $month, $day, $dbconn)
+    public function createID($year, $month, $day, $dbconn)
     {
         $max_id_query = "SELECT eventid FROM terro_events WHERE iyear="
             . $year . " AND imonth="
             . $month . " AND iday="
             . $day
             . " ORDER BY eventid DESC LIMIT 1";
+        if($month<10)
+        $month="0".$month;
+        if($day<10)
+        $day="0".$day;
         $newID = $year . $month . $day;
         $res = $dbconn->query($max_id_query);
         $maxID = $res->fetch_assoc();
@@ -26,7 +30,7 @@ class addEvent
         }
         return $newID;
     }
-    public static function insertData($formInfo)
+    public function insertData($formInfo)
     {
         $columns = array();
         $datas = array();
@@ -49,7 +53,7 @@ class addEvent
 
         $dbconn = getConnection();
 
-        $newID = addEvent::createID(
+        $newID = $this->createID(
             $formInfo['iyear'],
             $formInfo['imonth'],
             $formInfo['iday'],

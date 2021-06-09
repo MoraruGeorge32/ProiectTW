@@ -1,6 +1,8 @@
 var contor = 1;
 var counter = 5;
-window.onload(provideEvents(1));
+window.onload = function () {
+  provideEvents(1);
+};
 function setNumberEvents(value) {
   /* functie cu rol in setarea numarului de evenimente arata unui administrator */
   counter = parseInt(value);
@@ -164,6 +166,7 @@ async function sendDataAdd() {
   var clasificareData = document.getElementById("clasificareEvent").childNodes;
   var atacatorEvent = document.getElementById("atacator").childNodes;
   let URL = "../../controllers/AdminDataBaseControllers/requestAddEventController.php";
+  let URL_MVC = "../../../public/requestAddEventController";
   let URL_test = "../../../public/testsAdmin.php";
   for (var input of dateData.values()) {
     if (input.tagName === "INPUT" || input.tagName === "input") {
@@ -182,7 +185,7 @@ async function sendDataAdd() {
       data[input.name] = input.value;
     }
     else if (input.tagName === "SELECT" || input.tagName === "select") {
-      data[input.name] = input.value==="da"?1:0;
+      data[input.name] = input.value === "da" ? 1 : 0;
     }
   }
 
@@ -194,7 +197,7 @@ async function sendDataAdd() {
 
   console.log(JSON.stringify(data));
 
-  await fetch(URL, {
+  await fetch(URL_MVC, {
     method: "POST",
     body: JSON.stringify(data),
     headers: { 'Content-Type': 'application/json' }
@@ -205,16 +208,17 @@ async function sendDataAdd() {
       alert(resJson);
     })
     .catch(error => console.log(error));
+
 }
 
 function placeEvents(response) {
   var obj_response = JSON.parse(response);
   var j = 0;
   for (let i = 1; i <= 15; i++) {
-    document.getElementById("eur"+i+"1").innerHTML=obj_response[i-1].eventid;
-    document.getElementById("eur"+i+"2").innerHTML=obj_response[i-1].country_txt;
-    document.getElementById("eur"+i+"3").innerHTML=obj_response[i-1].region_txt;
-    document.getElementById("eur"+i+"4").innerHTML=obj_response[i-1].iday+'/'+obj_response[i-1].imonth+'/'+obj_response[i-1].iyear;
+    document.getElementById("eur" + i + "1").innerHTML = obj_response[i - 1].eventid;
+    document.getElementById("eur" + i + "2").innerHTML = obj_response[i - 1].country_txt;
+    document.getElementById("eur" + i + "3").innerHTML = obj_response[i - 1].region_txt;
+    document.getElementById("eur" + i + "4").innerHTML = obj_response[i - 1].iday + '/' + obj_response[i - 1].imonth + '/' + obj_response[i - 1].iyear;
   }
 }
 
@@ -229,9 +233,9 @@ function provideEvents(page_number) {
   xhttp.send();
 }
 
-function receiveEvents(e){
-  if(window.event){
-    if(e.keyCode===13){
+function receiveEvents(e) {
+  if (window.event) {
+    if (e.keyCode === 13) {
       //alert(document.getElementById("numPage").value);
       provideEvents(parseInt(document.getElementById("numPage").value));
     }
@@ -254,17 +258,17 @@ function decreasePage() {
     provideEvents(parseInt(num_page));
   }
 }
-function redirectToEditPage(idBtn){
-  let idEvent=document.getElementById(idBtn).getElementsByTagName("p")[0].textContent;
+function redirectToEditPage(idBtn) {
+  let idEvent = document.getElementById(idBtn).getElementsByTagName("p")[0].textContent;
   alert(idEvent);
-  let urlToController="../../controllers/requestEditPage.php?idEvent="+idEvent;
+  let urlToController = "../../controllers/requestEditPage.php?idEvent=" + idEvent;
   fetch(urlToController)
     .then(status)
-    .then(response=>response.text())
-    .then(resp=>{console.log(resp); window.location.href = resp;})
-    .catch(error=>console.log(error));
-    //the fetch will provide to us the link to the specific page where the user will edit the inputs
-    //the inputs will be populated by default from the js (the whole link is provided in the response from the controller)
-    //la body la pagina aia din url trebuie sa avem onload="numeFunctiePopulare"
+    .then(response => response.text())
+    .then(resp => { console.log(resp); window.location.href = resp; })
+    .catch(error => console.log(error));
+  //the fetch will provide to us the link to the specific page where the user will edit the inputs
+  //the inputs will be populated by default from the js (the whole link is provided in the response from the controller)
+  //la body la pagina aia din url trebuie sa avem onload="numeFunctiePopulare"
 }
 
