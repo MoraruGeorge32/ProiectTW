@@ -81,6 +81,12 @@ body{
     border: 1px solid blueviolet;
 }
 
+#container{
+    display: flex;
+    flex-direction: column;
+
+}
+
 .periodInput input{
     width: 30%;
     border: 1px solid blueviolet;
@@ -94,6 +100,11 @@ body{
     color: blueviolet;
     border: 3px blueviolet solid;
     border-radius: 10px;
+}
+
+.mapGenerate1 p{
+    margin-top: 1vw;
+    margin-bottom: 1vw;
 }
 
 #woundContainer, #killnumContainer, #periodDiv{
