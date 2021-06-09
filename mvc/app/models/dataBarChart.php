@@ -2,6 +2,66 @@
 // require_once "../Utilitati/Conexiune.php";
 class DataBarChart
 {
+
+    public function getDataSingleLocationMultipleColumns($dataToProcess, $column, $columnSearchedValues)
+    {
+        $selectColumnForData="";
+        foreach($columnSearchedValues as $columnTable)
+            $selectColumnForData=$selectColumnForData.$columnTable.",";
+        $selectColumnForData=substr($selectColumnForData,0,-1);//eliminare ultima virgula
+
+        $dbconn = getConnection();
+        $rez = array();
+        $stmt = '';
+        $beginYear = $dataToProcess['beginYear'];
+        $lastYear = $dataToProcess['lastYear'];
+        $resultsSet=[];
+        $list=[];//pt ani
+        $filtre = "";
+        for ($year = $beginYear; $year <= $lastYear; $year++) {
+            array_push($list, $year);
+        }
+        $arrayYears = implode(',', $list);
+        $filtre = $filtre . $column . " = ? AND iyear IN (" . $arrayYears . ")";//partea de dupa where care reprezinta efectiv filtrele
+        //the construction of the string filter
+        if (isset($dataToProcess['filtruSuicid']))
+            $filtre = $filtre . " AND suicide=" . $dataToProcess['filtruSuicid'];
+        if (isset($dataToProcess['filtruExtend']))
+            $filtre = $filtre . " AND extended=" . $dataToProcess['filtruExtend'];
+        if (isset($dataToProcess['filtruSucces']))
+            $filtre = $filtre . " AND success=" . $dataToProcess['filtruSucces'];
+        if (isset($dataToProcess['filtruTipAtac']))
+            $filtre = $filtre . " AND attacktype1=" . $dataToProcess['filtruTipAtac'];
+        $stmt=$dbconn->prepare("SELECT ".$selectColumnForData." FROM terro_events WHERE ".$filtre);
+        
+        if ($stmt === false) {
+            die("Something went wrong");
+        }
+
+        $stmt->bind_param("s",$dataToProcess['locatie1']);
+        $stmt->execute();
+        if(count($columnSearchedValues)==2)
+        {  
+            $stmt->bind_result($v1, $v2);
+            $stmt->fetch();
+            $resultsSet[$columnSearchedValues[0]] = $v1;
+            $resultsSet[$columnSearchedValues[1]] = $v2;
+        }
+        else
+        {
+            $stmt->bind_result($v1, $v2, $v3);
+            $stmt->fetch();
+            $resultsSet[$columnSearchedValues[0]] = $v1;
+            $resultsSet[$columnSearchedValues[1]] = $v2;
+            $resultsSet[$columnSearchedValues[2]] = $v3;
+        }
+
+        $data=[];
+        foreach($resultsSet as $key=>$value)
+            array_push($data,["name"=>$key,"data"=>$value]);
+            //...mvc/public/statisticiController?numarTari=1&locatie1=Mexico&numarRaniti=numarRaniti&numarDecese=numarDecese&numarRedari=2&tipRedare=barChart&beginYear=1970&lastYear=1990
+        return ["nameLocatie"=>$dataToProcess['locatie1'],"dataColoane"=>$data];
+    }
     public function getData($dataToProcess, $valuesCount, $column, $columnSearchedValues)
     {
         $numarlocatii = $valuesCount;
@@ -19,7 +79,7 @@ class DataBarChart
             array_push($list, $year);
         }
         $arrayYears = implode(',', $list);
-        $filtre = $filtre . $column . " =? AND iyear IN (" . $arrayYears . ")";
+        $filtre = $filtre . $column . " =? AND iyear IN (" . $arrayYears . ")";//partea de dupa where care reprezinta efectiv filtrele
         //the construction of the string filter
         if (isset($dataToProcess['filtruSuicid']))
             $filtre = $filtre . " AND suicide=" . $dataToProcess['filtruSuicid'];

@@ -1,5 +1,5 @@
 <?php
-require_once "../Utilitati/Conexiune.php";
+require_once "../../Utilitati/Conexiune.php";
     //$dbconn = new mysqli("localhost", "Robert", "robert", "terrorismdatabase");
     $dbconn=getConnection();
     if($dbconn->connect_error) {

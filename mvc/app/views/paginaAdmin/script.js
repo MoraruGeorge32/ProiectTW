@@ -1,4 +1,4 @@
-var contor = 1;
+var contor = 0;
 var counter = 5;
 window.onload = function () {
   provideEvents(1);
@@ -88,6 +88,7 @@ function cfunction(response, start) {
 
   var list = document.getElementById("list-events");
   list.textContent = "";
+  console.log("Json: " + response);
   var obj_response = JSON.parse(response);
   var j = 0;
   for (let i = start; i < start + counter; i++) {
@@ -143,7 +144,7 @@ function showEvents(flowDirection) {
 
   if (contor < 0) {
     alert("Nu exista evenimente mai vechi!");
-    contor = 1;
+    contor = 0;
   }
   listEvents(contor, cfunction);
 }

@@ -185,25 +185,6 @@ function status(response) {
 
 
 function drawGraphic(data) {
-  // let typeStat = "";
-  // switch (document.getElementById("listaStatistici").value) {
-  //   case 'numarDecese': {
-  //     typeStat = "Evolutie numar decese";
-  //     break;
-  //   }
-  //   case 'numarAtacuri': {
-  //     typeStat = "Evolutie numar atacuri";
-  //     break;
-  //   }
-  //   case 'numarRaniti': {
-  //     typeStat = "Evolutie numar raniti";
-  //     break;
-  //   }
-  //   default: {
-  //     typeStat = "Evolutie numar incidente";
-  //     break;
-  //   }
-  // }
   let years = [];
   let beginYear = document.getElementById("infYear").value;
   let lastYear = document.getElementById("supYear").value;
@@ -212,7 +193,14 @@ function drawGraphic(data) {
     years.push(i);
   }
   let maximValue = -1;
-  data.forEach(function getCurrentList(item) {
+  let dataChart = [];
+  if (data.nameLocatie === null) {
+    dataChart = data;
+  }
+  else {
+    dataChart = data.dataColoane;
+  }
+  dataChart.forEach(function getCurrentList(item) {
     let color = "#" + (Math.floor(Math.random() * 16777215).toString(16));
     colorsGenerate.push(color);
     item.data.forEach(function getMax(value) {
@@ -221,9 +209,9 @@ function drawGraphic(data) {
   })
   maximValue += 5;
   console.log(maximValue);
-  console.log(data);
+  console.log(dataChart);
   var options = {
-    series: data,
+    series: dataChart,
     chart: {
       height: '100%',
       type: 'line',
@@ -247,7 +235,7 @@ function drawGraphic(data) {
       curve: 'smooth'
     },
     title: {
-      text: "Evolutie numar evenimente raportate",//din js sa modific
+      text: "Evolutie numar evenimente raportate " + (data.nameLocatie !== null ? " pentru locatia " + data.nameLocatie : null),//din js sa modific
       align: 'left'
     },
     grid: {
@@ -289,30 +277,16 @@ function drawGraphic(data) {
 }
 
 function drawScatterChart(data) {
-  // let typeStat = "";
-  // switch (document.getElementById("listaStatistici").value) {
-  //   case 'numarDecese': {
-  //     typeStat = "Evolutie numar decese";
-  //     break;
-  //   }
-  //   case 'numarAtacuri': {
-  //     typeStat = "Evolutie numar atacuri";
-  //     break;
-  //   }
-  //   case 'numarRaniti': {
-  //     typeStat = "Evolutie numar raniti";
-  //     break;
-  //   }
-  //   default: {
-  //     typeStat = "Evolutie numar incidente";
-  //     break;
-  //   }
-  // }
   let processedData = [];
   let maximValue = -1;
   console.log("----------------------");
   console.log(data);
-  data.forEach(function (item) {
+  let dataChart = [];
+  if (data.nameLocatie === null)
+    dataChart = data;
+  else
+    dataChart = data.dataColoane;
+  dataChart.forEach(function (item) {
     var events = [];
     item.data.forEach(function (value) {
       var miliseconds = new Date(value[0]).getTime() + 86400000;//i added one day because the events were shown for the precedent day
@@ -373,33 +347,23 @@ function drawColumns(data) {
   let locatiiValues = [];
   let beginYear = document.getElementById("infYear").value;
   let lastYear = document.getElementById("supYear").value;
-  // switch (document.getElementById("listaStatistici").value) {
-  //   case 'numarDecese': {
-  //     typeStat = "numar decese";
-  //     break;
-  //   }
-  //   case 'numarAtacuri': {
-  //     typeStat = "numar atacuri";
-  //     break;
-  //   }
-  //   case 'numarRaniti': {
-  //     typeStat = "numar raniti";
-  //     break;
-  //   }
-  //   default: {
-  //     typeStat = "numar incidente";
-  //     break;
-  //   }
-  // }
-  data.forEach(function (item) {
-    locatiiList.push(item.name);
-    locatiiValues.push(item.data);
-    //colors.push("#" + (Math.floor(Math.random() * 16777215).toString(16)));
-  });
+  if (data.nameLocatie === null)
+    data.forEach(function (item) {
+      locatiiList.push(item.name);
+      locatiiValues.push(item.data);
+      //colors.push("#" + (Math.floor(Math.random() * 16777215).toString(16)));
+    });
+  else {
+    data.dataColoane.forEach(function (item) {
+      locatiiList.push(item.name);
+      locatiiValues.push(item.data);
+      //colors.push("#" + (Math.floor(Math.random() * 16777215).toString(16)));
+    });
+  }
 
   var options = {
     series: [{
-      name: "Numar evenimente",
+      name: "Numar evenimente ",
       data: locatiiValues
     }],
     annotations: {
@@ -461,17 +425,19 @@ function checkParams(params, countRedari, numarLocatii) {
   var stringParams = "";
 
   if (numarLocatii == 0)
+  {
+    alert("Nu ati selectat o regiune/tara!");
     return "Invalid: selectati o regiune sau o tara cel putin";
+  }
 
-  if (countRedari == 0)
+  if (countRedari == 0) {
+    alert("Selectati o statistica numerica!");
     return "Invalid: selectati o statistica numerica (numar decese,raniti,atacuri)";
-
-  if (countRedari > 1 && numarLocatii > 1)
+  }
+  if (countRedari > 1 && numarLocatii > 1){
+    alert("Nu puteti alege mai multe tari/regiuni si mai multe statistici de generat!")
     return "Invalid: nu puteti alege mai multe tari/regiuni si mai multe statistici de generat";
-
-  if(countRedari>1&&numarLocatii==1)
-  return "FEATURE SPECIAL: acest feature va fi implementat poate in viitor";
-
+  }
   for (var key in params) {
     if (stringParams != "")
       stringParams += "&";
@@ -549,7 +515,7 @@ async function showStats() {
     .catch(error => console.error(error));
 
 
-  // await fetch("../../controllers/statisticiController.php?" + paramURL)
+  // await fetch("../../../public/statisticiController?" + paramURL)
   // .then(res=>res.text())
   // .then(resT=>console.log(resT));
 

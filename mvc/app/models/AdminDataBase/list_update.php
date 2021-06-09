@@ -8,7 +8,7 @@ class listUpdateEvent{
         }
         $sql = "SELECT eventid, iyear, imonth, iday, country_txt, region_txt FROM terro_events LIMIT ?, ?";
         $stmt = $dbconn->prepare($sql);
-        $offset = ($page-1)*15+1;
+        $offset = ($page-1)*15;
         $nr_events=15;
         $stmt->bind_param("ii", $offset, $nr_events);
         $stmt->execute();

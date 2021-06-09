@@ -39,29 +39,60 @@ class StatisticiController extends Controller
                         break;
                     }
             }
+        } else {
+            // am o tara si vreau mai multe statistici pentru ea
+            if ($this->numarlocatii == 1) {
+                $coloaneValori = [];
+                if (isset($_GET['numarRaniti']))
+                    array_push($coloaneValori, "sum(nwound)");
+                if (isset($_GET['numarDecese']))
+                    array_push($coloaneValori, "sum(nkill)");
+                if (isset($_GET['numarAtacuri']))
+                    array_push($coloaneValori, "count(*)");
+                switch ($_GET['tipRedare']) {
+                    case 'barChart': {
+
+                            $model = $this->model("DataBarChart");                                  //country sau region    coloane ca de ex sum(nkill) sau sum(wound) sau count(*)
+                            $this->dataPoints = $model->getDataSingleLocationMultipleColumns($_GET, $this->columnLocation, $coloaneValori);
+                            echo  json_encode($this->dataPoints, JSON_NUMERIC_CHECK);
+                            break;
+                        }
+                    case 'grafic2D': {
+                            $model = $this->model("DataGraphic");
+                            $this->dataGraphic = $model->getDataSingleLocationMultipleColumns($_GET, $this->columnLocation, $coloaneValori);
+                            echo json_encode($this->dataGraphic, JSON_NUMERIC_CHECK);
+                            break;
+                        }
+                    case 'scatter': {
+                            $model = $this->model("DataScatter");
+                            $this->dataGraphic = $model->getDataSingleLocationMultipleColumns($_GET, $this->columnLocation, $coloaneValori);
+                            echo json_encode($this->dataGraphic, JSON_NUMERIC_CHECK);
+                            break;
+                        }
+                }
+            } else
+                echo "Nu se poate face grafic cu mai multe tari/regiuni si mai multe filtre";
         }
-        else
-            echo "RAmane de implementat pentru o tara si mai multe statistici";
     }
     public function dataScatter()
     {
         //$this->dataPolarArea = DataScatter::getData($_GET, $this->numarlocatii, $this->columnLocation, $this->columnSearchedValues);
-        $model=$this->model("DataScatter");
-        $this->dataArea=$model->getData($_GET, $this->numarlocatii, $this->columnLocation, $this->columnSearchedValues);
+        $model = $this->model("DataScatter");
+        $this->dataArea = $model->getData($_GET, $this->numarlocatii, $this->columnLocation, $this->columnSearchedValues);
         echo json_encode($this->dataArea, JSON_NUMERIC_CHECK);
     }
     public function dataBarChartStats()
     {
         //$this->dataPoints = DataBarChart::getData($_GET, $this->numarlocatii, $this->columnLocation, $this->columnSearchedValues);
-        $model=$this->model("DataBarChart");
-        $this->dataPoints=$model->getData($_GET, $this->numarlocatii, $this->columnLocation, $this->columnSearchedValues);
+        $model = $this->model("DataBarChart");
+        $this->dataPoints = $model->getData($_GET, $this->numarlocatii, $this->columnLocation, $this->columnSearchedValues);
         echo  json_encode($this->dataPoints, JSON_NUMERIC_CHECK);
     }
     public function dataGraphicStats()
     {
         //$this->dataGraphic = DataGraphic::getData($_GET, $this->numarlocatii, $this->columnLocation, $this->columnSearchedValues);
-        $model=$this->model("DataGraphic");
-        $this->dataGraphic=$model->getData($_GET, $this->numarlocatii, $this->columnLocation, $this->columnSearchedValues);
+        $model = $this->model("DataGraphic");
+        $this->dataGraphic = $model->getData($_GET, $this->numarlocatii, $this->columnLocation, $this->columnSearchedValues);
         echo json_encode($this->dataGraphic);
     }
 }
