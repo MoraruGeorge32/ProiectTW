@@ -1,5 +1,5 @@
 <?php
-require_once "../../Utilitati/Conexiune.php";
+// require_once "../../Utilitati/Conexiune.php";
     class deleteEvent{
         public function deleteFromDB($id){
             //$dbconn = new mysqli("localhost", "Robert", "robert", "terrorismdatabase");

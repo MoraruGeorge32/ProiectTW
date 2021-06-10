@@ -58,12 +58,6 @@ require_once "../../Utilitati/verifica_provinienta.php"
                 <!--Div dedicat unu meniu pentru perfomarea diferitelor actiuni-->
                 <div id="eventZone">
                     <div id="formAddEvent">
-                        <!-- <iframe name="response"></iframe> -->
-                        <!---
-                            <form id="formAdaugare" 
-                            method="GET" 
-                            action="../../controllers//AdminDataBaseControllers/requestAddEventController.php">
-                        -->
                         <form id="AdaugareEvent">
                             <div id="formAdaugareDiv">
                                 <div id="dateEvent">
@@ -204,7 +198,7 @@ require_once "../../Utilitati/verifica_provinienta.php"
                     </div>
                     <div id="removeEvent">
                         <p>Lista evenimente </p>
-                        <form id="countElements" method="POST" action="../../controllers/AdminDataBaseControllers/requestDeleteEventController.php">
+                        <form id="countElements" method="POST" action="../../../public/requestDeleteEventController">
                             <input type="radio" id="5elements" value="5" name="chooseCounter" onclick="setNumberEvents(value)">
                             <label for="5elements">5 evenimente</label><br>
                             <input type="radio" id="10elements" value="10" name="chooseCounter" onclick="setNumberEvents(value)">
