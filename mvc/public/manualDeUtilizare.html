@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta property="keywords" content="project,infoiasi,web"> 
+    <title>TerroViz</title>
+  </head>
+  <body prefix="schema: http://schema.org">
+    <header>
+      <h1>TerroViz - Vizualizator de evenimente teroriste </h1>
+    </header>
+    <div role="contentinfo">
+      <dl>
+        <dt>Authors</dt>
+        <dd>
+          <a href="https://github.com/MoraruGeorge32" target="_blank">Moraru George</a>
+          <br>
+          <a href="https://github.com/RiZZeR99" target="_blank">Musteata Robert</a>
+          <br>
+          <a href="https://github.com/vladanghelus" target="_blank">Anghelus Vlad</a>
+          <br>
+        </dd>
+      </dl>
+    </div>
+    <section typeof="sa:Abstract" id="abstract" role="doc-abstract">
+      <h2>Descriere</h2>
+      <p>
+        TerroViz este o aplicatie web care are ca scop afișarea evenimentelor teroriste pe o hartă în funcțiile criteriilor selectate de către utilizator ș
+        și generarea de statistici bazată pe filtre sau comparații între țări / regiuni.
+      </p>
+    </section>
+    <section id="introduction" role="doc-introduction">
+      <!-- review? -->
+      <h2>Introducere</h2>
+      <p>
+            Acest articol are rolul de tutorial despre cum se folosește această aplicație web. Toate screenshot-urile sunt din versiunea de desktop, dar accesând aplicația web utilizand
+            un dispozitiv mobil nu va altera interfața în vreun fel, așadar acest ghid este pentru toate dispozitivele.
+      </p>
+    </section>
+    <section id="homePage">
+      <h3>Home Page</h3>
+      <img src="./Screenshots/img.PNG" width="700px" height="auto" alt="homePage">
+      <br>
+      <img src="./Screenshots/img1.PNG" width="700px" height="auto" alt="homePage">
+      <br>
+      <img src="./Screenshots/img2.PNG" width="700px" height="auto" alt="homePage">
+      <br>
+
+      <p>Pagina principală este relativ simplă și conține detalii despre ideea și scopul aplicației. În partea de header se află un buton de login pentru administrator,
+        iar spre centrul paginii sunt 2 butoane care duc către pagina în care se pot vizualiza evenimentele pe hartă, respectiv pagina in care se pot vizualiza grafice pentru
+        evenimente.
+      </p>
+    </section>
+    <section id="login-register">
+      <h3>Pagina de login (admin only)</h3>
+      <img src="./Screenshots/img6.PNG" width="700px" height="auto" alt="login-register">
+      <br>
+      <p>Pagina de login conține un formular care are câmpurile username și parolă. Utilizatorul își introduce datele de autentificare și se conectează la modulul de administrare
+        al aplicației apăsând butonul Login.
+      </p>
+    </section>
+    <section>
+      <h3>Pagina de administrare (admin only)</h3>
+      <img src="./Screenshots/img7.PNG" width="700px" height="auto" alt="login-register">
+      <br>
+      <img src="./Screenshots/img8.PNG" width="700px" height="auto" alt="login-register">
+      <br>
+      <img src="./Screenshots/img9.PNG" width="700px" height="auto" alt="login-register">
+      <br>
+      <img src="./Screenshots/img10.PNG" width="700px" height="auto" alt="login-register">
+      <br>
+      <p>În pagina de administrare se regăsesc 3 opțiuni: Adăugare eveniment, ștergere eveniment și actualizare eveniment. În funcție de opțiunea aleasă, sunt afișate un formular
+        cu mai multe opțiuni de input-uri pentru a adăga detaliile unui eveniment, o listă de 5, 10 sau 15 evenimente, fiecare având un checkbox pentru a șterge un eveniment
+        și o listă de 15 evenimente, fiecare cu câte un buton de edit care redirecționează către o pagină specială în care pot fi editate evenimente.
+      </p>
+    </section>
+    <section id="statistic">
+      <h3>Statistici și grafice</h3>
+      <img src="./Screenshots/img3.PNG" width="700px" height="auto" alt="login-register">
+      <br>
+      <img src="./Screenshots/img11.PNG" width="700px" height="auto" alt="login-register">
+      <br>
+      <p>
+            Pagina de statistici conține în partea stângă a paginii toate fitrele pe care le poate folosi utilizatorul pe care api-ul de formare a statisticilor îl va lua în considerare
+            pentru generarea statisticilor. Utilizatorul poate să își aleagă ce filtre dorește pentru statistici, apasă pe butonul de submit, iar statisticile vor fi generate.
+            Acesta va putea să-și exporteze statisticile în format CSV,PNG sau SVG, în funcție de nevoile sale.
+        </p>
+    </section>
+    <section id="map">
+      <h3>Hartă</h3>
+      <img src="./Screenshots/img4.PNG" width="700px" height="auto" alt="map">
+      <br>
+      <img src="./Screenshots/img5.PNG" width="700px" height="auto" alt="map">
+      <br>
+      <p>Pagina de hartă conține în partea stângă toate filtrele aplicabile pe hartă și un buton de send care trimite la api-ul de obținere a evenimentelor filtrele selectate de către utilizator.
+         Utilizatorul va completa filtrele, va apăsa pe butonul de submit și se vor genera markerele pe hartă. Acesta poate vedea un eveniment mai în detaliu pe hartă apăsând pe marker-ul său.
+    </p>
+    </section>
+  </body>
+</html>
