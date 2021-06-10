@@ -1,6 +1,6 @@
 <?php
 
-require_once "../Utilitati/Conexiune.php";
+// require_once "../Utilitati/Conexiune.php";
 
 class getEditPage{
     public static function createLink($id){

@@ -1,5 +1,5 @@
 <?php
-require_once "../../Utilitati/Conexiune.php";
+// require_once "../../Utilitati/Conexiune.php";
 class listUpdateEvent{
     public function getListFromDb($page){
         $dbconn=getConnection();

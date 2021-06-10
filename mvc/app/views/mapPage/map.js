@@ -72,7 +72,10 @@ async function createMarkers() {
 
   let markersInfo;
 
-  await fetch("../../controllers/MapController/mapController.php?" + urlData)
+  let URL="../../controllers/MapController/mapController.php?";
+  let URL_MVC="../../../public/mapController?"
+
+  await fetch(URL_MVC + urlData)
     .then((res) => res.json())
     .then((resJ) => {
       if (resJ != "0 results selected") markersInfo = resJ;

@@ -1,11 +1,9 @@
 <?php
-require_once "../core/Controller.php";
-include_once "../models/AdminDataBase/getEditPage.php";
-class ControllerEditPage extends Controller{
+class requestEditPage extends Controller{
     public function index(){
             $idEvent=$_GET['idEvent'];
-            $linkEdit=getEditPage::createLink($idEvent);
+            $model=$this->model("getEditPage");
+            $linkEdit=$model->createLink($idEvent);
             echo $linkEdit;
     }
 }
-(new ControllerEditPage())->index();

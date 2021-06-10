@@ -1,7 +1,6 @@
 <?php
-include_once "../../models/mapModel.php";
-class mapController {
-    public function parseData(){
+class mapController extends Controller {
+    public function index(){
         $dataMap = "SELECT eventid, 
         iyear, 
         imonth,
@@ -55,10 +54,8 @@ class mapController {
             $dataMap = $dataMap . " AND extended=" . $_GET['exceeded'];
         }
         $dataMap = $dataMap . ";";
-        $dataArray = MapModel :: mapEvent($dataMap);
-        //echo $dataMap;
+        $model=$this->model("mapModel");
+        $dataArray = $model-> mapEvent($dataMap);
         echo json_encode($dataArray);
     }
 }
-$controller = new mapController();
-$controller->parseData();

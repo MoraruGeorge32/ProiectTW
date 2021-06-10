@@ -1,6 +1,4 @@
 <?php
-include_once "../../Utilitati/Conexiune.php";
-
 class mapModel
 {
     public static function mapEvent($data)
@@ -10,8 +8,10 @@ class mapModel
         $currentRow = array();
         $selectResults = array();
         $selectResults = $dbconn->query($data);
-        if ($dbconn === false)
+        if ($dbconn === false) {
             die("Murim cu gratie");
+            echo $dbconn->error;
+        }
         if ($selectResults !== false)
             while ($row = $selectResults->fetch_assoc()) {
                 foreach ($row as $key => $value) {

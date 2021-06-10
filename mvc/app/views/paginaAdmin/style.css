@@ -234,7 +234,7 @@ html, body {
     background-color: gainsboro;
     border-radius: 20px;
     width: 85%;
-    height: 85vh;
+    height: fit-content;
 }
 
 #submitEvent{
@@ -311,6 +311,10 @@ html, body {
     #formAdaugare input{
         width:75%;
     }
+    #formAddEvent{
+        height: fit-content;
+    }
+
     body{
         background-color:#243a47;
     }
@@ -321,17 +325,24 @@ html, body {
     #bodyrightside{
         justify-content:center;
         height: auto;
+        height: fit-content;
     }
-    #formAdaugare{
+    #formAdaugareDiv{
         display:flex;
         flex-direction:column;
         justify-content:center;
     }
-    #formAdaugare>*{
+    #formAdaugareDiv>*{
         width:100%;
     }
     #removeEvent{
         height: auto;
+    }
+    #submitBtn{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 25px;
     }
    
 }

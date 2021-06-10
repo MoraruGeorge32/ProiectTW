@@ -230,7 +230,8 @@ function provideEvents(page_number) {
       placeEvents(this.responseText);
     }
   }
-  xhttp.open("GET", "../../controllers/AdminDataBaseControllers/requestUpdateEventController.php?page=" + page_number, true);
+  // xhttp.open("GET", "../../controllers/AdminDataBaseControllers/requestUpdateEventController.php?page=" + page_number, true);
+  xhttp.open("GET", "../../../public/requestUpdateEventController/page_nr?page=" + page_number, true);
   xhttp.send();
 }
 
@@ -263,7 +264,8 @@ function redirectToEditPage(idBtn) {
   let idEvent = document.getElementById(idBtn).getElementsByTagName("p")[0].textContent;
   alert(idEvent);
   let urlToController = "../../controllers/requestEditPage.php?idEvent=" + idEvent;
-  fetch(urlToController)
+  let urlControllerMVC= "../../../public/requestEditPage?idEvent="+idEvent;
+  fetch(urlControllerMVC)
     .then(status)
     .then(response => response.text())
     .then(resp => { console.log(resp); window.location.href = resp; })
