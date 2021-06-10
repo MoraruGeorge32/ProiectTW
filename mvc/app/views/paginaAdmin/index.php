@@ -227,7 +227,7 @@ require_once "../../Utilitati/verifica_provinienta.php"
                         </form>
 
                     </div>
-                    <div id="updateEvent">
+                    <div id="updateEvent" >
 
                         <div id="dateShow">
                             <div id="labels">

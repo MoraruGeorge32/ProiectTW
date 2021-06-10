@@ -15,7 +15,8 @@ class mapModel
         if ($selectResults !== false)
             while ($row = $selectResults->fetch_assoc()) {
                 foreach ($row as $key => $value) {
-                    $currentRow[$key] = $value;
+                    $currentRow[$key] = mb_convert_encoding($value, 'UTF-8', 'UTF-8');
+                    
                 }
                 array_push($resultsToSend, $currentRow);
             }

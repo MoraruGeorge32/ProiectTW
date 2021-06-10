@@ -66,7 +66,7 @@ function sendDataUpdate() {
 function arataAdaugaEveniment() {
   document.getElementById("removeEvent").style.display = "none";
   document.getElementById("updateEvent").style.display = "none";
-  document.getElementById("formAddEvent").style.display = "block";
+  document.getElementById("formAddEvent").style.display = "flex";
   var list = document.getElementById("list-events");
   list.textContent =
     ""; /*nu este eficient deoarece face apel la parser-ul din browser*/
@@ -75,11 +75,11 @@ function arataAdaugaEveniment() {
 function arataStergeEveniment() {
   document.getElementById("formAddEvent").style.display = "none";
   document.getElementById("updateEvent").style.display = "none";
-  document.getElementById("removeEvent").style.display = "block";
+  document.getElementById("removeEvent").style.display = "flex";
 }
 function arataModificaEveniment() {
   document.getElementById("formAddEvent").style.display = "none";
-  document.getElementById("updateEvent").style.display = "block";
+  document.getElementById("updateEvent").style.display = "flex";
   document.getElementById("removeEvent").style.display = "none";
   provideEvents(1);
 }

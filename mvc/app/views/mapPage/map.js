@@ -86,6 +86,12 @@ async function createMarkers() {
     .then((resJ) => {
       if (resJ != "0 results selected") markersInfo = resJ;
     });
+  //   await fetch(URL_MVC + urlData)
+  //   .then((res) => res.text())
+  //   .then((resJ) => {
+  //     console.log(resJ)
+  //    // if (resJ != "0 results selected") markersInfo = resJ;
+  //   });
 
   let markers = [];
   if (markersInfo !== undefined) {
