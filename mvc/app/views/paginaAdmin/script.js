@@ -54,7 +54,7 @@ function sendDataUpdate() {
         if (contentType && contentType === "application/json") {
           return response.json();
         }
-        throw new TypeError("Datele primite nu-s JSON :(\n murim cu gratie");
+        throw new TypeError("Datele primite nu-s JSON :(");
       })
       .then((json) => {
         console.log(json);
