@@ -15,6 +15,8 @@ html{
     height:100%;
     width: 100%;
 }
+
+
 body{
     width:100%;
     height:100%;
@@ -60,7 +62,7 @@ body{
 
 
 
-.regiune,.success,.suicide,.exceeded,.sendButton{
+.regiune,.success,.suicide,.exceeded,.attack,.sendButton{
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -76,7 +78,7 @@ body{
     margin-bottom: 4vw;
     align-items: center; 
 }
-.regiune select,.success select, .suicide select, .exceeded select{
+.regiune select,.success select, .suicide select, .attack select, .exceeded select{
     width: 60%;
     border: 1px solid blueviolet;
 }

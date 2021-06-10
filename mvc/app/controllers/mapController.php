@@ -53,6 +53,10 @@ class mapController extends Controller {
         {
             $dataMap = $dataMap . " AND extended=" . $_GET['exceeded'];
         }
+        if(isset($_GET['attacktype1']))
+        {
+            $dataMap = $dataMap . " AND attacktype1=" . $_GET['attacktype1']; 
+        }
         $dataMap = $dataMap . ";";
         $model=$this->model("mapModel");
         $dataArray = $model-> mapEvent($dataMap);

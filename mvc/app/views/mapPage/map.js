@@ -58,6 +58,12 @@ async function createMarkers() {
     url["exceeded"] = e.options[e.selectedIndex].value;
   }
 
+  e = document.getElementById("tipAtac");
+  if(e.options[e.selectedIndex].text!== "None")
+    url["attacktype1"]=e.options[e.selectedIndex].value;
+  
+  
+
   let urlData = "";
   let filters = false;
   Object.keys(url).map((key) => {
