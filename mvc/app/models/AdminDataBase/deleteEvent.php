@@ -7,8 +7,10 @@ require_once "../../Utilitati/Conexiune.php";
             if($dbconn->connect_error) {
                 exit('Could not connect');
               }
-            $sql = "DELETE FROM terro_events WHERE eventid = " . $id;
-            if ($dbconn->query($sql) === TRUE) {
+            $sql = "DELETE FROM terro_events WHERE eventid = ?";
+            $stmt = $dbconn->prepare($sql);
+            $stmt->bind_param("i", $id);
+            if ($stmt->execute() === TRUE) {
                 echo "Evenimentul cu id-ul " . $id . " a fost sters cu succes!<br>";
             } 
             else {

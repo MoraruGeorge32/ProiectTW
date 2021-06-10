@@ -9,7 +9,7 @@ class updateEvent{
         foreach($data as $key => $value)
         {
             if($key !== "eventid"){
-                $column_values = $column_values.$key."=".$value.",";    
+                $column_values = $column_values . $key . "=" . $value . ",";    
             }
         }
         
