@@ -21,6 +21,11 @@ function adaugaInputTari() {
 
   DIV.style.display = "inherit";
   contor++;
+  if(contor>2){
+    document.getElementById("filterDecese").style.type="radio";
+    document.getElementById("filterRaniti").style.type="radio";
+    document.getElementById("filterAtacuri").style.type="radio";
+  }
 }
 //poate mai bine ii sa creez ambele butoane global
 //in acelasi timp nu poate fi chiar ok cand sterg
@@ -76,6 +81,15 @@ function adaugaInputRegiuni() {
 
   DIV.style.display = "inherit";
   contor++;
+  if(contor>2){
+    let filterDecese = document.getElementById("filterDecese");
+    filterDecese.type="radio";
+    let filterRaniti = document.getElementById("filterRaniti");
+    filterRaniti.type="radio";
+    let filterAtacuri = document.getElementById("filterAtacuri");
+    filterAtacuri.type="radio";
+    
+  }
 }
 
 function adaugaOptionsReg(id) {
@@ -194,7 +208,8 @@ function drawGraphic(data) {
   }
   let maximValue = -1;
   let dataChart = [];
-  if (data.nameLocatie === null) {
+  console.log(data);
+  if (data.nameLocatie === undefined) {
     dataChart = data;
   }
   else {
@@ -282,7 +297,7 @@ function drawScatterChart(data) {
   console.log("----------------------");
   console.log(data);
   let dataChart = [];
-  if (data.nameLocatie === null)
+  if (data.nameLocatie === undefined)
     dataChart = data;
   else
     dataChart = data.dataColoane;
@@ -347,7 +362,7 @@ function drawColumns(data) {
   let locatiiValues = [];
   let beginYear = document.getElementById("infYear").value;
   let lastYear = document.getElementById("supYear").value;
-  if (data.nameLocatie === null)
+  if (data.nameLocatie === undefined)
     data.forEach(function (item) {
       locatiiList.push(item.name);
       locatiiValues.push(item.data);
@@ -468,15 +483,15 @@ function parseParameters() {
     }
   }
   let countTipRedari = 0;
-  if (document.getElementsByName("filterAtacuri")[0].checked) {
+  if (document.getElementById("filterAtacuri").checked) {
     params['numarAtacuri'] = "numarAtacuri";
     countTipRedari++;
   }
-  if (document.getElementsByName("filterRaniti")[0].checked) {
+  if (document.getElementById("filterRaniti").checked) {
     params['numarRaniti'] = "numarRaniti";
     countTipRedari++;
   }
-  if (document.getElementsByName("filterDecese")[0].checked) {
+  if (document.getElementById("filterDecese").checked) {
     params['numarDecese'] = "numarDecese";
     countTipRedari++;
   }
