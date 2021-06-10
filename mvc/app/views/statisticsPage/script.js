@@ -21,10 +21,14 @@ function adaugaInputTari() {
 
   DIV.style.display = "inherit";
   contor++;
-  if(contor>2){
-    document.getElementById("filterDecese").style.type="radio";
-    document.getElementById("filterRaniti").style.type="radio";
-    document.getElementById("filterAtacuri").style.type="radio";
+  if (contor > 2) {
+    let filterDecese = document.getElementById("filterDecese");
+    filterDecese.type = "radio";
+    let filterRaniti = document.getElementById("filterRaniti");
+    filterRaniti.type = "radio";
+    let filterAtacuri = document.getElementById("filterAtacuri");
+    filterAtacuri.type = "radio";
+
   }
 }
 //poate mai bine ii sa creez ambele butoane global
@@ -52,6 +56,12 @@ function setForRegions() {
     tari.removeChild(tari.firstChild);
   }
   tari.appendChild(btn);
+  let filterDecese = document.getElementById("filterDecese");
+  filterDecese.type = "checkbox";
+  let filterRaniti = document.getElementById("filterRaniti");
+  filterRaniti.type = "checkbox";
+  let filterAtacuri = document.getElementById("filterAtacuri");
+  filterAtacuri.type = "checkbox";
 }
 function setForCountries() {
   //also reset the other div content and the data
@@ -65,6 +75,12 @@ function setForCountries() {
     regiuni.removeChild(regiuni.firstChild);
   }
   regiuni.appendChild(btn);
+  let filterDecese = document.getElementById("filterDecese");
+  filterDecese.type = "checkbox";
+  let filterRaniti = document.getElementById("filterRaniti");
+  filterRaniti.type = "checkbox";
+  let filterAtacuri = document.getElementById("filterAtacuri");
+  filterAtacuri.type = "checkbox";
 }
 
 function adaugaInputRegiuni() {
@@ -81,14 +97,14 @@ function adaugaInputRegiuni() {
 
   DIV.style.display = "inherit";
   contor++;
-  if(contor>2){
+  if (contor > 2) {
     let filterDecese = document.getElementById("filterDecese");
-    filterDecese.type="radio";
+    filterDecese.type = "radio";
     let filterRaniti = document.getElementById("filterRaniti");
-    filterRaniti.type="radio";
+    filterRaniti.type = "radio";
     let filterAtacuri = document.getElementById("filterAtacuri");
-    filterAtacuri.type="radio";
-    
+    filterAtacuri.type = "radio";
+
   }
 }
 
@@ -439,8 +455,7 @@ function drawColumns(data) {
 function checkParams(params, countRedari, numarLocatii) {
   var stringParams = "";
 
-  if (numarLocatii == 0)
-  {
+  if (numarLocatii == 0) {
     alert("Nu ati selectat o regiune/tara!");
     return "Invalid: selectati o regiune sau o tara cel putin";
   }
@@ -449,7 +464,7 @@ function checkParams(params, countRedari, numarLocatii) {
     alert("Selectati o statistica numerica!");
     return "Invalid: selectati o statistica numerica (numar decese,raniti,atacuri)";
   }
-  if (countRedari > 1 && numarLocatii > 1){
+  if (countRedari > 1 && numarLocatii > 1) {
     alert("Nu puteti alege mai multe tari/regiuni si mai multe statistici de generat!")
     return "Invalid: nu puteti alege mai multe tari/regiuni si mai multe statistici de generat";
   }
