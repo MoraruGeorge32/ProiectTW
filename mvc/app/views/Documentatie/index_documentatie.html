@@ -5,7 +5,8 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="./style.css">
-		<link href='https://fonts.googleapis.com/css2?family=Oswald&display=swap' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css2?family=Oswald&display=swap'
+			rel='stylesheet' type='text/css'>
 	</head>
 	<body>
 
@@ -101,7 +102,8 @@
 					<p>
 						TerroViz este în esență un instrument de vizualizare flexibilă a datelor
 						privitoare la terorismul global. Cu ajutorul acestuia, utilizatorii vor
-						putea colecta informații privitoare la terorismul dintr-o țară selectată de
+						putea colecta informații privitoare la terorismul dintr-o țară selectată
+						de
 						aceștia. Produsul este deschis publicului larg și poate constitui un
 						ajutor în obținerea de date simple și prelucrări ale acestora în forma
 						de informații.
@@ -121,11 +123,11 @@
 							acesta aplicația pune la dispoziție următoarele:
 						</p>
 						<ul>
-							<li>Vizualizarea hărții planetei și obținerea unei descrieri pentru
-								fiecare țară</li>
-							<li>Obținere număr de decese, evenimente teroriste, răniți dintr-o țară</li>
-							<li>Generare de statistici și metode de vizualizare ale acestora</li>
-							<li>Căutare multi-criterială de incidente raportate</li>
+							<li>Obținere reprezentări vizuale a diferitelor statistici pe care le
+								dorește
+								și descărcarea acestora în diferite formate (SVG, CSV sau PNG) </li>
+							<li>Căutare multi-criterială de incidente raportate reprezentate pe o
+								hartă, cu informații detaliate legate de acele evenimente</li>
 						</ul>
 					</section>
 					<section>
@@ -133,14 +135,13 @@
 						<p>Spre deosebire de un utilizator normal, un administrator poate schimba
 							anumite aspecte ale aplicației. Astfel un administrator va putea:</p>
 						<ul>
-							<li>Adăuga/Șterge un incident din baza de date</li>
+							<li>Adăugare un incident în baza de date</li>
+							<li>Ștergerea un incident din baza de date</li>
+							<li>Editarea un incident din baza de date</li>
 						</ul>
 					</section>
 
 				</section>
-				<p>
-
-				</p>
 
 			</section>
 
@@ -149,45 +150,174 @@
 					Interactiunea cu utilizatorul
 				</h2>
 				<p> Interfața cu care interacționează utilizatorul (paginile Web) sunt
-					construite cu elemente de HTML5 și CSS3 conform consorțiului Web.</p>
-				<section>
-					<h3>
-						Pagini
-					</h3>
+					construite cu elemente de HTML5 și CSS3 conform consorțiului Web. Pentru o
+					interacțiune mai dinamică,
+					s-a recurs la folosirea de JavaScript și suita de tehnologii Ajax.</p>
+				<section id="HomePage">
+					<h3>Home Page</h3>
+					<p>
+						Pagina de home are rol informativ. Aceasta prezintă misiunea echipei și utilitatea tool-lui creat.
+					</p>
+				</section>
+				<section id="Vizualizator">
+					<h3>Vizualizator</h3>
+					<p>
+						Vizualizatorul reprezintă o pagină din aplicație cu rolul în reprezentarea
+						vizuală a unor statistici pe
+						care un utilizator le poate dori despre anumite țări sau regiuni.
+						Reprezentarea datelor este de fapt crearea
+						unor chart-uri în care sunt puse datele.
+					</p>
+					<p>
+						Partea stângă a paginii conține filtrele pentru statistici. Primul filtru,
+						care este obligatoriu, este de a selecta
+						măcar o țară sau o regiune pentru care se face statistica. Partea dreaptă
+						reprezintă
+						zona unde se vor desena graficele.
+					</p>
+					<p>Următoarele 4 filtre reprezintă de fapt criterii după care să se
+						selecteze
+						evenimentele. Utilizatorul poate bifa dacă vrea ca un
+						criteriu să fie luat în considerare sau nu. Criteriile sunt:</p>
 					<ul>
-						<li> Pagina principală <br>
-							<p> Pagina Home are rolul de a prezenta pe scurt detaliile aplicației,
-								echipei și obiectivului pentru care a fost creată această aplicație.</p>
-							<p> Ca funcționalități, această pagină oferă posibilitatea de a naviga
-								către pagina ce conține harta cu informații despre evenimente teroriste
-								sau către un formular de autentificare
-								pentru administratori. </p>
-						</li>
-						<li> Vizualizatorul de date despre terorism <br>
-							<p> Pe această pagină utilizatorul poate obține detalii despre o anumită
-								țară selectată, anumite statistici pentru o tară legate de evenimente
-								teroriste, căutarea unui incident după
-								anumite elemente cheie și exportarea acestor cereri.
-							</p>
-							<p>
-								În partea superioară se află o hartă pe care utilizatorul o poate folosi
-								pentru selectarea unei țări. Pe baza acestei selecții, se pot realiza
-								mai multe prelucrări de date:
-							</p>
-							<ol>
-								<li> Selectarea detaliilor despre o anumită țară; </li>
-								<li> Generarea unei statistici dorite;</li>
-								<li> Căutarea unui posibil incident raportat.</li>
-							</ol>
-						</li>
-						<li>
-							Pagina de autentificare pentru administrator <br>
-							<p> În această pagină se realizează autentificarea utilizatorilor cu rol
-								de administrator. Dacă logarea se va realiza cu succes, acesta va fi
-								redirecționat către o interfață pentru
-								administrarea aplicației. </p>
+						<li>Succes: aplicația să ia în calcul evenimentele care au avut succes
+							sau nu</li>
+						<li>Extins: aplicația să ia în calcul evenimentele care au avut sau nu o
+							durată mai lungă de 24 de ore</li>
+						<li>Sinucidere: aplicația să ia în calcul evenimentele care au
+							reprezentat sau nu sinuciderea celui/celor care au realizat atacul</li>
+						<li>Tipul atacului: reprezintă un criteriu cu mai mult de 2 variante.
+							Sunt luat in considerare în generarea
+							graficelor evenimentele pentru care este cunoscut tipul de atac și acel
+							tip corespunde cu cel ales din criteriu
 						</li>
 					</ul>
+					Cele 3 filtre ce urmează (număr decese, număr răniți, număr atacuri)
+					reprezintă valorile numerice care sunt folosite în diverse calcule.
+					De exemplu se pot cere numărul de decetați pe ani dintr-o țară/mai multe
+					țări, sau numărul de răniți,omorâți și de atacuri dintr-o țară sau dintr-o
+					regiune. Filtru „Număr atacuri” poate fi folosit cu primele 4 criterii
+					pentru a determina noi statistici, cum ar fi numărul de evenimente cu
+					succes, extinse,
+					care au fost de un tip de atac sau care au reprezentat sinucidere.
+					<br>
+					<p>
+						Următoarele 2 filtre reprezintă intervalul pentru care se caută
+						evenimentele (de la 1970 până la 2017), și tipul de redare a
+						chart-urilor.
+					</p>
+					<p>
+						Chart-uri:
+						<ul>
+							<li>Lines Chart: se generează un grafic de tip line care are pentru
+								fiecare an din interval
+								valorile căutate (număr de decese, răniți sau evenimente) și pentru
+								fiecare țară/regiune selectată,cu culori diferite
+							</li>
+							<li>
+								Scatter Chart: chart de tip scatter ce are pentru fiecare zi
+								calendaristică (an,lună,zi), suma tuturor
+								omorurilor, răniților sau toate evenimentele petrecute în acea zi,
+								pentru fiecare regiune/țară selectată
+							</li>
+							<li>
+								Bar Chart: acest tip de chart redă suma totală a numărului de decese,
+								răniți sau evenimente pentru periaoda selectate
+								pentru fiecare țară/regiune selectată.
+							</li>
+						</ul>
+					</p>
+					Restricții:
+					<ul>
+						<li>Un utilizator nu poate selecta mai multe regiuni și mai multe valori
+							care să fie redate. De exemplu nu poate selecta
+							și numărul de omoruri, și numărul de răniți și numărul de evenimente
+							pentru mai multe țări/regiuni.</li>
+						<li>Un utilizator nu poate selecta și țări și regiuni, deoarece nu ar
+							exista o coerență a datelor reprezentate</li>
+					</ul>
+				</section>
+				<section id="Harta">
+					<h3>Hartă</h3>
+					<p>
+						Asemănător cu pagina de vizualizare, aceasta este împărțită în 2. Prima
+						parte este destinată criteriilor după care se face
+						căutarea de evenimente, iar a doua este rezervată hărții unde sunt marcate
+						evenimentele.
+					</p>
+					<p>
+						Filtre:
+					</p>
+					<ul>
+						<li>Regiune: reprezintă un filtru obligatoriu cu rolul în specificarea
+							unei regiuni unde se caută evenimentele</li>
+						<li>Perioada: criteriu ce poate fi opțional. Se specifică în ce interval
+							de ani au avut loc acele evenimente. Neselectarea
+							acestuia implică căutarea prin evenimente fără să se țină cont de anul
+							petrecerii
+						</li>
+						<li>Număr răniți: se caută acele evenimente care au numărul de răniți în
+							intervalul specificat la acest criteriu</li>
+						<li>Număr uciși: se caută acele evenimente care au numărul de uciși în
+							intervalul specificat la acest criteriu</li>
+						<li>Succes: se iau in considerare în procesul de căutare evenimentele care
+							au o valoare specificată la atributul succes.
+							Neselectarea induce căutarea și printre evenimente pentru care nu este
+							relevant acest atribut
+						</li>
+						<li>Peste 24 de ore: se caută acele evenimente care au durat mai mult de
+							24 de ore sau nu. Neselectarea duce la luarea
+							în considerare și a evenimentelor pentru care nu contează acest atribut
+						</li>
+						<li>Suicid se caută acele evenimente care au reprezentat suicid, nu au
+							reprezentat sau nu se stie (neselectarea filtrului)</li>
+						<li>Tipul atacului: la selectarea acestui filtru sunt luate în considerare
+							evenimentele care au ca tip de atac
+							cel specificat în filtru
+						</li>
+					</ul>
+					<p>
+						La fel ca la statistici, filtrele pot fi combinate între ele pentru a
+						opține evenimente mai specifice căutării utilizatorului.
+					</p>
+					<p>
+						Evenimentele sunt reprezentate pe hartă prin markers de la Google Maps.
+						Apăsarea pe un marker va genera un text area cu diferite
+						informații legate de respectivul eveniment, cum ar fi data acestuia,
+						regiunea, arme folosite, tip atac, număr decese, număr răniți
+						un rezumat al acelui eveniment, nume grup terorist, număr persoane
+						implicate.
+					</p>
+				</section>
+				<section id="Admin">
+					<h3>Modulul de administrare</h3>
+					<p>
+						Pagina de admin are rolul de a oferi un mod de administrare a evenimentelor din baza de date.
+					</p>
+					<p>
+					În partea stângă sunt 3 texte pentru selectarea unei acțiuni asupra evenimentelor 
+					și un buton de delogare din modulul de administrare.
+					<ul>
+						<li>Primul text este pentru afișarea formului de adăugare a unui eveniment. Formul conține infomații de bază legate de 
+							eveniment, cum ar fi data, latitudine, longitudine, regiune, țară, oraș, dacă este suicid, dacă o avut succes, țintă, descriere,
+							număr răniți, număr omorâți, număr persoane implicate, nume grup terorist, motiv. La trimitere se va afișa un alert care va avea un mesaj 
+							sugestiv legat de succesul inserării noului event.
+						</li>
+						<li>Al doilea text este pentru a arăta o listă de evenimente care doresc să fie șterse. Are opțiunea de a arată cate 5,10 sau 15 evenimente 
+							de o dată. Fiecare eveniment are câte un checkbox, care la bifare va fi șters din baza de date la apăsarea butonului de "Ștergere evenimente".
+							De asemenea în partea de jos sunt 2 butoane cu rol în a arăta evenimente mai noi sau mai vechi.
+						</li>
+						<li>Al treilea text este pentru afișarea opțiunii de modificare/actualizare a evenimentelor. Asemănător cu ștergerea, se vor afișa by default
+							un număr de 15 evenimente, iar pentru fiecare eveniment vor fi arătate informații ca ID-ul, data, regiune,oras. Fiecare event va avea un buton 
+							de edit ce va avea rol de creare a unei pagini noi, cu informațiile de la back-end, specifică evenimentului. Această pagină va fi un form 
+							de completat cu placeholders ce au valori vechile valori din baza de date. La introducerea în câmpuri de valori noi, se va actualiza în baza de 
+							date doar acele câmpuri care au modificată valoare. La reușită se va redirecționa la pagina de admin. La eșec se va afișa un alert cu un mesaj sugestiv.
+						</li>
+						<li>
+							Butonul de delogare: are rol în delogarea unui admin din modulul de administrare, prin ștergerea datelor din sesiune și retrimiterea acestuia la pagina principală
+						</li>
+					</ul>
+					</p>
 				</section>
 			</section>
 			<section id="contributii">
@@ -316,10 +446,12 @@
 								create cu ajutorul lui <em>Moraru George</em>.
 							</li>
 							<li>
-								Pagina de selectare a unei acțiuni (dashboard-ul) pentru un administrator a fost
+								Pagina de selectare a unei acțiuni (dashboard-ul) pentru un
+								administrator a fost
 								realizată de <em>Musteață Robert</em> în colaborare cu <em>Moraru George</em>
-								Stilizarea paginii (culori, aranjări în pagină...) a fost consituită de <em>Moraru George</em>,
-								iar partea de script (codul JavaScript) de <em>Musteață Robert</em> 
+								Stilizarea paginii (culori, aranjări în pagină...) a fost consituită de
+								<em>Moraru George</em>,
+								iar partea de script (codul JavaScript) de <em>Musteață Robert</em>
 							</li>
 						</ul>
 					</section>
@@ -329,8 +461,9 @@
 							Raportul
 						</h4>
 						<p>
-							Prezentul raport a fost întocmit de <em>Musteață Robert</em> și <em>Angheluș Vlad</em>, aplicând tehnica
-							 <b>pair programming</b>.
+							Prezentul raport a fost întocmit de <em>Musteață Robert</em> și <em>Angheluș
+								Vlad</em>, aplicând tehnica
+							<b>pair programming</b>.
 						</p>
 					</section>
 
@@ -342,9 +475,14 @@
 					Stagiu de dezvoltare
 				</h2>
 				<p>
-					În momentul redactării acestui raport, aplicația se rezumă doar la partea de site/interfață pentru utilizator. Pe parcursul dezvoltării părții logice/funcționale propiu
-					 zise, este extrem de probabil ca interfața să se schimbe, în funcție de opțiunile adăugate/eliminate aplicației. Pentru partea aceasta, de <u>Front-End</u>, încă se pot 
-					adăuga anumite îmbunătățiri majore la nivel de design (interacțiune în timp real cu un utilizator) și performanță (viteza de încărcare a resurselor).
+					În momentul redactării acestui raport, aplicația se rezumă doar la partea
+					de site/interfață pentru utilizator. Pe parcursul dezvoltării părții
+					logice/funcționale propiu
+					zise, este extrem de probabil ca interfața să se schimbe, în funcție de
+					opțiunile adăugate/eliminate aplicației. Pentru partea aceasta, de <u>Front-End</u>,
+					încă se pot
+					adăuga anumite îmbunătățiri majore la nivel de design (interacțiune în timp
+					real cu un utilizator) și performanță (viteza de încărcare a resurselor).
 				</p>
 			</section>
 
