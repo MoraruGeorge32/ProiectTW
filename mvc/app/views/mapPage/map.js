@@ -74,7 +74,6 @@ async function createMarkers() {
   if (filters) 
     urlData += "filters=" + filters;
 
-  alert(urlData);
 
   let markersInfo;
 

@@ -11,7 +11,6 @@ class DataScatter
         $year = "";
         $month = "";
         $day = "";
-        $count = 0;
         $filtre = "" . $column . "=? and iyear >=" . $beginYear . " AND iyear<=" . $lastYear;
         if (isset($requestData['filtruSuicid']))
             $filtre = $filtre . " AND suicide=" . $requestData['filtruSuicid'];
@@ -38,7 +37,7 @@ class DataScatter
                     $month = DataScatter::transform($month);
                     array_push($dataWound, array($year . "-" . $month . "-" . $day, $values));
                 }
-                array_push($bigArray, array("name" => "sum(nwound)", "data" => $dataWound));
+                array_push($bigArray, array("name" => "Raniti", "data" => $dataWound));
             }
             if ($columnTable == "sum(nkill)") {
                 $stmt = $dbconn->prepare("SELECT sum(nkill),iyear,imonth,iday FROM `terro_events` WHERE " . $filtre . " GROUP BY iyear,imonth,iday HAVING sum(nkill)>0");
@@ -55,7 +54,7 @@ class DataScatter
                     $month = DataScatter::transform($month);
                     array_push($dataKill, array($year . "-" . $month . "-" . $day, $values));
                 }
-                array_push($bigArray, array("name" => "sum(nkill)", "data" => $dataKill));
+                array_push($bigArray, array("name" => "Omorati", "data" => $dataKill));
             }
             if ($columnTable == "count(*)") {
                 $stmt = $dbconn->prepare("SELECT count(*),iyear,imonth,iday FROM `terro_events` WHERE " . $filtre . " GROUP BY iyear,imonth,iday");
@@ -72,7 +71,7 @@ class DataScatter
                     $month = DataScatter::transform($month);
                     array_push($dataTotal, array($year . "-" . $month . "-" . $day, $values));
                 }
-                array_push($bigArray, array("name" => "count(*)", "data" => $dataTotal));
+                array_push($bigArray, array("name" => "Total", "data" => $dataTotal));
             }
         }
 

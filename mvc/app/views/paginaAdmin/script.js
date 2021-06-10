@@ -206,7 +206,7 @@ async function sendDataAdd() {
     .then(res => res.json())
     .then(resJson => {
       console.log(resJson);//afisare mesaj daca s-a reusit sau nu plus motivul daca s-a reusit sau nu
-      alert(resJson);
+      alert(resJson.message);
     })
     .catch(error => console.log(error));
 
@@ -262,7 +262,6 @@ function decreasePage() {
 }
 function redirectToEditPage(idBtn) {
   let idEvent = document.getElementById(idBtn).getElementsByTagName("p")[0].textContent;
-  alert(idEvent);
   let urlToController = "../../controllers/requestEditPage.php?idEvent=" + idEvent;
   let urlControllerMVC= "../../../public/requestEditPage?idEvent="+idEvent;
   fetch(urlControllerMVC)

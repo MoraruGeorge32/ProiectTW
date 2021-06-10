@@ -44,7 +44,7 @@ function createButton(content, action) {
 function setForRegions() {
   //also reset the other div content and the data
   contor = 1;
-  let tari = document.getElementsByClassName("countries")[0];
+  let tari = document.getElementsByC\lassName("countries")[0];
   let regiuni = document.getElementsByClassName("regions")[0];
   // console.log(tari);
   // console.log(regiuni);
@@ -530,7 +530,6 @@ function parseParameters() {
 
 async function showStats() {
   let paramURL = parseParameters();
-  alert("Verifica console.log-ul pentru a vedea daca sunt parametri buni!");
   console.log(parseParameters());
   var data;
   //waiting for the data from the back-end

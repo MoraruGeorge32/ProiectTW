@@ -81,6 +81,8 @@
                 <input id="reason" name="motive" placeholder=""/>
                 <label for="terrono">Numarul total de teroristi implicati </label>
                 <input id="terrono" name="nperps" placeholder=""/>
+                <label for="summary">Descriere event  </label>
+                <input id="summary" name="summary" placeholder=""/>
             </div>
             
                 

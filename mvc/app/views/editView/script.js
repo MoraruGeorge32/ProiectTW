@@ -52,7 +52,7 @@ function updateDataInDb(){
             input[selectValues[j].name] = selectValues[j].value;
     var url = "../../controllers/updateEventController.php"
     fetch(url,{
-        method: "POST",
+        method: "PUT",
         body: JSON.stringify(input),
         headers:{
             'Content-Type': 'application/json'
@@ -61,5 +61,5 @@ function updateDataInDb(){
     .then(status)
     .then(res=> res.text())
     .then(resText => (resText === "OK") ? window.location.href="../paginaAdmin/index.php": (alert(resText)))
-    .catch(err => console.log(err))
+    .catch(err => alert(err))
 }

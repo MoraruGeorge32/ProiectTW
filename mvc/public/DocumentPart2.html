@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>DocumentatieSolutieFunctionala</title>
+        <title>Documentatie Solutie Functionala</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="project" content="DocumentProiect">
@@ -45,7 +45,7 @@
                             property="schema:author">
                             <span typeof="schema:Person">
                                 <meta property="schema:givenName"
-                                    content="George">
+                                    b content="George">
                                 <meta property="schema:additionalName"
                                     content="Octavian">
                                 <meta property="schema:familyName"
@@ -125,17 +125,238 @@
                 <section id="Structura">
                     <h3>Structura proiectului</h3>
                     <p>
-                        Pe parte de organizare a proiectului, s-a recurs la o arhitectura MVC (Model-View-Controller).
-                        View-urile represinta ceea ce vede un utilizator+ceea ce se folosește pentru a reda conținutul (imagini, cod HTML, cod JS, cod PHP de exemplu pentru afișarea paginii de administrare dacă s-a 
+
+                        Pe parte de organizare a proiectului, s-a recurs la o
+                        arhitectura MVC (Model-View-Controller).
+                        View-urile represinta ceea ce vede un utilizator+ceea ce
+                        se folosește pentru a reda conținutul (imagini, cod
+                        HTML, cod JS, cod PHP de exemplu pentru afișarea paginii
+                        de administrare dacă s-a
                         logat corect utilizatorul).
-                        Model-urile vor reprezenta fișierele PHP care vor prelua informatii din baza de date și o vor trimite la controllers pentru eventuale prelucrări și 
+                    </p>
+                    <p>
+                        Model-urile vor reprezenta fișierele PHP care vor prelua
+                        informatii din baza de date și o vor
+                        trimite la controllers pentru eventuale prelucrări și
+                        trimiteri la views.
+                    </p>
+                    <p>
+                        Controller-urile sunt destinate realizării comunicării
+                        dintre views și models. View-urile trimit cereri (numar
+                        atacuri, evenimente dintr-o țară/regiune),
+                        transmit datele cerute la models, preiau datele și le
+                        transmit la views.
                     </p>
                 </section>
 
             </section>
             <section typeof="sa:DevelopmentStage" id="Development">
                 <h2>Etapa de Dezvoltare</h2>
+                <section id="etape">
+                    <h3>
+                        Stagiile prin care a trecut partea de development
+                    </h3>
+                    <ul>
+                        <li> Crearea interfeței grafice într-o formă
+                            inițială.(marea majoritate a view-urilor)</li>
+                        <li> Implementarea modului de logare </li>
+                        <li> Inceput implementat modul de administrare</li>
+                        <li> Structurarea aplicației conform arhitecturii MVC</li>
+                        <li>Adăgarea verificării la logare a sesiunii</li>
+                        <li>Adăugat funcționalitatea de adăugare de eveniment</li>
+                        <li>Adăugat funcționalitatea de ștergere de eveniment</li>
+                        <li>Adăugat funcționalitatea de editare de eveniment</li>
+                        <li> Crearea paginii de statistici în prima formă pentru
+                            mai multe locații și o singură reprezentare grafică</li>
+                        <li> Crearea filtrelor pentru a regăsi evenimente pe
+                            hartă</li>
+                        <li>Mărit complexitatea filtrelor pentru statistici
+                            (evenimente cu succes, ce au fost sinucidere, după
+                            tipul de atac)</li>
+                        <li>Realizarea unui demo folosind API-ul pentru hărți de
+                            la Google</li>
+                        <li>Adăugat filtre pentru căutarea de evenimente pe
+                            hartă + afișare detalii primite pentru un eveniment</li>
+                        <li> Restructurări ale proiectului pentru a respecta
+                            MVC-ul, fixat bug-uri, implementat tehnici impotriva
+                            SQL injection-lui
+                        </li>
+                        <li>Documente și filmuleț</li>
+                    </ul>
+                </section>
 
+                <section id="ModulAdmin">
+                    <h3>Modulul de administrare</h3>
+                    <p>
+                        La implementarea modului de administrare, am implementat
+                        o versiune minimala de aplicație CRUD pentru
+                        management-ul evenimentelor din cadrul
+                        bazei de date.
+                    </p>
+                    <p>
+                        <em>Pentru ADD:</em> am creat un formular ce se trimite
+                        la un controller folosind metoda POST. JSON-ul este
+                        transmis la model-ul addEvent care realizeaza inserarea
+                        si trimite un răspuns dacă s-a putut efectua inserarea
+                        sau nu.
+                    </p>
+                    <p>
+                        <em>Pentru EDITEAZA:</em> sunt listate 15 evenimente din
+                        baza de date.
+                        Acestea sunt preluate din baza de date in momentul in
+                        care body-ul este loaded, pastrand intr-un array de
+                        obiecte toate informatiile despre cele 15 evenimente.
+                        Evenimentele au cate un buton de edit care, odata
+                        apasat, construieste url-ul paginii de editare impreuna
+                        cu informatiile evenimentului ce devin query parameters.
+                        In pagina nou-creata, valorile vechi ale evenimentelor
+                        devin placeholdere pentru input-urile in care
+                        utilizatorul trebuie sa introduca valorile noi,
+                        pentru a avea posibilitatea ca acesta sa le poata scrie
+                        in cazul in care nu vrea sa le schimbe. Dupa completarea
+                        form-ului, acesta apasa pe submit si se apeleaza
+                        controller-ul pentru update.
+                        Controller-ul apeleaza modelul pentru update,
+                        informatiile sunt verificate, pregatite si introduse in
+                        baza de date si returneaza un mesaj in functie de
+                        rezultatul functiei.
+                        Pagina de Update Event are si paginare, bazata pe
+                        valoarea din input-ul din subsolul div-ului ce contine
+                        updateEvent.
+                    </p>
+                    <p>
+                        <em>Pentru STERGERE:</em> Inițial sunt afișate 3 opțiuni
+                        din care poate fi selectat numărul de evenimente ce vor
+                        fi afișate pe pagina curentă, opțiunile fiind
+                        5, 10, respectiv 15 evenimente. Pe baza acestei opțiuni,
+                        folosind un obiect de tipul XMLHttpRequest se trimite o
+                        cerere prin metoda GET către modelul care
+                        selectează din baza de date primele x evenimente (unde x
+                        poate fi 5, 10 sau 15) ordonate după id-ul acestora.
+                        Pentru a naviga prin evenimente, sunt folosite
+                        butoanele „Evenimente mai vechi” și „Evenimente mai noi”
+                        apelează o funcție JavaScript ce schimbă parametrii după
+                        care selectăm evenimentele din baza de dte
+                        și reface request-ul. Toate aceste evenimente au un
+                        check-box prin intermediul căruia selectăm evenimentele
+                        pe care dorim să le ștergem din baza de date.
+                        Ștergerea propriu-zisă se realizează în momentul în care
+                        este apăsat butonul de submit al form-ului care apelează
+                        controller-ul pentru ștergere. Controller-ul
+                        apelează model-ul de ștergere care realizează ștergerea
+                        din baza de date și afișeză pentru fiecare eveniment
+                        dacă a fost șters cu succes.
+                    </p>
+                </section>
+                <section id="Statistici">
+                    <h3>Pagina de statistici</h3>
+                    <p>
+                        Inițial, pentru această pagină, am testat folosind
+                        API-ul de la ApexChart pentru date hard-coded/exemple
+                        din documentație.
+                        Cel mai important lucru a fost crearea controller-lui de
+                        statistici, care în funcție de ce date cere view-ul,
+                        acesta apelează
+                        model-ul corespuzător și returnează datele. Tipurile de
+                        grafice alese au fost BarChart, ScatterChart și
+                        LineChart.
+                    </p>
+                    <p>
+                        Pagina a fost într-o primă formă să genereze un singur
+                        fel de statistică (număr de omoruri,răniți sau de
+                        evenimente) pentru mai multe tări. După am adăugat
+                        să se poată genera mai multe tipuri de grafice, avand in
+                        vedere filtre bine alese si un numar variabil de regiuni
+                        si tari. Ultima etapă
+                        a creării graficelor a fost să putem realiza un chart cu
+                        mai multe valori (număr omoruri+număr răniți+număr
+                        evenimente) pentru acceași țară/regiune.
+                    </p>
+                    <p>
+                        Din view se prelucrează informațiile din filtre și sunt
+                        trimise către controller. Folosind GET, valorile sunt
+                        date în URL, facând apel astfel la API-ul de statistici.
+                        Acesta analizează cazul pentru care se cer informațiile
+                        (țări/regiuni multiple și o singură valoare sau o
+                        singură țară/regiune și mai multe valori de reprezentat)
+                        am realizat să creeze un model specific pentru care
+                        apelează o metodă anume pentru fiecare context.
+                    </p>
+                </section>
+                <section id="logare">
+                    <h3>Sistemul de logare</h3>
+                    <p>
+                        A fost printre primele lucruri create legat de Back-end.
+                        Inițial a fost o pagina care avea un form de logare cu
+                        username și parola Până am realizat modul
+                        de verificare a user-lui, aceasta redirecta către pagina
+                        de admin.
+                    </p>
+                    <p>
+                        După verificarea redirectului, am realizat și conectarea
+                        la baza de date. Conexiunea era folosită pentru a
+                        verifica numele și parola oferite
+                        se află într-o tabelă de utilizatori admini.
+                    </p>
+                    <p>
+                        Ultimul lucru care a fost făcut la partea de logare a
+                        fost verificarea celui care accesează link-ul pentru
+                        pagina de administrare dacă în variabila SESSION are
+                        setat un user și o parolă.
+                        Dacă erau valide amândouă, parola era ștearsă din
+                        sesiune și se permitea accesul la modulul de
+                        administrare.
+                    </p>
+                </section>
+                <section id="Harta">
+                    <h3>Pagina de hartă</h3>
+                    <p>
+                            La începutul proiectul, ne-am gândit ca pagina noastră să conțină un svg cu toate țările lumii și prin apăsarea unei țări, să se listeze pe ecran toate evenimentele teroriste din țara respectivă.
+                            Am renunțat la această idee deoarece nu permitea filtrarea informațiilor decât la nivelul țărilor, iar svg-ul avea o dimensiune prea mare ce scădea performanța site-ului. Așadar, am decis să mergem pe varianta
+                            utilizării unui api pentru hartă numit Google Maps API care ne-a ajutat extraordinar de mult în redarea cartografică a informațiilor.
+                    </p>
+                    <p>
+                            Pagina de hartă este împărțită în 2 părți, o parte conținând filtrele reprezentate prin select-uri și input-uri, iar cealaltă parte este folosită la încadrarea hărții.
+                            Filtrele pentru hartă sunt următoarele: regiune, interval de perioada, interval cu numărul de oameni răniți, interval cu numărul de oameni uciși, dacă evenimentul a fost încheiat de succes,
+                            dacă evenimentul a implicat sinucideri, dacă a durat peste 24 de ore și tipul atacului.
+                            În afară de regiune, fiecare filtru este opțional. La finalul zonei de filtrare, există un button send care preia din baza de date informațiile legate de evenimente în funcție de filtre.    
+                    </p>
+                    <p>
+                            După preluarea informațiilor din baza de date, se creează markerele pentru fiecare eveniment în parte, unde am adăugat pentru fiecare câte un infoWindow ce conține mai multe detalii legate de eveniment.
+                    </p>
+</p>
+                        
+
+                </section>
+                <section id="Testing">
+                    <h3>Testing</h3>
+                    <p>Testarea aplicației s-a făcut în general din postura
+                        utilizatorului final, verificând astfel dacă aspectul
+                        aplicației este cel scontat sau dacă funcționalitățile
+                        sunt cele așteptate. Aplicația a fost testatată pe 3
+                        browsere: Chrome, Mozilla și Opera. Pentru a testa
+                        partea de back-end, vizualizam baza de date
+                        pentru a verifica dacă interogările făcute de aplicație
+                        oferă aceleași răspunsuri ca cele realizate manual
+                        direct în baza de date.</p>
+                </section>
+            </section>
+            <section typeof="sa:WorkTeam" id="Colaborare">
+                <h2>Colaborare</h2>
+                <p>
+                    Pentru realizarea componentelor proiectului și pentru
+                    împărțirea sarcinilor s-a folosit GitHub-ul. Toți membrii
+                    echipei au lucrat
+                    pe un singur branch, de cele mai multe ori pe fisiere
+                    diferite. Conflictele au fost minimale
+                </p>
+                <p>
+                    De menționat un aspect important este că s-a lucrat intens
+                    cu Visual Code Live Share,
+                    un plug-in ce permite mai multor utilizatori să lucreze pe
+                    același cod în același timp . Astfel am putut lucra toți de o dată 
+                    și să evităm multe posibile bug-uri legate de logice și evitarea conflictelor la crearea unui commit pe git.
+                </p>
             </section>
         </article>
     </body>
