@@ -14,8 +14,11 @@ if (mysqli_connect_errno()) {
 if (isset($_POST['Username']) && isset($_POST['Password'])) {
     $admin_user = $_POST['Username'];
     $admin_password = $_POST['Password'];
-    $rez = $dbconn->query('select nume from admins where nume=\'' . $admin_user . '\' AND parola=\'' . $admin_password . '\'');
-        $row=$rez->fetch_assoc();
+    $stmt = $dbconn->prepare('select nume from admins where nume= ?  AND parola= ? ');
+    $stmt->bind_param("ss", $admin_user, $admin_password);
+    $stmt->execute();
+    $result= $stmt->get_result();
+    $row = $result->fetch_assoc();
     if (isset($row['nume'])) {
         $_SESSION['user'] = $admin_user;
         $_SESSION['password']=$admin_password;
