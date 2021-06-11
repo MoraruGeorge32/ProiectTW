@@ -266,7 +266,7 @@ function drawGraphic(data) {
       curve: 'smooth'
     },
     title: {
-      text: "Evolutie numar evenimente raportate " + (data.nameLocatie !== null ? " pentru locatia " + data.nameLocatie : null),//din js sa modific
+      text: "Evolutie numar evenimente raportate " + (data.nameLocatie !== undefined ?( " pentru locatia " + data.nameLocatie) : ""),//din js sa modific
       align: 'left'
     },
     grid: {
@@ -394,7 +394,7 @@ function drawColumns(data) {
 
   var options = {
     series: [{
-      name: "Numar evenimente ",
+      name: "Data ",
       data: locatiiValues
     }],
     annotations: {
@@ -430,7 +430,7 @@ function drawColumns(data) {
     },
     yaxis: {
       title: {
-        text: "Evenimente inregistrate intre " + beginYear + " si " + lastYear,
+        text: "Date inregistrate intre " + beginYear + " si " + lastYear,
       },
     },
     fill: {
