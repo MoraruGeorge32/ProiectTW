@@ -320,7 +320,7 @@ function drawScatterChart(data) {
   dataChart.forEach(function (item) {
     var events = [];
     item.data.forEach(function (value) {
-      var miliseconds = new Date(value[0]).getTime() + 86400000;//i added one day because the events were shown for the precedent day
+      var miliseconds = new Date(value[0]).getTime();// + 86400000;//i added one day because the events were shown for the precedent day
       if (value[1] > maximValue) maximValue = value[1];
       events.push([miliseconds, value[1]]);
     })
