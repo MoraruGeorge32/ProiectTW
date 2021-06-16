@@ -9,7 +9,7 @@ class mapModel
         $selectResults = array();
         $selectResults = $dbconn->query($data);
         if ($dbconn === false) {
-            die("Murim cu gratie");
+            die("Eroare la baza de date");
             echo $dbconn->error;
         }
         if ($selectResults !== false)

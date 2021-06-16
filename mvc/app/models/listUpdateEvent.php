@@ -6,7 +6,7 @@ class listUpdateEvent{
         if($dbconn->connect_error) {
             exit('Could not connect');
         }
-        $sql = "SELECT eventid, iyear, imonth, iday, country_txt, region_txt FROM terro_events LIMIT ?, ?";
+        $sql = "SELECT eventid, iyear, imonth, iday, country_txt, region_txt FROM terro_events ORDER BY eventid LIMIT ?, ?";
         $stmt = $dbconn->prepare($sql);
         $offset = ($page-1)*15;
         $nr_events=15;

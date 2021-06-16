@@ -4,9 +4,5 @@ class requestUpdateEventController extends Controller{
         $get_events = $this->model('listUpdateEvent');
         echo $get_events->getListFromDb($_GET['page']);
     }
-    public function index()
-    {
-        echo "hellow";
-    }
 }
 
